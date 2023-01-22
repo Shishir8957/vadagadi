@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Vadagadi</title>
+        <link rel="stylesheet" href="../statics/css/viewproduct.css">
+        <link rel="shortcut icon" href="../statics/images/logo.png" type="image/x-icon" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sen">
+
+        <!-- bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!-- icon -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+        <!--Material Design for Bootstrap 5-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+        <link rel="stylesheet" href="node_modules/mdbootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="node_modules/mdbootstrap/css/mdb.min.css">
+        <link rel="stylesheet" href="node_modules/mdbootstrap/css/style.css">
+        <style>
+            .modal{
+                height: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <!--Nav bar-->
+        <div class="navbar-fixed">
+            <nav style="background-color: #D9D9D9;">
+                <div class="nav-wrapper container" style="width:90%;">
+                    <a href="#!" class="brand-logo"><img width="150rem" src="../statics/images/logo2.png"/></a>
+                    <div>
+                        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bi bi-list" style="font-size:2rem;color:black;"></i></a>
+                        <ul class="right hide-on-med-and-down navHover">
+                            <li><a href="sass.html">Sass</a></li>
+                            <li><a href="badges.html">Components</a></li>
+                            <li><a href="collapsible.html">Javascript</a></li>
+                            <li><a href="mobile.html">Mobile</a></li>
+                            <a type="submit" href="/register" class="waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A">
+                                <b>Sign In</b>
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!--Mobile Nav bar-->
+        <ul id="slide-out" class="sidenav">
+            <li><div class="user-view">
+              <div class="background">
+                <img src="images/office.jpg">
+              </div>
+              <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
+              <a href="#name"><span class="white-text name">John Doe</span></a>
+              <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+            </div></li>
+            <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+            <li><a href="#!">Second Link</a></li>
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Subheader</a></li>
+            <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+        </ul>
+        <!--Breadcrumbs-->
+        <div class="container" style="width:90%;height:2rem;padding-top:1rem;">
+            <b><a href="" style="color:black;">Home</a><a style="color:grey;">>&nbsp;</a><a href="" style="color:black;">Cars</a><a style="color:grey;">>&nbsp;</a><a href="" style="color:black;">Audi</a></b>
+        </div><br>
+        <!--Book section-->
+        <div class="container" style="width:90%">
+            <div class="row">
+                <!--Product images-->
+                <div class="col-md center" style="margin:0;padding:1.5rem 0 0 0;">
+                    <div style="box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);border-radius:3px;min-height: 50vh;background-color:black;background-image: url(https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?cs=srgb&dl=pexels-mike-b-170811.jpg&fm=jpg);background-size: cover;background-position: center;">
+                    </div><br>
+                    <img width="80" src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?cs=srgb&dl=pexels-mike-b-170811.jpg&fm=jpg">
+                    <img width="80" src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?cs=srgb&dl=pexels-mike-b-170811.jpg&fm=jpg">
+                    <img width="80" src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?cs=srgb&dl=pexels-mike-b-170811.jpg&fm=jpg">
+                </div>
+                <!--Product Discription-->
+                <div class="col-md" style="padding:0rem;display: flex;justify-content: center;">
+                    <div class="row" style="height:auto;padding:1rem;display:flex;flex-direction:column;">
+                        <div class="col-md"> 
+                            <h1 style="font-size:2.3rem;margin:0 0 1rem 0;font-weight:550;">Toyota Fortuner</h1>
+                            <div style="display:flex; align-items:center; margin:0;">
+                                <p style="font-size: 1.2rem;">owner Kirandai &nbsp;&nbsp;</p>
+                                <p><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i></p>
+                            </div>
+                            <p>Km run: 250000</p>
+                            <h5 style="font-weight:550;">price: <a style="color:#FF3E5A">20,000</a>/day</h5>
+                        </div>
+                        <div class="col-md">
+                            <form>
+                                <h6><b>Please select the date</b></h6>
+                                <input type="text" style="width:100%;margin:5px 0;padding: 0.7rem;border: 1px solid black; border-radius: 5px;" class="datepicker browser-default" placeholder="Pickup Date">
+                                <input type="text" style="width:100%;margin:5px 0;padding: 0.7rem;border: 1px solid black; border-radius: 5px;" class="datepicker browser-default" placeholder="Drop Date">
+                            </form><br>
+                            <label>
+                                <input type="checkbox" required>
+                                <span>Need a driver<a href="/privacy_policy/">Privacy Policy</a></span>
+                            </label>
+                            <h5 style="font-weight:550;font-size:1.5rem;">Your Total: <a style="font-weight:50;background-color:#ff3e5b3a;padding:0.2rem 1.7rem; border-radius: 20px;border: 1px solid #FF3E5A;">20,000</a></h5>
+                            <a type="submit" href="/register" class="waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A;margin-top:1rem;width: 100%;">
+                                <b>Book Now</b>
+                            </a>
+                        </div>
+                    <div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        
+        <!--Product Discription-->
+        <div class="container" style="width:100%;">
+            <h1 style="font-size:2.3rem;font-weight:550;">Key Specification</h1>
+            <div class="container" style="width:100%;display:flex;justify-content:space-evenly">
+                <div class="center">
+                    <img class="keySpecificationSize" src="../statics/icons/car-seat.png">
+                    <figcaption>4 seater</figcaption>
+                </div>
+                <div class="center">
+                    <img class="keySpecificationSize" src="../statics/icons/axle.png">
+                    <figcaption>FWD</figcaption>
+                </div>
+                <div class="center">
+                    <img class="keySpecificationSize" src="../statics/icons/car-engine.png">
+                    <figcaption>1198 cc</figcaption>
+                </div>
+                <div class="center">
+                    <img class="keySpecificationSize" src="../statics/icons/download-speed.png">
+                    <figcaption>100Km/h</figcaption>
+                </div>
+                <div class="center">
+                    <img class="keySpecificationSize" src="../statics/icons/gas-station.png">
+                    <figcaption>petrol</figcaption>
+                </div>
+            </div>
+        </div>
+
+        <!--Comments-->
+        <div class="row d-flex justify-content-center container" style="width:95%">
+            <h1 style="font-size:2.3rem;font-weight:550;margin:0;padding:5rem 0 0 0">Reviews</h1>
+            <div class="col-md-8 col-lg-8">
+              <div class="card shadow-0 border" style="background-color: #fff;padding:0;">
+                <div class="card-body p-4">
+                    <form action="/blog/postComment" method="post" class="col s12">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension>
+                                <i class="material-icons prefix"><i class="bi bi-chat-left-dots"></i></i>
+                                <input id="icon_prefix" type="text" name="comment" spellcheck="true" required>
+                                <label for="icon_prefix">Comment Here</label>
+                                <input type="hidden" name="parentSno" value="">
+                                <input type="hidden" name="postSno" value="{{content.sno}}">
+                                <button type="submit" class="btn black white-text right" style="margin-top: 2rem;">
+                                    <b>Submit</b>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                        <div class="card" style="background-color:#f0f2f5; padding:0;">
+                            <div class="card-body" style="padding:1rem">
+                                <div class="d-flex justify-content-between" style="margin-bottom: 1rem;">
+                                    <div class="d-flex flex-row align-items-center">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTHTAJPlLEQwOQG_g-WNP0WayMmnpM-Nq9ZA&usqp=CAU" alt="avatar" width="25" height="25" />
+                                        <p class="medium mb-0 ms-2">Shishir4912</p>
+                                    </div>
+                                    
+                                    <div style="font-size:1rem; color:black">
+                                        <a>20min ago</a>
+                                            <!-- trigger for deleting comment  -->
+                                            &nbsp;&nbsp;<a class="modal-trigger" href="#modal2"><i style="font-size:1.2rem;padding:0px;margin:0px;color:#e61818" class="bi bi-trash-fill right"></i></a>
+                                            <div id="modal2" class="modal" style="height:auto;">
+                                                <div class="modal-content" style="border-bottom: 0px">
+                                                    <h3>Delete this comment</h3>
+                                                    <p> {{comment.comment}}</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                    <a href="/blog/deleteComment/{{comment.sno}}" class="modal-close waves-effect waves-red btn-flat">Delete</a>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                                <h6>Like this Product</h6>
+                            </div>
+                        </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!--Recomendation Card-->
+        <div class="container RecomendationCard">
+            <h1 style="font-size:2.3rem;font-weight:550;margin:0;padding:3rem 0 1rem 0">Vehicle You May like</h1>
+            <div class="row row-cols-4" style="width: 80%; margin: auto;">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card hoverable" style="border-radius:5px;">
+                        <div class="card-image">
+                            <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
+                            <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
+                        </div>
+                        <div class="card-body row" style="display: flex;justify-content:space-between;margin-bottom:0px;align-items: center; ">
+                            <div class="col" style="box-sizing:content-box">
+                                <h5 class="card-title truncate" id="cardTitle">Aduidfgdfgdfg</h5>
+                                <p class="card-text truncate2">Model no: 250225 </p>
+                            </div>
+                            <div class="col">
+                                <div class="row row-cols-2 center" style="margin-top:1rem;margin-bottom:0rem">
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/car-seat.png">
+                                        <figcaption>sndnkjsdfkjsd</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/car-engine.png">
+                                        <figcaption>sdfsdfsdf</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/download-speed.png">
+                                        <figcaption>asdasda</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/gas-station.png">
+                                        <figcaption>asds</figcaption>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card hoverable" style="border-radius:5px;">
+                        <div class="card-image">
+                            <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
+                            <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
+                        </div>
+                        <div class="card-body row" style="display: flex;justify-content:space-between;margin-bottom:0px;align-items: center; ">
+                            <div class="col" style="box-sizing:content-box">
+                                <h5 class="card-title truncate" id="cardTitle">Aduidfgdfgdfg</h5>
+                                <p class="card-text truncate2">Model no: 250225 </p>
+                            </div>
+                            <div class="col">
+                                <div class="row row-cols-2 center" style="margin-top:1rem;margin-bottom:0rem">
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/car-seat.png">
+                                        <figcaption>sndnkjsdfkjsd</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/car-engine.png">
+                                        <figcaption>sdfsdfsdf</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/download-speed.png">
+                                        <figcaption>asdasda</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/gas-station.png">
+                                        <figcaption>asds</figcaption>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card hoverable" style="border-radius:5px;">
+                        <div class="card-image">
+                            <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
+                            <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
+                        </div>
+                        <div class="card-body row" style="display: flex;justify-content:space-between;margin-bottom:0px;align-items: center; ">
+                            <div class="col" style="box-sizing:content-box">
+                                <h5 class="card-title truncate" id="cardTitle">Aduidfgdfgdfg</h5>
+                                <p class="card-text truncate2">Model no: 250225 </p>
+                            </div>
+                            <div class="col">
+                                <div class="row row-cols-2 center" style="margin-top:1rem;margin-bottom:0rem">
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/car-seat.png">
+                                        <figcaption>sndnkjsdfkjsd</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/car-engine.png">
+                                        <figcaption>sdfsdfsdf</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/download-speed.png">
+                                        <figcaption>asdasda</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/gas-station.png">
+                                        <figcaption>asds</figcaption>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- Footer -->
+        <footer class="page-footer black darken-3" style="flex-direction: column;">
+            <div class="container" style="width:90%;">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5>Vadagadi</h5>
+                        <p>The things we do is not normal here</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Usefull Links</h5>
+                        <a href="/blog" style="color:white;">Blog</a><br>
+                        <a href="/contact" style="color:white;">Contact</a><br>
+                        <a href="/service" style="color:white;">Services</a><br>  
+                        <a href="" style="color:white;">hot news</a><br>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Contact Us</h5>
+                        <a>Kathmandu, Nepal</a><br>
+                        <a>contact@Vadagadi.com</a><br>
+                        <a>+977 987654321</a>
+                    </div>
+                </div>
+                <hr class="center" style="position: unset; width: 80%; height: 0.3vh; margin: 1rem auto;">
+                <div class="d-flex justify-content-evenly" >
+                    <a href="https://instagram.com/" style="color:white; font-size:2rem;"><i class="bi bi-instagram"></i></a>
+                    <a href="https://facebook.com/" style="color:white; font-size:2rem;"><i class="bi bi-facebook"></i></a>
+                    <a href="https://github.com/" style="color:white; font-size:2rem;"><i class="bi bi-github"></i></a>
+                    <a href="https://youtube.com/" style="color:white; font-size:2rem;"><i class="bi bi-youtube"></i></a>
+                </div>
+                <div class="container">
+                    <div style="height: 1rem;"></div>
+                </div>
+            </div>
+            <div class="footer-copyright black darken-4">
+                <div class="container center-align">&copy; 2023 Vadagadi</div>
+            </div>
+        </footer>
+    
+          
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+        <script src="js/addons/rating.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('.sidenav').sidenav();
+                $('.modal').modal();
+                $('.datepicker').datepicker();
+            });
+        </script>
+        <script>
+            $('.datepicker').datepicker({
+                inline: true
+              });
+        </script>
+    </body>
+</html>

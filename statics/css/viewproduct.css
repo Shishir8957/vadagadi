@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    background-color: rgb(0, 0, 0);
+}
+.navHover li a{
+    color: black;
+    font-weight: 550;
+}
+.navHover li a:hover{
+    color: #FF3E5A;
+}
+.keySpecificationSize{
+  width: 3rem;
+}
+figcaption{
+  padding-top: 1rem;
+}
+.RecomendationCard{
+  width: 80%;
+}
+@media screen and (max-width: 990px){
+  .RecomendationCard{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 700px) {
+    .nav-wrapper{
+        width: 100%;
+    }
+    .keySpecificationSize{
+      width: 2rem;
+    }
+    .RecomendationCard{
+      width: 100%;
+    }
+}
