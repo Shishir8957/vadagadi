@@ -1,0 +1,145 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    background: rgb(255, 255, 255);
+    min-height: 200vh;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.1s;
+    padding: 30px 100px;
+    z-index: 1;
+}
+header.sticky{
+    padding: 6px 100px;
+    background: black;
+    z-index: 2;
+}
+header .logo{
+    position: relative;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+header ul{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header ul li{
+    position: relative;
+    list-style: none;
+}
+header ul li a{
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    letter-spacing: 2px;
+    font-weight: 500px;
+    transition: 0.3s;
+}
+header ul li a:hover{
+    color: #FF3E5A;
+}
+header ul li a:active{
+    color: #FF3E5A;
+}
+header.sticky ul li a,header.sticky .logo{
+    color: rgb(255, 255, 255);
+}
+.banner{
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    background: url('https://ichef.bbci.co.uk/news/2048/cpsprodpb/EC6E/production/_116662506_lotus_sports_car_series.jpg');
+    background-size: cover;
+    background-position: center;
+}
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section input{
+    padding: 1rem;
+    width: 30rem;;
+    background-color: #ffffffd1;
+    color: black;
+    border: none;
+}
+.input-group{
+    width: 0;
+}
+.byCategory h1{
+    font-size: 32pt;
+}
+section input::placeholder{
+    color: rgb(53, 52, 52);
+}
+.sidenav-trigger{
+    color: black;
+    font-size: 0px;
+}
+.categoryPadding{
+    padding: 3rem;
+}
+@media screen and (max-width: 900px) { 
+    header{
+        padding: 1rem 3rem;
+    }
+    .sidenav-trigger{
+        color: black;
+        font-size: 0px;
+    }
+}
+
+@media screen and (max-width: 700px) { 
+    header ul,header ul li,header ul li a{
+        position: unset;
+        width: 0;
+        overflow: hidden;
+    }
+    header{
+        padding: 40px 100px;
+        justify-content: center;
+    }
+    header.sticky{
+        padding: 0;
+        box-sizing: content-box;
+        justify-content: space-evenly;
+    }
+    section input{
+        max-width: 20rem;
+    }
+    .banner{
+        height: 40vh;
+    }
+    header.sticky .menu{
+        color: white;
+        font-size: 2rem;
+        margin-left: 12rem;
+    }
+    .byCategory h1{
+        margin: 2.8rem 0 0.68rem 0;
+        font-size: 2.3rem;
+    }
+    .categoryPadding{
+        padding: 2rem;
+    }
+}

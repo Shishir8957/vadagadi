@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Vadagadi</title>
+        <link rel="stylesheet" href="../statics/css/productpage.css">
+        <link rel="shortcut icon" href="../statics/images/logo.png" type="image/x-icon" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sen">
+
+        <!-- bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!-- icon -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />  
+        <style>
+            article, aside, footer, header, nav, section{
+                display: flex;
+            }
+        </style>
+    </head>
+    <div>
+        <!--Nav {% blocktranslate with = trimmed %}
+        <br><br><br><br>
+        {% endblocktranslate %}-->
+        <header>
+            <a href="#" class="logo"><img width="150rem" src="../statics/images/logo3.png"/></a>
+            <a href="#" class="sidenav-trigger" data-target="mobile-menu">
+                <i class="bi bi-list menu"></i>
+            </a>
+            <ul style="margin-bottom: 0rem;">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Home</a></li>
+                <a type="submit" href="/register" class="waves-effect waves-red btn white black-text" style="border-radius: 2rem;">
+                    <b>Sign In</b>
+                </a>
+            </ul>
+        </header>
+        <!-- for small screen menu -->
+        <ul class="sidenav grey lighten-2" id="mobile-menu">
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/service">Services</a></li>
+            <li><a href="/contact">Contact</a></li>
+            
+            <li>
+                <div class="container" style="width: 85%;">
+                    <li>
+                        <a type="submit" href="/register" class="waves-effect waves-purple btn white black-text">
+                            <b>Sign In</b>
+                        </a>
+                    </li>
+                </div>
+            </li>
+        </ul>
+        <!-- Header Part -->
+        <section class="banner center d-flex flex-column">
+            <div style="margin-bottom: -7rem;">
+                <div class="boxContainer hoverable">
+                    <div class="boxContainer hoverable" style="display:flex;">
+                        <div class="search">
+                            <input type="text" name="query" class="searchbox browser-default" placeholder="Seach the vehicle you want" style=" border-radius: 5px 0 0 5px;font-size: 15px; padding-left: 30px; font-family: Roboto 2"/>
+                            <button style="border-radius: 0 5px 5px 0;border: transparent; padding: 1rem;" ><i class="bi bi-search" type="button" style="font-size: 1rem;"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-evenly m-1" style="font-size:1.2rem;">
+                    <a href="https://instagram.com/" style="color:white;margin: 0px 1rem"><i class="bi bi-instagram"></i><br>sport</a>
+                    <a href="https://facebook.com/" style="color:white;margin: 0px 1rem"><i class="bi bi-facebook"></i><br>sport</a>
+                    <a href="https://github.com/" style="color:white;margin: 0px 1rem"><i class="bi bi-github"></i><br>sport</a>
+                    <a href="https://youtube.com/" style="color:white;margin: 0px 1rem"><i class="bi bi-youtube"></i><br>sport</a>
+                </div>
+            </div> 
+        </section>
+
+        <!-- By category -->
+        <div class="container center byCategory">
+            <h1>By category</h1>
+            <div class="container center" style="width:15%;">
+                <hr class="center" style="height: 2px;color: #FF3E5A; opacity: 100%;"/>
+            </div>
+        </div> 
+        <div class="container" style="width:95%;margin-top: 2rem;">
+            <div class="row center row-cols-2 row-cols-sm-2 row-cols-md-4">
+                <div class="col" style="padding:0 1.5rem;">
+                    <div class="bg-image text-center shadow-1-strong rounded mb-5 text-white categoryPadding" style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp'); background-size: cover; background-position: center;" >
+                        <h1 class="mb-3 h2" style="font-weight:550;">sport</h1>
+                    </div>
+                </div>
+                <div class="col" style="padding:0 1.5rem;">
+                    <div class="bg-image text-center shadow-1-strong rounded mb-5 text-white categoryPadding" style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp'); background-size: cover; background-position: center;" >
+                        <h1 class="mb-3 h2" style="font-weight:550;" >Luxary</h1>
+                    </div>
+                </div><div class="col" style="padding:0 1.5rem;">
+                    <div class="bg-image text-center shadow-1-strong rounded mb-5 text-white categoryPadding" style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp'); background-size: cover; background-position: center;" >
+                        <h1 class="mb-3 h2" style="font-weight:550;" >Party</h1>
+                    </div>
+                </div><div class="col" style="padding:0 1.5rem;">
+                    <div class="bg-image text-center shadow-1-strong rounded mb-5 text-white categoryPadding" style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp'); background-size: cover; background-position: center;" >
+                        <h1 class="mb-3 h2" style="font-weight:550;" >Jumbotron</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Available Vehicles-->
+        <div class="container center byCategory">
+            <h1>Available Vehicles</h1>
+            <div class="container center" style="width:15%;">
+                <hr class="center" style="height: 2px;color: #FF3E5A; opacity: 100%;"/>
+            </div>
+        </div> 
+        <div style="width:100%; padding:3rem 0; background-color:#eee;">
+            <div class="row row-cols-4" style="width: 80%; margin: auto;">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card hoverable" style="border-radius:5px;">
+                        <div class="card-image">
+                            <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
+                            <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
+                        </div>
+                        <div class="card-body row" style="display: flex;justify-content:space-between;margin-bottom:0px;align-items: center; ">
+                            <div class="col" style="box-sizing:content-box">
+                                <h5 class="card-title truncate" id="cardTitle">Aduidfgdfgdfg</h5>
+                                <p class="card-text truncate2">Model no: 250225 </p>
+                            </div>
+                            <div class="col">
+                                <div class="row row-cols-2 center" style="margin-top:1rem;margin-bottom:0rem">
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/car-seat.png">
+                                        <figcaption>sndnkjsdfkjsd</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/car-engine.png">
+                                        <figcaption>sdfsdfsdf</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/download-speed.png">
+                                        <figcaption>asdasda</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/gas-station.png">
+                                        <figcaption>asds</figcaption>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card hoverable" style="border-radius:5px;">
+                        <div class="card-image">
+                            <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
+                            <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
+                        </div>
+                        <div class="card-body row" style="display: flex;justify-content:space-between;margin-bottom:0px;align-items: center; ">
+                            <div class="col" style="box-sizing:content-box">
+                                <h5 class="card-title truncate" id="cardTitle">Aduidfgdfgdfg</h5>
+                                <p class="card-text truncate2">Model no: 250225 </p>
+                            </div>
+                            <div class="col">
+                                <div class="row row-cols-2 center" style="margin-top:1rem;margin-bottom:0rem">
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/car-seat.png">
+                                        <figcaption>sndnkjsdfkjsd</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/car-engine.png">
+                                        <figcaption>sdfsdfsdf</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/download-speed.png">
+                                        <figcaption>asdasda</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/gas-station.png">
+                                        <figcaption>asds</figcaption>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card hoverable" style="border-radius:5px;">
+                        <div class="card-image">
+                            <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
+                            <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
+                        </div>
+                        <div class="card-body row" style="display: flex;justify-content:space-between;margin-bottom:0px;align-items: center; ">
+                            <div class="col" style="box-sizing:content-box">
+                                <h5 class="card-title truncate" id="cardTitle">Aduidfgdfgdfg</h5>
+                                <p class="card-text truncate2">Model no: 250225 </p>
+                            </div>
+                            <div class="col">
+                                <div class="row row-cols-2 center" style="margin-top:1rem;margin-bottom:0rem">
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/car-seat.png">
+                                        <figcaption>sndnkjsdfkjsd</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/car-engine.png">
+                                        <figcaption>sdfsdfsdf</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/download-speed.png">
+                                        <figcaption>asdasda</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/gas-station.png">
+                                        <figcaption>asds</figcaption>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card hoverable" style="border-radius:5px;">
+                        <div class="card-image">
+                            <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
+                            <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
+                        </div>
+                        <div class="card-body row" style="display: flex;justify-content:space-between;margin-bottom:0px;align-items: center; ">
+                            <div class="col" style="box-sizing:content-box">
+                                <h5 class="card-title truncate" id="cardTitle">Aduidfgdfgdfg</h5>
+                                <p class="card-text truncate2">Model no: 250225 </p>
+                            </div>
+                            <div class="col">
+                                <div class="row row-cols-2 center" style="margin-top:1rem;margin-bottom:0rem">
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/car-seat.png">
+                                        <figcaption>sndnkjsdfkjsd</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/car-engine.png">
+                                        <figcaption>sdfsdfsdf</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/download-speed.png">
+                                        <figcaption>asdasda</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/gas-station.png">
+                                        <figcaption>asds</figcaption>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card hoverable" style="border-radius:5px;">
+                        <div class="card-image">
+                            <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
+                            <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
+                        </div>
+                        <div class="card-body row" style="display: flex;justify-content:space-between;margin-bottom:0px;align-items: center; ">
+                            <div class="col" style="box-sizing:content-box">
+                                <h5 class="card-title truncate" id="cardTitle">Aduidfgdfgdfg</h5>
+                                <p class="card-text truncate2">Model no: 250225 </p>
+                                <span id="rateMe1"></span>
+                            </div>
+                            <div class="col">
+                                <div class="row row-cols-2 center" style="margin-top:1rem;margin-bottom:0rem">
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/car-seat.png">
+                                        <figcaption>sndnkjsdfkjsd</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/car-engine.png">
+                                        <figcaption>sdfsdfsdf</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/download-speed.png">
+                                        <figcaption>asdasda</figcaption>
+                                    </div>
+                                    <div class="col">
+                                        <img width="20px" src="../statics/icons/gas-station.png">
+                                        <figcaption>asds</figcaption>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Pagination-->
+        <div class="container center byCategory">
+            <br>
+            <div class="container center" style="width:30%;">
+                <ul class="pagination center">
+                    <li class="active"><a href="#!">1</a></li>
+                    <li class="waves-effect"><a href="#!">2</a></li>
+                    <li class="waves-effect"><a href="#!">3</a></li>
+                    <li class="waves-effect"><a href="#!">4</a></li>
+                    <li class="waves-effect"><a href="#!">5</a></li>
+                </ul>
+            </div>
+            <br>
+        </div> 
+        
+        <!-- Footer -->
+        <footer class="page-footer black darken-3" style="flex-direction: column;">
+            <div class="container" style="width:90%;">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5>Vadagadi</h5>
+                        <p>The things we do is not normal here</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Usefull Links</h5>
+                        <a href="/blog" style="color:white;">Blog</a><br>
+                        <a href="/contact" style="color:white;">Contact</a><br>
+                        <a href="/service" style="color:white;">Services</a><br>  
+                        <a href="" style="color:white;">hot news</a><br>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Contact Us</h5>
+                        <a>Kathmandu, Nepal</a><br>
+                        <a>contact@Vadagadi.com</a><br>
+                        <a>+977 987654321</a>
+                    </div>
+                </div>
+                <hr class="center" style="position: unset; width: 80%; height: 0.3vh; margin: 1rem auto;">
+                <div class="d-flex justify-content-evenly" >
+                    <a href="https://instagram.com/" style="color:white; font-size:2rem;"><i class="bi bi-instagram"></i></a>
+                    <a href="https://facebook.com/" style="color:white; font-size:2rem;"><i class="bi bi-facebook"></i></a>
+                    <a href="https://github.com/" style="color:white; font-size:2rem;"><i class="bi bi-github"></i></a>
+                    <a href="https://youtube.com/" style="color:white; font-size:2rem;"><i class="bi bi-youtube"></i></a>
+                </div>
+                <div class="container">
+                    <div style="height: 1rem;"></div>
+                </div>
+            </div>
+            <div class="footer-copyright black darken-4">
+                <div class="container center-align">&copy; 2023 Vadagadi</div>
+            </div>
+        </footer>
+                
+                    
+        
+        <!--Stiky when scroll-->
+        <script type="text/javascript">
+            window.addEventListener("scroll",function(){
+                var header = document.querySelector("header");
+                header.classList.toggle("sticky",window.scrollY >0);
+            })
+        </script>
+        <!--MaterialCss-->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".sidenav").sidenav();
+                $('.tooltipped').tooltip();
+                $('.materialboxed').materialbox();
+                $('.dropdown-trigger').dropdown();
+                $('.tooltipped').tooltip();
+                $('#rateMe1').mdbRate();
+            });
+        </script>
+    </body>
+</html>
