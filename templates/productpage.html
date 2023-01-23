@@ -1,11 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Vadagadi</title>
-        <link rel="stylesheet" href="../statics/css/productpage.css">
-        <link rel="shortcut icon" href="../statics/images/logo.png" type="image/x-icon" />
+        <link rel="stylesheet" href={%static "./css/productpage.css"%}>
+        <link rel="shortcut icon" href={% static './images/logo.png'%} type="image/x-icon" />
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sen">
@@ -23,11 +24,9 @@
         </style>
     </head>
     <div>
-        <!--Nav {% blocktranslate with = trimmed %}
-        <br><br><br><br>
-        {% endblocktranslate %}-->
+        <!--Nav-->
         <header>
-            <a href="#" class="logo"><img width="150rem" src="../statics/images/logo3.png"/></a>
+            <a href="/" class="logo"><img width="150rem" src={%static "./images/logo3.png"%}/></a>
             <a href="#" class="sidenav-trigger" data-target="mobile-menu">
                 <i class="bi bi-list menu"></i>
             </a>
@@ -114,177 +113,42 @@
                 </div>
             </div> 
             <div class="row row-cols-4" style="width: 80%; margin: auto;">
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card hoverable" style="border-radius:5px;">
-                        <div class="card-image">
-                            <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
-                            <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
-                        </div>
-                        <div class="card-body row" style="display: flex;justify-content:space-between;margin-bottom:0px;align-items: center; ">
-                            <div class="col" style="box-sizing:content-box">
-                                <h5 class="card-title truncate" id="cardTitle">Aduidfgdfgdfg</h5>
-                                <p class="card-text truncate2">Model no: 250225 </p>
+                {% for product in products%}
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card hoverable" style="border-radius:5px;">
+                            <div class="card-image">
+                                <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
+                                <a href="productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. {{product.price}}</b></a>
                             </div>
-                            <div class="col">
-                                <div class="row row-cols-2 center" style="margin-top:1rem;margin-bottom:0rem">
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/car-seat.png">
-                                        <figcaption>sndnkjsdfkjsd</figcaption>
-                                    </div>
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/car-engine.png">
-                                        <figcaption>sdfsdfsdf</figcaption>
-                                    </div>
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/download-speed.png">
-                                        <figcaption>asdasda</figcaption>
-                                    </div>
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/gas-station.png">
-                                        <figcaption>asds</figcaption>
+                            <div class="card-body row" style="display: flex;justify-content:space-between;margin-bottom:0px;align-items: center; ">
+                                <div class="col" style="box-sizing:content-box">
+                                    <h5 class="card-title truncate" id="cardTitle">{{product.name}}</h5>
+                                    <p class="card-text truncate2">Model: {{product.model}} </p>
+                                </div>
+                                <div class="col">
+                                    <div class="row row-cols-2 center" style="margin-top:1rem;margin-bottom:0rem">
+                                        <div class="col">
+                                            <img width="20px" src={% static "./icons/car-seat.png"%}>
+                                            <figcaption>{{product.seatingCapacity}}</figcaption>
+                                        </div>
+                                        <div class="col">
+                                            <img width="20px" src={% static "./icons/car-engine.png"%}>
+                                            <figcaption>{{product.engine}}</figcaption>
+                                        </div>
+                                        <div class="col">
+                                            <img width="20px" src={% static "./icons/download-speed.png"%}>
+                                            <figcaption class="truncate">{{product.maxPower}}</figcaption>
+                                        </div>
+                                        <div class="col">
+                                            <img width="20px" src={% static "./icons/gas-station.png"%}>
+                                            <figcaption>{{product.fuletype}}</figcaption>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card hoverable" style="border-radius:5px;">
-                        <div class="card-image">
-                            <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
-                            <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
-                        </div>
-                        <div class="card-body row" style="display: flex;justify-content:space-between;margin-bottom:0px;align-items: center; ">
-                            <div class="col" style="box-sizing:content-box">
-                                <h5 class="card-title truncate" id="cardTitle">Aduidfgdfgdfg</h5>
-                                <p class="card-text truncate2">Model no: 250225 </p>
-                            </div>
-                            <div class="col">
-                                <div class="row row-cols-2 center" style="margin-top:1rem;margin-bottom:0rem">
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/car-seat.png">
-                                        <figcaption>sndnkjsdfkjsd</figcaption>
-                                    </div>
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/car-engine.png">
-                                        <figcaption>sdfsdfsdf</figcaption>
-                                    </div>
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/download-speed.png">
-                                        <figcaption>asdasda</figcaption>
-                                    </div>
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/gas-station.png">
-                                        <figcaption>asds</figcaption>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card hoverable" style="border-radius:5px;">
-                        <div class="card-image">
-                            <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
-                            <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
-                        </div>
-                        <div class="card-body row" style="display: flex;justify-content:space-between;margin-bottom:0px;align-items: center; ">
-                            <div class="col" style="box-sizing:content-box">
-                                <h5 class="card-title truncate" id="cardTitle">Aduidfgdfgdfg</h5>
-                                <p class="card-text truncate2">Model no: 250225 </p>
-                            </div>
-                            <div class="col">
-                                <div class="row row-cols-2 center" style="margin-top:1rem;margin-bottom:0rem">
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/car-seat.png">
-                                        <figcaption>sndnkjsdfkjsd</figcaption>
-                                    </div>
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/car-engine.png">
-                                        <figcaption>sdfsdfsdf</figcaption>
-                                    </div>
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/download-speed.png">
-                                        <figcaption>asdasda</figcaption>
-                                    </div>
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/gas-station.png">
-                                        <figcaption>asds</figcaption>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card hoverable" style="border-radius:5px;">
-                        <div class="card-image">
-                            <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
-                            <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
-                        </div>
-                        <div class="card-body row" style="display: flex;justify-content:space-between;margin-bottom:0px;align-items: center; ">
-                            <div class="col" style="box-sizing:content-box">
-                                <h5 class="card-title truncate" id="cardTitle">Aduidfgdfgdfg</h5>
-                                <p class="card-text truncate2">Model no: 250225 </p>
-                            </div>
-                            <div class="col">
-                                <div class="row row-cols-2 center" style="margin-top:1rem;margin-bottom:0rem">
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/car-seat.png">
-                                        <figcaption>sndnkjsdfkjsd</figcaption>
-                                    </div>
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/car-engine.png">
-                                        <figcaption>sdfsdfsdf</figcaption>
-                                    </div>
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/download-speed.png">
-                                        <figcaption>asdasda</figcaption>
-                                    </div>
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/gas-station.png">
-                                        <figcaption>asds</figcaption>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card hoverable" style="border-radius:5px;">
-                        <div class="card-image">
-                            <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
-                            <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
-                        </div>
-                        <div class="card-body row" style="display: flex;justify-content:space-between;margin-bottom:0px;align-items: center; ">
-                            <div class="col" style="box-sizing:content-box">
-                                <h5 class="card-title truncate" id="cardTitle">Aduidfgdfgdfg</h5>
-                                <p class="card-text truncate2">Model no: 250225 </p>
-                                <span id="rateMe1"></span>
-                            </div>
-                            <div class="col">
-                                <div class="row row-cols-2 center" style="margin-top:1rem;margin-bottom:0rem">
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/car-seat.png">
-                                        <figcaption>sndnkjsdfkjsd</figcaption>
-                                    </div>
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/car-engine.png">
-                                        <figcaption>sdfsdfsdf</figcaption>
-                                    </div>
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/download-speed.png">
-                                        <figcaption>asdasda</figcaption>
-                                    </div>
-                                    <div class="col">
-                                        <img width="20px" src="../statics/icons/gas-station.png">
-                                        <figcaption>asds</figcaption>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
 
