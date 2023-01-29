@@ -12,12 +12,18 @@ class CsvImportForm(forms.Form):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name','model','price','year','kilometer','fuletype','Transmission','color','engine','maxPower','maxTorque','Drivetrain','length','width','height','fuleTankSize','vehicleType')
-    
+    list_display = ('name','booked','ratings','model','price','year','kilometer','fuletype','Transmission','color','engine','maxPower','maxTorque','Drivetrain','length','width','height','fuleTankSize','vehicleType')
+    search_fields = ('name','model')
     def get_urls(self):
         urls = super().get_urls()
-        new_urls = [path('upload-csv/',self.upload_csv),]
+        new_urls = [
+            path('upload-csv/',self.upload_csv),
+            path('staff-details/',self.staff_details),
+        ]
         return new_urls + urls
+
+    def staff_details(self,request):
+        return render(request,"admin/staff-detail.html")
 
     def upload_csv(self,request):
 
@@ -53,6 +59,7 @@ class ProductAdmin(admin.ModelAdmin):
                     seatingCapacity = fields[18],
                     fuleTankSize = fields[19],
                     vehicleType = fields[20],
+                    ratings = fields[21],
                 )
             url = reverse('admin:index')
             return HttpResponseRedirect(url)
@@ -62,6 +69,6 @@ class ProductAdmin(admin.ModelAdmin):
         data = {"form":form}
         return render(request,"admin/csv_upload.html", data)
 
-admin.site.register(FuleType)
-admin.site.register(Transmission)
-admin.site.register(vehicleType)
+@admin.register(Booking)
+class BookingAdmin(admin.ModelAdmin):
+    list_display = ('name','product','driverStatus','starting','ending','total_days','cost_per_day','verified','delivery_status')

@@ -1,0 +1,310 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="shortcut icon" href="{%static './image/icon.png'%}" type="image/x-icon" />
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <!-- icon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+        body{
+            background: url("https://images.pexels.com/photos/3785932/pexels-photo-3785932.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+            background-size: cover;
+            background-position: center;
+            height: auto;
+            background-repeat: no-repeat;
+        }
+        nav {
+            box-shadow: none;
+            position: sticky;
+            top: 0;
+            transition: 1s ease;
+            min-width: 100%;
+        }
+
+        .nav-wrapper {
+            background-color: rgb(0, 0, 0);
+        }
+
+        nav ul a:hover {
+            background-color: transparent;
+            color: #c700ff;
+            font-size: bold;
+        }
+
+        .account{
+            background-color: #FFFFFFDE;
+            max-height: 45rem;
+            width: 50%;
+            margin: 10% auto 10% auto;
+            border-radius: 3px;
+        }
+        .tabs .indicator {
+            
+            background-color: white;
+            border-radius: 38px;
+        }    
+
+        .tabs{
+            background-color: black;
+        }
+        .tabs .tab a:focus, .tabs .tab a:focus.active {
+            background-color: transparent;
+            outline: none;
+        }
+        nav .brand-logo {
+            position: unset;
+        }
+        @media screen and (max-width: 900px){
+            .account{
+                width: 80%;
+            }
+        }
+        @media screen and (max-width: 699px) {
+            nav .brand-logo {
+                font-size: 1.5rem;
+                position: unset;
+            }
+            .account {
+                background-color: #FFFFFFDE;
+                width: 100%;
+                margin: 10% 0 10% 0;
+                border-radius: 3px;
+              }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- nav  --> 
+    <nav class="nav-wrapper" style="z-index:1;position: unset;">
+        <div class="container center">
+            <a href="/" class="brand-logo" style="z-index:1;">VADAGADI</a>
+            <a href="#" class="sidenav-trigger" data-target="mobile-menu">
+                <i class="bi bi-list"></i>
+            </a>            
+        </div>
+    </nav>
+    <!-- for small screen menu -->
+    <ul class="sidenav grey lighten-2" id="mobile-menu">
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/service">Services</a></li>
+        <li><a href="/contact">Contact</a></li>
+        
+        <li>
+            <div class="container" style="width: 85%;">
+                {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
+                        <li><a href="/republic_ktm_4912">Admin</a></li>
+                    {% endif%}
+                    <li>
+                        <a href="/history/" style="">History</a>
+                    </li>
+                    <div>
+                        <li><a>Hello,{{user}}</a></li><br/>
+                        <li>
+                            <a type="submit" href="/register/logout" class="waves-effect waves-purple btn white black-text"> <b>Logout</b></a>
+                        </li>
+                    </div>
+                    {% else %}
+                    <li>
+                        <a type="submit" href="/register" class="waves-effect waves-purple btn white black-text">
+                            <b>Sign In</b>
+                        </a>
+                    </li>
+                {% endif %}
+            </div>
+        </li>
+    </ul>
+
+    {% block content %}
+        <!-- signin card -->
+        <div class="container" style="width:100%;">
+            <div class="row center">
+                <div class="col s12 m12 l12" style="display:flex; justify-content:center;">
+                    <div class="account">
+                        <ul class="tabs" style="margin: 30px 20px; width: 90%;">
+                            <li class="tab col s6">
+                                <a href="#login" class="active white-text text-darken-4">Login</a>
+                            </li>
+                            <li class="tab col s6">
+                                <a href="#signin" class="white-text text-darken-4">Signin</a>
+                            </li>
+                        </ul>
+                        <!-- login -->
+                        <div id="login" class="col s12">
+                            <form style="margin: 1rem 2rem;" action="login" method="post">
+                                {% csrf_token %}
+                                {% if request.GET.next %}
+                                    <input type="hidden" name="next" value="{{request.GET.next}}">
+                                {% endif %}
+                                {% for message in messages %}
+                                    {% if color == True %}
+                                        <div class="alert alert-primary" role="alert" style="color: #267c28;background-color: #008e1647;border-color: #0d690000;">
+                                            {{message}}
+                                        </div>
+                                    {% else %}
+                                        <div class="alert alert-primary" role="alert" style="color: #ba1d1d;background-color: #ff222236;border-color: #002c6900;">
+                                            {{message}}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                                <div class="input-field">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input type="text" id="username" name="username" required>
+                                    <label for="username">Username</label>
+                                </div>
+                                <div class="input-field">
+                                    <i class="material-icons prefix">key</i>
+                                    <input type="password" id="password" name="password" required>
+                                    <label for="password">Password</label>
+                                </div>
+                                <div class="input-field">
+                                    <p>
+                                        <label>
+                                            <input type="checkbox">
+                                            <span>Remember Me</span>
+                                        </label>
+                                    </p>
+                                    <a href="/register/password_reset/">forget password</a>
+                                </div>
+                                <div class="input-field center">
+                                    <button type="submit" class="btn btn-primary black">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- signup -->
+                        <div id="signin" class="col s12">
+                            <form style="margin: 1rem 2rem;" action="signin" method="post">
+                                {% csrf_token %}
+                                {% for message in messages %}
+                                    {% if color == True %}
+                                        <div class="alert alert-primary" role="alert" style="color: #267c28;background-color: #008e1647;border-color: #0d690000;">
+                                            {{message}}
+                                        </div>
+                                    {% else %}
+                                        <div class="alert alert-primary" role="alert" style="color: #ba1d1d;background-color: #ff222236;border-color: #002c6900;">
+                                            {{message}}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                                <div class="input-field">
+                                    <i class="material-icons prefix">person</i>
+                                    <input type="text" id="Username" name="username" required>
+                                    <label for="Username">Username</label>
+                                </div>
+                                <div class="input-field">
+                                    <i class="material-icons prefix">person_outline</i>
+                                    <input type="text" id="Firstname" name="firstname" required>
+                                    <label for="Firstname">Name</label>
+                                </div>
+                                <div class="input-field">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input type="email" id="_email" name="email" required>
+                                    <label for="_email">Email</label>
+                                </div>
+                                <div class="input-field">
+                                    <i class="material-icons prefix">key</i>
+                                    <input type="password" id="_password" name="password1" required>
+                                    <label for="_password">Password</label>
+                                </div>
+                                <div class="input-field">
+                                    <i class="material-icons prefix">key</i>
+                                    <input type="password" id="confirm_password" name="password2" required>
+                                    <label for="confirm_password">Confirm Password</label>
+                                </div>
+                                <div class="input-field">
+                                    <p>
+                                        <label>
+                                            <input type="checkbox" required>
+                                            <span>I agree to the terms and conditions.<a href="/privacy_policy/">Privacy Policy</a></span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="input-field center">
+                                    <button type="submit" href="#" class="btn btn-primary black">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock%}
+    <!-- footer -->
+    <footer class="page-footer black darken-3">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5>The secret valley journal</h5>
+                    <p>The things we do is not normal here</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Usefull Links</h5>
+                    <a href="/blog" style="color:white;">Blog</a><br>
+                    <a href="/contact" style="color:white;">Contact</a><br>
+                    <a href="/service" style="color:white;">Services</a><br>  
+                    <a href="" style="color:white;">hot news</a><br>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Contact Us</h5>
+                    <a>Kathmandu, Nepal</a><br>
+                    <a>contact@thesecretvaleyjournal.com</a><br>
+                    <a>+977 987654321</a>
+                </div>
+            </div>
+            <hr class="center" style="position: unset; width: 80%; height: 0.3vh; margin: 1rem auto;">
+            <div class="d-flex justify-content-evenly" >
+                <a href="https://instagram.com/" style="color:white;"><i class="bi bi-instagram"></i></a>
+                <a href="https://facebook.com/" style="color:white;"><i class="bi bi-facebook"></i></a>
+                <a href="https://github.com/" style="color:white;"><i class="bi bi-github"></i></a>
+                <a href="https://youtube.com/" style="color:white;"><i class="bi bi-youtube"></i></a>
+            </div>
+            <div class="container">
+                <div style="height: 1rem;"></div>
+            </div>
+        </div>
+
+        <div class="footer-copyright black darken-4">
+            <div class="container center-align">&copy; 2022 The Secret Valley Journal</div>
+        </div>
+    </footer>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".sidenav").sidenav();
+            $('.tooltipped').tooltip();
+            $('.tabs').tabs();
+        });
+      //$(window).on('scroll',function () {
+      //    if ($(window).scrollTop()) {
+      //        $('nav').removeClass('transparent');
+      //    } else{
+      //        $('nav').addClass('transparent');
+      //    }
+      //});
+    </script>
+</body>
+
+</html>

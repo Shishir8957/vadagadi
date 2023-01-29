@@ -27,6 +27,80 @@
             .modal{
                 height: auto;
             }
+            .timepicker-digital-display{
+                background-color: #eee;
+            }
+            .timepicker-text-container {
+                color: black;
+            }
+            .timepicker-canvas-bg {
+                fill: #FF3E5A;
+            }
+            .timepicker-canvas-bearing {
+                fill: #FF3E5A;
+            }
+            .timepicker-canvas line {
+                stroke: #FF3E5A;
+            }
+            .timepicker-tick.active, .timepicker-tick:hover {
+                background-color: rgba(255, 62, 90, 0.58);
+            }
+            .text-primary {
+                color: #FF3E5A !important;
+            }
+            .timepicker-close {
+                color: #FF3E5A;
+            }
+            .datepicker-date-display .year-text {
+                color: rgba(0, 0, 0, 0.7);
+            }
+            .datepicker-date-display {
+                background-color: #eee;
+                color: #000;
+            }
+            .datepicker-table td.is-selected {
+                background-color: #FF3E5A;
+            }
+            .datepicker-table td.is-today {
+                color: green;
+            }
+            [type="checkbox"]:checked + span:not(.lever)::before {
+                border-right: 2px solid #ff3e5a;
+                border-bottom: 2px solid #ff3e5a;
+            }
+            .datepicker-cancel, .datepicker-clear, .datepicker-today, .datepicker-done {
+                color: #ff3e5a;
+                padding: 0 1rem;
+              }
+            
+            .rating-container {
+                display: flex;
+              }
+              
+            .rating-star {
+                font-size: 1em;
+                color: lightgray;
+                transition: color 0.3s ease;
+            }
+              
+            .selected {
+                color: orange;
+            }
+              
+            .animated {
+                animation: pulse 0.3s ease;
+            }
+              
+            @keyframes pulse {
+                from {
+                  transform: scale(0.5);
+                }
+                to {
+                  transform: scale(1.2);
+                }
+            }
+              
+              
         </style>
     </head>
     <body>
@@ -36,15 +110,29 @@
                 <div class="nav-wrapper container" style="width:90%;">
                     <a href="/product/" class="brand-logo"><img width="150rem" src={% static "./images/logo2.png"%}/></a>
                     <div>
-                        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bi bi-list" style="font-size:2rem;color:black;"></i></a>
+                        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bi bi-list" style="font-size:2rem;color:black;line-height: inherit;"></i></a>
                         <ul class="right hide-on-med-and-down navHover">
                             <li><a href="sass.html">Sass</a></li>
                             <li><a href="badges.html">Components</a></li>
                             <li><a href="collapsible.html">Javascript</a></li>
                             <li><a href="mobile.html">Mobile</a></li>
-                            <a type="submit" href="/register" class="waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A">
-                                <b>Sign In</b>
-                            </a>
+                            {% if user.is_superuser %}
+                                <li><a href="/admin/" class="waves-effect waves-purple btn white black-text"><i class="bi bi-bar-chart-fill left" style="line-height: inherit;"></i><b>Admin</b></a><li>
+                            {% endif %}
+                            
+                            {% if user.is_authenticated %}
+                                <!-- Dropdown Trigger -->
+                                <a class="dropdown-trigger waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A" href='#' data-target='dropdown1'><b><i class="bi bi-person-circle left" style="line-height: inherit;"></i>{{user}}</b></a>
+            
+                                <!-- Dropdown Structure -->
+                                <ul id='dropdown1' class='dropdown-content' >
+                                    <li style="min-height:30px;"><a class='center' href="/register/logout" style="padding:0; color:red; height:30px;"><b>Logout</b></a></li>
+                                </ul>
+                            {% else %}
+                                <a type="submit" href="/register" class="waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A">
+                                    <b>Sign In</b>
+                                </a>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
@@ -87,26 +175,57 @@
                         <div class="col-md"> 
                             <h1 style="font-size:2.3rem;margin:0 0 1rem 0;font-weight:550;">{{products.name}}</h1>
                             <div style="display:flex; align-items:center; margin:0;">
-                                <!--<p style="font-size: 1.2rem;">owner Kirandai &nbsp;&nbsp;</p>-->
-                                <p><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i></p>
                             </div>
+                            <div class="rating-container">
+                                <i class="fas fa-star rating-star"></i>
+                                <i class="fas fa-star rating-star"></i>
+                                <i class="fas fa-star rating-star"></i>
+                                <i class="fas fa-star rating-star"></i>
+                                <i class="fas fa-star rating-star"></i>
+                            </div>
+                            <input type="hidden" id="rating-value" value="0">
+                            <p id="average-rating"></p>
+                              
+                              
                             <p>Km run: {{products.kilometer}}</p>
                             <h5 style="font-weight:550;">price: <a style="color:#FF3E5A">{{products.price}}</a>/day</h5>
                         </div>
                         <div class="col-md">
-                            <form>
+                            <form action="/product/bookdate/{{products.id}}/" method="post">
+                                {% csrf_token %}
                                 <h6><b>Please select the date</b></h6>
-                                <input type="text" style="width:100%;margin:5px 0;padding: 0.7rem;border: 1px solid black; border-radius: 5px;" class="datepicker browser-default" placeholder="Pickup Date">
-                                <input type="text" style="width:100%;margin:5px 0;padding: 0.7rem;border: 1px solid black; border-radius: 5px;" class="datepicker browser-default" placeholder="Drop Date">
-                            </form><br>
-                            <label>
-                                <input type="checkbox" required>
-                                <span>Need a driver<a href="/privacy_policy/">Privacy Policy</a></span>
-                            </label>
-                            <h5 style="font-weight:550;font-size:1.5rem;">Your Total: <a style="font-weight:50;background-color:#ff3e5b3a;padding:0.2rem 1.7rem; border-radius: 20px;border: 1px solid #FF3E5A;">20,000</a></h5>
-                            <a type="submit" href="/register" class="waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A;margin-top:1rem;width: 100%;">
-                                <b>Book Now</b>
-                            </a>
+                                <input name="starting" format="yyyy mm dd" type="integer" style="width:100%;margin:5px 0;padding: 0.7rem;border: 1px solid black; border-radius: 5px;" class="datepicker browser-default" placeholder="Pickup Date" required>
+                                <input name="ending" type="text" style="width:100%;margin:5px 0;padding: 0.7rem;border: 1px solid black; border-radius: 5px;" class="datepicker browser-default" placeholder="Drop Date" required>
+                                <input name="pickuptime" type="text" style="width:100%;margin:5px 0;padding: 0.7rem;border: 1px solid black; border-radius: 5px;" class="timepicker browser-default" placeholder="Pickup Time" required>
+                                <br>
+                                <label>
+                                    <input type='checkbox' name='needDriver'></input>
+                                    <span>Need a driver<a href="/privacy_policy/"> Privacy Policy</a></span>
+                                </label>
+                                <h5 style="font-weight:550;font-size:1.5rem;">Your Total: <a style="font-weight:50;background-color:#ff3e5b3a;padding:0.2rem 1.7rem; border-radius: 20px;border: 1px solid #FF3E5A;">20,000</a></h5>
+                                {% if user.is_authenticated %}
+                                    <button type="submit" class="waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A;margin-top:1rem;width: 100%;">
+                                        <b>Book Now</b>
+                                    </button>
+                                {% else %}
+                                    <!-- Modal Trigger -->
+                                    <div class="center">
+                                        <a style="border-radius: 2rem;background-color:#FF3E5A;margin-top:1rem;width: 100%;" href="#modal1" class="waves-effect waves-red btn modal-trigger">
+                                            <b>Book Now</b>
+                                        </a>
+                                    </div>
+                                    <!-- Modal Structure -->
+                                    <div id="modal1" class="modal" style="height:auto;">
+                                        <div class="modal-content" style="border-bottom: 0px">
+                                            <h5>Must be logged in</h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Close</a>
+                                            <a href="/register/" class="modal-close waves-effect waves-green btn-flat">Login</a>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </form>
                         </div>
                     <div>
                 </div>
@@ -285,12 +404,40 @@
                 $('.sidenav').sidenav();
                 $('.modal').modal();
                 $('.datepicker').datepicker();
+                $('.dropdown-trigger').dropdown();
+                $('.timepicker').timepicker();
             });
         </script>
         <script>
-            $('.datepicker').datepicker({
-                inline: true
-              });
+            $( "#datepicker" ).datepicker({ minDate: 0});
+        </script>
+        <script>
+            const ratingStars = document.querySelectorAll(".rating-star");
+            const ratingValue = document.getElementById("rating-value");
+            const averageRating = document.getElementById("average-rating");
+
+            // Replace this with an AJAX call to retrieve the average rating from the database
+            const avgRating = {{products.ratings}};
+
+            ratingStars.forEach((star, index) => {
+            if (index < avgRating) {
+                star.classList.add("selected");
+            }
+            
+            star.addEventListener("mouseout", e => {
+                ratingStars.forEach((star, i) => {
+                if (i < avgRating) {
+                    star.classList.add("selected");
+                } else {
+                    star.classList.remove("selected");
+                }
+                });
+            });
+            });
+
+            averageRating.textContent = `Average rating: ${avgRating}`;
+
+
         </script>
     </body>
 </html>

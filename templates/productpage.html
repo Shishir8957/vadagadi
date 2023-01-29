@@ -34,9 +34,24 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Home</a></li>
-                <a type="submit" href="/register" class="waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A">
-                    <b>Sign In</b>
-                </a>
+                {% if user.is_superuser %}
+                <li><a href="/admin/" class="waves-effect waves-purple btn white black-text"><i class="bi bi-bar-chart-fill left"></i><b>Admin</b></a><li>
+                {% endif %}
+                
+                {% if user.is_authenticated %}
+                    <!-- Dropdown Trigger -->
+                    <a class="dropdown-trigger waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A" href='#' data-target='dropdown1'><b><i class="bi bi-person-circle left"></i>{{user}}</b></a>
+ 
+                    <!-- Dropdown Structure -->
+                    <ul id='dropdown1' class='dropdown-content' >
+                        {% comment %} <li style="min-height:30px;"><a class='center' href="/history/" style="padding:0; color:black; height:30px;"><b>History</b></a></li> {% endcomment %}
+                        <li style="min-height:30px;"><a class='center' href="/register/logout" style="padding:0; color:red; height:30px;"><b>Logout</b></a></li>
+                    </ul>
+                {% else %}
+                    <a type="submit" href="/register" class="waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A">
+                        <b>Sign In</b>
+                    </a>
+                {% endif %}
             </ul>
         </header>
         <!-- for small screen menu -->
@@ -86,20 +101,20 @@
             <div class="row center row-cols-2 row-cols-sm-2 row-cols-md-4">
                 <div class="col" style="padding:0 1.5rem;">
                     <div class="bg-image text-center shadow-1-strong rounded mb-5 text-white categoryPadding" style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp'); background-size: cover; background-position: center;" >
-                        <h1 class="mb-3 h2" style="font-weight:550;">sport</h1>
+                        <h1 class="mb-2 h2" style="font-weight:550;">sport</h1>
                     </div>
                 </div>
                 <div class="col" style="padding:0 1.5rem;">
                     <div class="bg-image text-center shadow-1-strong rounded mb-5 text-white categoryPadding" style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp'); background-size: cover; background-position: center;" >
-                        <h1 class="mb-3 h2" style="font-weight:550;" >Luxary</h1>
+                        <h1 class="mb-2 h2" style="font-weight:550;" >Luxary</h1>
                     </div>
                 </div><div class="col" style="padding:0 1.5rem;">
                     <div class="bg-image text-center shadow-1-strong rounded mb-5 text-white categoryPadding" style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp'); background-size: cover; background-position: center;" >
-                        <h1 class="mb-3 h2" style="font-weight:550;" >Party</h1>
+                        <h1 class="mb-2 h2" style="font-weight:550;" >Party</h1>
                     </div>
                 </div><div class="col" style="padding:0 1.5rem;">
                     <div class="bg-image text-center shadow-1-strong rounded mb-5 text-white categoryPadding" style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp'); background-size: cover; background-position: center;" >
-                        <h1 class="mb-3 h2" style="font-weight:550;" >Jumbotron</h1>
+                        <h1 class="mb-2 h2" style="font-weight:550;" >Jumbotron</h1>
                     </div>
                 </div>
             </div>
@@ -113,17 +128,21 @@
                 </div>
             </div> 
             <div class="row row-cols-4" style="width: 80%; margin: auto;">
-                {% for product in products%}
+                {% for product in products %}
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="card hoverable" style="border-radius:5px;">
                             <div class="card-image">
                                 <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
-                                <a href="productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. {{product.price}}</b></a>
+                                {% if not product.booked %}
+                                    <a href="productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. {{product.price}}</b></a>
+                                {% else %}
+                                <a href="productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;" disabled><b>Rs. {{product.price}}</b></a>
+                                {% endif %}
                             </div>
                             <div class="card-body row" style="display: flex;justify-content:space-between;margin-bottom:0px;align-items: center; ">
                                 <div class="col" style="box-sizing:content-box">
-                                    <h5 class="card-title truncate" id="cardTitle">{{product.name}}</h5>
-                                    <p class="card-text truncate2">Model: {{product.model}} </p>
+                                    <h5 class="card-title truncate" id="cardTitle" style="font-size:16pt">{{product.name}}</h5>
+                                    <p class="card-text truncate2" style="font-size:12pt">Model: {{product.model}} </p>
                                 </div>
                                 <div class="col">
                                     <div class="row row-cols-2 center" style="margin-top:1rem;margin-bottom:0rem">
@@ -203,9 +222,7 @@
             <div class="footer-copyright black darken-4">
                 <div class="container center-align">&copy; 2023 Vadagadi</div>
             </div>
-        </footer>
-                
-                    
+        </footer>        
         
         <!--Stiky when scroll-->
         <script type="text/javascript">
@@ -214,6 +231,7 @@
                 header.classList.toggle("sticky",window.scrollY >0);
             })
         </script>
+
         <!--MaterialCss-->
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>

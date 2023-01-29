@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext as _
+from django.contrib.auth.models import User
 
 class FuleType(models.Model):
     title = models.CharField(max_length=200)
@@ -13,7 +14,7 @@ class vehicleType(models.Model):
     title = models.CharField(max_length=200)
     def __str__(self):
         return self.title
-    
+
 # class Product(models.Model):
 #     name = models.CharField(_("Make"),max_length=200)
 #     model = models.CharField(_("Model"),max_length=200)
@@ -53,5 +54,25 @@ class Product(models.Model):
     seatingCapacity = models.CharField(max_length=200)
     fuleTankSize = models.CharField(max_length=200)
     vehicleType = models.CharField(max_length=200)
+    ratings = models.ImageField(default=0)
+    booked = models.BooleanField(default=False,null=True)
+    def __str__(self):
+        return self.name+' '+'Model: '+ self.model
+
+class Booking(models.Model):
+    name = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    starting = models.DateField(null=True)
+    ending = models.DateField(null=True)
+    pickupTime = models.TimeField(null=True)
+    total_days = models.IntegerField(default=0,null=True)
+    cost_per_day = models.BigIntegerField(default=0,null=True)
+    verified = models.BooleanField(default=False)
+    delivery_status = models.BooleanField(default=False)
+    driverStatus = models.BooleanField(default=False)
+    product = models.ForeignKey(Product,on_delete=models.CASCADE,null=True)
 
 
+# class Promise(models):
+#     title = models.CharField(max_length=300)
+#     description = models.TextField(blank=True)
+#     made_on = models.DateField()
