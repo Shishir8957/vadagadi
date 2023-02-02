@@ -1,0 +1,80 @@
+{% extends 'productpage.html' %}
+{% load static %}
+{% block content %}
+    <style>
+        body{
+            min-height:auto;
+        }
+    </style>
+    <section class="banner center d-flex flex-column" style="background-image: url(https://wallpaperaccess.com/full/20695.jpg);height: 45vh;">
+        <div style="margin-bottom: -7rem;">
+            <div class="boxContainer">
+                {% if search %}
+                    <h4 class="truncate" style="max-width:100vw;text-align: center;color:white;text-shadow: 1px 1px 2px black;">{{search}}</h4>
+                {% endif %}
+                <div style="display:flex;justify-content: center;">
+                    <form action="/product/search/" class="search hoverable">
+                        <input type="text" name="search" class="searchbox browser-default" placeholder="Seach the vehicle you want" style=" border-radius: 5px 0 0 5px;font-size: 15px; padding-left: 30px; font-family: Roboto 2"/>
+                        <button style="border-radius: 0 5px 5px 0;border: transparent; padding: 1.05rem;" ><i class="bi bi-search" type="button" style="font-size: 1rem;"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="d-flex justify-content-evenly pt-4" style="font-size:1.2rem;">
+                <a href="https://instagram.com/" style="color:white;margin: 0px 1rem"><i class="bi bi-instagram"></i><br>sport</a>
+                <a href="https://facebook.com/" style="color:white;margin: 0px 1rem"><i class="bi bi-facebook"></i><br>sport</a>
+                <a href="https://github.com/" style="color:white;margin: 0px 1rem"><i class="bi bi-github"></i><br>sport</a>
+                <a href="https://youtube.com/" style="color:white;margin: 0px 1rem"><i class="bi bi-youtube"></i><br>sport</a>
+            </div>
+        </div> 
+    </section>
+    <div>
+        {% if table == 0 %}
+            <h3 style="text-align: center; color:black; margin-bottom:2rem;">result not found</h3>
+        {% endif %}
+    </div>
+    <div style="width:100%; padding:1rem 0; background-color:#eee;">
+        <div class="row row-cols-4" style="width: 80%; margin: auto;">
+            {% for product in products %}
+                <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+                    <div class="card hoverable" style="border-radius:5px;">
+                        <div class="card-image">
+                            <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
+                            {% if not product.booked %}
+                                <a href="/productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;"><b>Rs. {{product.price}}</b></a>
+                            {% else %}
+                                <a href="/productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;" disabled><b>Rs. {{product.price}}</b></a>
+                            {% endif %}
+                        </div>
+                        <div class="card-body" style="display: flex;flex-direction:column;margin-bottom:0px;">
+                            <div class="col" style="box-sizing:content-box">
+                                <h5 class="card-title truncate" id="cardTitle" style="font-size:16pt">{{product.name}}</h5>
+                                <p class="card-text truncate" style="font-size:12pt">Model: {{product.model}} </p>
+                            </div>
+                            <hr>
+                            <div class="col center" style="padding: 0;">
+                                <div class="center" style="display: flex;margin-top:1rem;margin-bottom:0rem;justify-content:space-evenly;">
+                                    <div class="col" style="padding:0rem;">
+                                        <img width="20px" src={% static "./icons/car-seat.png"%}>
+                                        <figcaption style="font-size:10pt;">{{product.seatingCapacity}}</figcaption>
+                                    </div>
+                                    <div class="col" style="padding:0rem;">
+                                        <img width="20px" src={% static "./icons/car-engine.png"%}>
+                                        <figcaption style="font-size:10pt;width: 4rem;">{{product.engine}}</figcaption>
+                                    </div>
+                                    <div class="col" style="padding:0rem;">
+                                        <img width="20px" src={% static "./icons/download-speed.png"%}>
+                                        <figcaption style="font-size:10pt; width: 4rem;" class="truncate">{{product.maxPower}}</figcaption>
+                                    </div>
+                                    <div class="col" style="padding:0rem;">
+                                        <img width="20px" src={% static "./icons/gas-station.png"%}>
+                                        <figcaption style="font-size:10pt;">{{product.fuletype}}</figcaption>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

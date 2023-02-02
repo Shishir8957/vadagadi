@@ -21,6 +21,37 @@
             article, aside, footer, header, nav, section{
                 display: flex;
             }
+            .pagination {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #eee;
+                padding-bottom: 1rem;
+            }
+            .page-item.active .page-link {
+                background-color: #FF3E5A;
+                border-color: #FF3E5A;
+            }
+            .page-link:hover {
+                color: #FF3E5A;
+                background-color: #FF3E5A26;
+                border-color: #dee2e6;
+            }
+            .page-link:focus {
+                color: #FF3E5A;
+                background-color: #FF3E5A08;
+                box-shadow: 0 0 0 .25rem #FF3E5A26;
+            }
+            @media only screen and (min-width: 992px) {
+                .categoryPadding{
+                    padding: 2.5rem 0;
+                }
+            } 
+            @media only screen and (max-width: 768px) {
+                .categoryPadding{
+                    padding-top: 2rem 0;
+                }
+            }
         </style>
     </head>
     <div>
@@ -70,122 +101,155 @@
                 </div>
             </li>
         </ul>
-        <!-- Header Part -->
-        <section class="banner center d-flex flex-column">
-            <div style="margin-bottom: -7rem;">
-                <div class="boxContainer hoverable">
-                    <div class="boxContainer hoverable" style="display:flex;">
-                        <div class="search">
-                            <input type="text" name="query" class="searchbox browser-default" placeholder="Seach the vehicle you want" style=" border-radius: 5px 0 0 5px;font-size: 15px; padding-left: 30px; font-family: Roboto 2"/>
-                            <button style="border-radius: 0 5px 5px 0;border: transparent; padding: 1rem;" ><i class="bi bi-search" type="button" style="font-size: 1rem;"></i></button>
+        {% block content %}
+            <!-- Header Part & search -->
+            <section class="banner center d-flex flex-column">
+                <div style="margin-bottom: -7rem;">
+                    <div class="boxContainer hoverable">
+                        <div class="boxContainer hoverable" style="display:flex;">
+                            <form action="/product/search/" class="search">
+                                <input type="text" name="search" class="searchbox browser-default" placeholder="Seach the vehicle you want" style=" border-radius: 5px 0 0 5px;font-size: 15px; padding-left: 30px; font-family: Roboto 2"/>
+                                <button style="border-radius: 0 5px 5px 0;border: transparent; padding: 1.05rem;" ><i class="bi bi-search" type="button" style="font-size: 1rem;"></i></button>
+                            </form>
                         </div>
                     </div>
-                </div>
-                <div class="d-flex justify-content-evenly m-1" style="font-size:1.2rem;">
-                    <a href="https://instagram.com/" style="color:white;margin: 0px 1rem"><i class="bi bi-instagram"></i><br>sport</a>
-                    <a href="https://facebook.com/" style="color:white;margin: 0px 1rem"><i class="bi bi-facebook"></i><br>sport</a>
-                    <a href="https://github.com/" style="color:white;margin: 0px 1rem"><i class="bi bi-github"></i><br>sport</a>
-                    <a href="https://youtube.com/" style="color:white;margin: 0px 1rem"><i class="bi bi-youtube"></i><br>sport</a>
-                </div>
-            </div> 
-        </section>
+                    <div class="d-flex justify-content-evenly pt-4" style="font-size:1.2rem;">
+                        <a href="https://instagram.com/" style="color:white;margin: 0px 1rem"><i class="bi bi-instagram"></i><br>sport</a>
+                        <a href="https://facebook.com/" style="color:white;margin: 0px 1rem"><i class="bi bi-facebook"></i><br>sport</a>
+                        <a href="https://github.com/" style="color:white;margin: 0px 1rem"><i class="bi bi-github"></i><br>sport</a>
+                        <a href="https://youtube.com/" style="color:white;margin: 0px 1rem"><i class="bi bi-youtube"></i><br>sport</a>
+                    </div>
+                </div> 
+            </section>
 
-        <!-- By category -->
-        <div class="container center byCategory">
-            <h1>By category</h1>
-            <div class="container center" style="width:15%;">
-                <hr class="center" style="height: 2px;color: #FF3E5A; opacity: 100%;"/>
-            </div>
-        </div> 
-        <div class="container" style="width:95%;margin-top: 2rem;">
-            <div class="row center row-cols-2 row-cols-sm-2 row-cols-md-4">
-                <div class="col" style="padding:0 1.5rem;">
-                    <div class="bg-image text-center shadow-1-strong rounded mb-5 text-white categoryPadding" style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp'); background-size: cover; background-position: center;" >
-                        <h1 class="mb-2 h2" style="font-weight:550;">sport</h1>
-                    </div>
-                </div>
-                <div class="col" style="padding:0 1.5rem;">
-                    <div class="bg-image text-center shadow-1-strong rounded mb-5 text-white categoryPadding" style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp'); background-size: cover; background-position: center;" >
-                        <h1 class="mb-2 h2" style="font-weight:550;" >Luxary</h1>
-                    </div>
-                </div><div class="col" style="padding:0 1.5rem;">
-                    <div class="bg-image text-center shadow-1-strong rounded mb-5 text-white categoryPadding" style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp'); background-size: cover; background-position: center;" >
-                        <h1 class="mb-2 h2" style="font-weight:550;" >Party</h1>
-                    </div>
-                </div><div class="col" style="padding:0 1.5rem;">
-                    <div class="bg-image text-center shadow-1-strong rounded mb-5 text-white categoryPadding" style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp'); background-size: cover; background-position: center;" >
-                        <h1 class="mb-2 h2" style="font-weight:550;" >Jumbotron</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Available Vehicles-->
-        <div style="width:100%; padding:1rem 0; background-color:#eee;">
+            <!-- By category -->
             <div class="container center byCategory">
-                <h1>Available Vehicles</h1>
+                <h1>By category</h1>
                 <div class="container center" style="width:15%;">
-                    <hr class="center" style="height: 2px;color: #FF3E5A; opacity: 100%; margin:0rem 0 2rem 0;"/>
+                    <hr class="center" style="height: 2px;color: #FF3E5A; opacity: 100%;"/>
                 </div>
             </div> 
-            <div class="row row-cols-4" style="width: 80%; margin: auto;">
-                {% for product in products %}
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="card hoverable" style="border-radius:5px;">
-                            <div class="card-image">
-                                <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
-                                {% if not product.booked %}
-                                    <a href="productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. {{product.price}}</b></a>
-                                {% else %}
-                                <a href="productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;" disabled><b>Rs. {{product.price}}</b></a>
-                                {% endif %}
+            <div class="container" style="width:95%;margin-top: 2rem;">
+                <div class="row center row-cols-2 row-cols-sm-2 row-cols-md-4">
+                    <div class="col">
+                        <a href="google.com" class="card" style="border-radius: 5px;">
+                            <div class="card-body categoryPadding" style="border-radius: 5px;background-image: url(https://images.unsplash.com/photo-1579547621244-c07e55dcb856?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8&w=1000&q=80);background-repeat: initial;background-size: cover;background-position: center;display: flex; align-items: center; justify-content: center;">
+                            <h5 class="card-title" style="color:white;margin:1rem 0;">Card title</h5>
                             </div>
-                            <div class="card-body row" style="display: flex;justify-content:space-between;margin-bottom:0px;align-items: center; ">
-                                <div class="col" style="box-sizing:content-box">
-                                    <h5 class="card-title truncate" id="cardTitle" style="font-size:16pt">{{product.name}}</h5>
-                                    <p class="card-text truncate2" style="font-size:12pt">Model: {{product.model}} </p>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="google.com" class="card" style="border-radius: 5px;">
+                            <div class="card-body categoryPadding" style="border-radius: 5px;background-image: url(https://images.unsplash.com/photo-1579547621244-c07e55dcb856?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8&w=1000&q=80);background-repeat: initial;background-size: cover;background-position: center;display: flex; align-items: center; justify-content: center;">
+                            <h5 class="card-title" style="color:white;margin:1rem 0;">Card title</h5>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="google.com" class="card" style="border-radius: 5px;">
+                            <div class="card-body categoryPadding" style="border-radius: 5px;background-image: url(https://images.unsplash.com/photo-1579547621244-c07e55dcb856?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8&w=1000&q=80);background-repeat: initial;background-size: cover;background-position: center;display: flex; align-items: center; justify-content: center;">
+                            <h5 class="card-title" style="color:white;margin:1rem 0;">Card title</h5>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="google.com" class="card" style="border-radius: 5px;">
+                            <div class="card-body categoryPadding" style="border-radius: 5px;background-image: url(https://images.unsplash.com/photo-1579547621244-c07e55dcb856?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8&w=1000&q=80);background-repeat: initial;background-size: cover;background-position: center;display: flex; align-items: center; justify-content: center;">
+                            <h5 class="card-title" style="color:white;margin:1rem 0;">Card title</h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--Available Vehicles-->
+            <div style="width:100%; padding:1rem 0; background-color:#eee;">
+                <div class="container center byCategory">
+                    <h1>Available Vehicles</h1>
+                    <div class="container center" style="width:15%;">
+                        <hr class="center" style="height: 2px;color: #FF3E5A; opacity: 100%; margin:0rem 0 2rem 0;"/>
+                    </div>
+                </div> 
+                <div class="row row-cols-4" style="width: 80%; margin: auto;">
+                    {% for product in products %}
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+                            <div class="card hoverable" style="border-radius:5px;">
+                                <div class="card-image">
+                                    <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
+                                    {% if not product.booked %}
+                                        <a href="productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;"><b>Rs. {{product.price}}</b></a>
+                                    {% else %}
+                                        <a href="productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;" disabled><b>Rs. {{product.price}}</b></a>
+                                    {% endif %}
                                 </div>
-                                <div class="col">
-                                    <div class="row row-cols-2 center" style="margin-top:1rem;margin-bottom:0rem">
-                                        <div class="col">
-                                            <img width="20px" src={% static "./icons/car-seat.png"%}>
-                                            <figcaption>{{product.seatingCapacity}}</figcaption>
-                                        </div>
-                                        <div class="col">
-                                            <img width="20px" src={% static "./icons/car-engine.png"%}>
-                                            <figcaption>{{product.engine}}</figcaption>
-                                        </div>
-                                        <div class="col">
-                                            <img width="20px" src={% static "./icons/download-speed.png"%}>
-                                            <figcaption class="truncate">{{product.maxPower}}</figcaption>
-                                        </div>
-                                        <div class="col">
-                                            <img width="20px" src={% static "./icons/gas-station.png"%}>
-                                            <figcaption>{{product.fuletype}}</figcaption>
+                                <div class="card-body" style="display: flex;flex-direction:column;margin-bottom:0px;">
+                                    <div class="col" style="box-sizing:content-box">
+                                        <h5 class="card-title truncate" id="cardTitle" style="font-size:16pt">{{product.name}}</h5>
+                                        <p class="card-text truncate" style="font-size:12pt">Model: {{product.model}} </p>
+                                    </div>
+                                    <hr>
+                                    <div class="col center" style="padding: 0;">
+                                        <div class="center" style="display: flex;margin-top:1rem;margin-bottom:0rem;justify-content:space-evenly;">
+                                            <div class="col" style="padding:0rem;">
+                                                <img width="20px" src={% static "./icons/car-seat.png"%}>
+                                                <figcaption style="font-size:10pt;">{{product.seatingCapacity}}</figcaption>
+                                            </div>
+                                            <div class="col" style="padding:0rem;">
+                                                <img width="20px" src={% static "./icons/car-engine.png"%}>
+                                                <figcaption style="font-size:10pt;width: 4rem;">{{product.engine}}</figcaption>
+                                            </div>
+                                            <div class="col" style="padding:0rem;">
+                                                <img width="20px" src={% static "./icons/download-speed.png"%}>
+                                                <figcaption style="font-size:10pt; width: 4rem;" class="truncate">{{product.maxPower}}</figcaption>
+                                            </div>
+                                            <div class="col" style="padding:0rem;">
+                                                <img width="20px" src={% static "./icons/gas-station.png"%}>
+                                                <figcaption style="font-size:10pt;">{{product.fuletype}}</figcaption>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
-        </div>
 
-        <!--Pagination-->
-        <div class="container center byCategory">
-            <br>
-            <div class="container center" style="width:30%;">
-                <ul class="pagination center">
-                    <li class="active"><a href="#!">1</a></li>
-                    <li class="waves-effect"><a href="#!">2</a></li>
-                    <li class="waves-effect"><a href="#!">3</a></li>
-                    <li class="waves-effect"><a href="#!">4</a></li>
-                    <li class="waves-effect"><a href="#!">5</a></li>
+            <!--pagination-->
+            <div class="pagination">
+                <ul class="pagination">
+                    {% if products.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ products.previous_page_number }}">previous</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <button style="color: grey;border: 2px solid #9595954a;background-color: #e8e8e8;padding: 0px 3px;line-height: 28px;border-radius: 3px 0 0 3px;" disabled>previous</button>
+                        </li>
+                    {% endif %}
+                    {% for num in products.paginator.page_range %}
+                        {% if products.number == num %}
+                            <li class="page-item active">
+                                <a class="page-link">{{ num }}</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if products.has_next %}
+                        <li class="page-item">
+                        <a class="page-link" href="?page={{ products.next_page_number }}">next</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <button style="color: grey;border: 2px solid #e2e5e9;background-color: #e8e8e8;padding: 0px 3px;line-height: 30px;border-radius: 3px 0 0 3px;" disabled>next</button>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
-            <br>
-        </div> 
-        
+        {% endblock  %}
+
         <!-- Footer -->
         <footer class="page-footer black darken-3" style="flex-direction: column;">
             <div class="container" style="width:90%;">

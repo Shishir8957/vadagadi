@@ -54,7 +54,7 @@ class Product(models.Model):
     seatingCapacity = models.CharField(max_length=200)
     fuleTankSize = models.CharField(max_length=200)
     vehicleType = models.CharField(max_length=200)
-    ratings = models.ImageField(default=0)
+    ratings = models.IntegerField(default=0)
     booked = models.BooleanField(default=False,null=True)
     def __str__(self):
         return self.name+' '+'Model: '+ self.model

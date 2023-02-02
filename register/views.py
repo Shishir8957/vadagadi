@@ -5,23 +5,35 @@ from django.core.mail import send_mail
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import *
+from products.models import Booking
 import secrets
 import string
     
 def error404(request):
     return render(request,'404.html')
 
-@login_required(login_url='/register')
+@login_required(login_url='/register/')
 def userprofile(request):
     user = request.user
-    return render(request,'user-profile.html')
+    if VerifyUser.objects.filter(name=user.id).exists():
+        userveri = VerifyUser.objects.get(name=request.user.id)
+    else:
+        userveri = {'profile':'/media/images/Group_1.png'}
+    return render(request,'user-profile.html',{'userveri':userveri,'booking':Booking.objects.filter(name=user)})
 
-@login_required(login_url='/register')
+@login_required(login_url='/register/')
 def userprofileUpdate(request,id):
     if request.method == 'POST':
-        img = request.POST['img']
-        print('image',type(img))
-    user = request.user
+        image = request.FILES.get('image')
+        if image:
+            user = request.user
+            if VerifyUser.objects.filter(name=user.id).exists():
+                updateuserProfile = VerifyUser.objects.get(name=user.id)
+                updateuserProfile.profile = image
+                updateuserProfile.save()
+            else:
+                VerifyUser.objects.create(name=user,profile=image)
+            return redirect(userprofile)
     return render(request,'user-profile.html')
 
 def register(request):

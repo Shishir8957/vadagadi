@@ -83,31 +83,56 @@
             <li><a class="subheader">Subheader</a></li>
             <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
         </ul>
-        <section class="gradient-custom-2" style="height:100vh;">
-            <div class="container py-5 h-100">
-              <div class="row d-flex justify-content-center align-items-center h-100">
+        <section class="gradient-custom-2">
+            <div class="container py-5">
+              <div class="row d-flex justify-content-center align-items-center">
                 <div class="col col-lg-9 col-xl-7">
                   <div class="card">
                     <div class="rounded-top text-white d-flex flex-row row" style="background-color: #000; height:auto; width:100%;margin:auto;">
                         <div class="ms-4 d-flex flex-column col" style="width: 150px;">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+                            <img src="/{{userveri.profile}}/"
                             alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-4"
                             style="width: 150px; z-index: 1">
                         </div>
-                        <div class="ms-3 col" style="margin-top: 30px;">
+                        <div class="ms-3 col" style="margin-top: 1rem;">
                             <h5>{{user}}</h5>
                             <p style="display:flex;aline-items:center"><i class="bi bi-patch-check-fill" style="padding-right:0.5rem;"></i> Verified</p>
                         </div>
                     </div>
-                    <div style="box-sizing:border-box;">
-                        <form action="/register/user-profile/{{user.id}}/" method="POST" style="padding:1rem; color: #000;">
+                    <div style="box-sizing:border-box;padding:2rem;">
+                        <h5>Profile Picture Update:</h5>
+                        <form method="post" action="/register/user-profile/{{user.id}}/"  enctype="multipart/form-data">
                             {% csrf_token %}
-                            <label for="img" style="color: #000;">Profile:</label>
-                            <input type="file" id="img" name="img" accept="image/*">
-                            <input type="submit">
-                        </form> 
+                            <input type="file" name="image">
+                            <button type="submit">Upload</button>
+                        </form>                        
                     </div>
-                    
+                    <div>
+                        <p style="padding-left:1rem;font-size:16pt;">Your booking History<p>
+                        <div class="row row-cols-2" style="width: 80%; margin: auto;">
+                            {% for product in booking %}
+                                <div class="col-12 col-sm-12 col-md-6" style="padding-bottom:0.5rem;">
+                                    <div class="card hoverable" style="border-radius:5px;height: 100%;">
+                                        <div class="card-image">
+                                            <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
+                                            {% if not product.product.booked %}
+                                                <a href="productdetail/{{product.product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. {{product.product.price}}</b></a>
+                                            {% else %}
+                                            <a href="productdetail/{{product.product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;" disabled><b>Rs. {{product.product.price}}</b></a>
+                                            {% endif %}
+                                        </div>
+                                        <div class="card-body row" style="display: flex;justify-content:space-between;margin-bottom:0px;align-items: center; ">
+                                            <div class="col" style="box-sizing:content-box">
+                                                <h5 class="card-title truncate" id="cardTitle" style="font-size:16pt">{{product.product.name}}</h5>
+                                                <p class="card-text truncate2" style="font-size:12pt">Model: {{product.product.model}} </p>
+                                            </div>
+                                        </div>
+                                        <a class="center" href="/product/cancel-order/{{product.product.id}}/" style="width:100%;background-color:red;color:white;padding:0.5rem;border-radius:0 0 5px 5px">Cancel Order</a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
                     <div class="card-body p-4 text-black">
                       <div class="d-flex justify-content-between align-items-center mb-4">
                         <p class="lead fw-normal mb-0">Documents</p>
