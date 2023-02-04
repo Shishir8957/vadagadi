@@ -1,0 +1,142 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vadagadi</title>
+    <link rel="stylesheet" href={%static "./css/productpage.css"%}>
+    <link rel="shortcut icon" href={% static './images/logo.png'%} type="image/x-icon" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sen">
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <style>
+        html{
+            padding:0;
+            margin:0;
+            min
+        }
+        body{
+            min-height:100%;
+        }
+        nav{
+            width:100%;
+            background-color: #212529;
+        }
+        nav.sticky{
+            background-color: #212529;
+        }
+        @media only screen and (max-width: 999px){
+            .sidenavHidden{
+                width: 0;
+                overflow: hidden;
+            }
+            .px-sm-2{
+                padding:0;
+            }
+        }
+    </style>  
+</head>
+<div class="navbar-fixed" style="z-index:2;">
+    <nav>
+        <div class="nav-wrapper container" style="width:100%;">
+            <a href="/product/" class="brand-logo"><img width="150rem" src={% static "./images/logo3.png"%}/></a>
+            <div>
+                <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bi bi-list" style="font-size:2rem;color:white;line-height: inherit;"></i></a>
+                <ul class="right hide-on-med-and-down navHover">
+                    {% if user.is_superuser %}
+                        <li><a href="/admin/" class="waves-effect waves-purple btn white black-text"><i class="bi bi-bar-chart-fill left" style="line-height: inherit;"></i><b>Admin</b></a><li>
+                    {% endif %}
+                    
+                    {% if user.is_authenticated %}
+                        <!-- Dropdown Trigger -->
+                        <a class="dropdown-trigger waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A" href='#' data-target='dropdown1'><b><i class="bi bi-person-circle left" style="line-height: inherit;"></i>{{user}}</b></a>
+    
+                        <!-- Dropdown Structure -->
+                        <ul id='dropdown1' class='dropdown-content' >
+                            <li style="min-height:30px;"><a class='center' href="/register/logout" style="padding:0; color:red; height:30px;"><b>Logout</b></a></li>
+                        </ul>
+                    {% else %}
+                        <a type="submit" href="/register" class="waves-effect waves-red btn" style="border-radius: 2rem; background-color: #ff3e5a;">
+                            <b>Sign In</b>
+                        </a>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="container-fluid" style="padding: 0;">
+    <div class="row flex-nowrap" style="margin-bottom: 0;">
+        <div class="col-auto col-md-3 col-xl-2 px-0 bg-dark sidenavHidden">
+            <div class="center d-flex flex-column align-items-center align-items-sm-start pt-2 text-white" style="height:91.45vh;padding:2rem;">
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu" style="width: 100%; font-size: 14pt;">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0">
+                            </i> <span class="ms-1 d-none d-sm-inline">Vehicles</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">About Us</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">Contact Us</span>
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+            </div>
+        </div>
+        <div class="col py-3">
+            <div class="container mt-3" style="width:100%;overflow-x: auto;">
+                <h2>History</h2>        
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Username</th>
+                      <th>Vehicle Name</th>
+                      <th>Vehicle Model No.</th>
+                      <th>Price</th>
+                      <th>Delivery Status</th>
+                      <th>Starting</th>
+                      <th>Ending</th>
+                      <th>Cancel Order</th>
+                    </tr>
+                  </thead>
+                  {% for history in history %}
+                    <tbody>
+                        <tr>
+                            <td>{{history.name}}</td>
+                            <td><a href="/product/productdetail/{{history.product.id}}/">{{history.product.name}}</a></td>
+                            <td>{{history.product.model}}</td>
+                            <td>{{history.cost_per_day}}</td>
+                            <td>{{history.delivery_status}}</td>
+                            <td>{{history.starting}}</td>
+                            <td>{{history.ending}}</td>
+                            <td><a href="/history/delete/{{history.product.id}}/">Delete</a></td>
+                        </tr>
+                    </tbody>
+                  {% endfor %}
+                </table>
+              </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

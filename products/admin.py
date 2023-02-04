@@ -59,7 +59,6 @@ class ProductAdmin(admin.ModelAdmin):
                     seatingCapacity = fields[18],
                     fuleTankSize = fields[19],
                     vehicleType = fields[20],
-                    ratings = fields[21],
                 )
             url = reverse('admin:index')
             return HttpResponseRedirect(url)

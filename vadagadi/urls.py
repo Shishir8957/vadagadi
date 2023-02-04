@@ -21,8 +21,9 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('products.urls')),
+    path('',include('homepage.urls')),
     path('product/',include('products.urls')),
+    path('history/',include('history.urls')),
     path('register/',include('register.urls')),
 ]
 

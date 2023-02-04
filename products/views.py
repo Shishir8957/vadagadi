@@ -14,6 +14,12 @@ def home(request):
     page_obj = paginator.get_page(page_number)
     return render(request, 'productpage.html',{'products':page_obj})
 
+@login_required(login_url='/register/')
+def history(request):
+    user = request.user
+    booking = Booking.objects.filter(name=user)
+    return render(request,'history.html',{'history':booking})
+
 def viewProduct(request,id):
     product = Product.objects.get(id=id)
     return render(request, 'viewproduct.html',{'products':product})
@@ -51,7 +57,7 @@ def bookdate(request,pk):
             event = Booking.objects.create(name=user,starting=starting,ending=ending,pickupTime=time,total_days=a,cost_per_day=product.price,product=product,driverStatus=needDriver)
             event.save()
         
-    return redirect('register')
+    return redirect(history)
 
 def CancelOrder(request,pk):
     user = request.user

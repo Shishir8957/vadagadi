@@ -42,49 +42,76 @@
                 background-color: #FF3E5A08;
                 box-shadow: 0 0 0 .25rem #FF3E5A26;
             }
+            nav{
+                background-color: transparent;
+                box-shadow:none;
+                transition: 0.2s;
+            }
+            nav.sticky{
+                background-color: black;
+                box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
+                transition: 1;
+            }
             @media only screen and (min-width: 992px) {
                 .categoryPadding{
                     padding: 2.5rem 0;
+                }
+                
+            } 
+            @media only screen and (max-width: 992px) {
+                nav{
+                    background-color: black;
+                    box-shadow:none;
+                    transition: 0.2s;
                 }
             } 
             @media only screen and (max-width: 768px) {
                 .categoryPadding{
                     padding-top: 2rem 0;
                 }
+                nav{
+                    background-color: black;
+                    box-shadow:none;
+                    transition: 0.2s;
+                }
             }
         </style>
     </head>
     <div>
-        <!--Nav-->
-        <header>
-            <a href="/" class="logo"><img width="150rem" src={%static "./images/logo3.png"%}/></a>
-            <a href="#" class="sidenav-trigger" data-target="mobile-menu">
-                <i class="bi bi-list menu"></i>
-            </a>
-            <ul style="margin-bottom: 0rem;">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Home</a></li>
-                {% if user.is_superuser %}
-                <li><a href="/admin/" class="waves-effect waves-purple btn white black-text"><i class="bi bi-bar-chart-fill left"></i><b>Admin</b></a><li>
-                {% endif %}
-                
-                {% if user.is_authenticated %}
-                    <!-- Dropdown Trigger -->
-                    <a class="dropdown-trigger waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A" href='#' data-target='dropdown1'><b><i class="bi bi-person-circle left"></i>{{user}}</b></a>
- 
-                    <!-- Dropdown Structure -->
-                    <ul id='dropdown1' class='dropdown-content' >
-                        {% comment %} <li style="min-height:30px;"><a class='center' href="/history/" style="padding:0; color:black; height:30px;"><b>History</b></a></li> {% endcomment %}
-                        <li style="min-height:30px;"><a class='center' href="/register/logout" style="padding:0; color:red; height:30px;"><b>Logout</b></a></li>
-                    </ul>
-                {% else %}
-                    <a type="submit" href="/register" class="waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A">
-                        <b>Sign In</b>
-                    </a>
-                {% endif %}
-            </ul>
-        </header>
+        <!--Nav bar-->
+        <div class="navbar-fixed" style="z-index:2;">
+            <nav>
+                <div class="nav-wrapper container" style="width:90%;">
+                    <a href="/product/" class="brand-logo"><img width="150rem" src={% static "./images/logo3.png"%}/></a>
+                    <div>
+                        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bi bi-list" style="font-size:2rem;color:white;line-height: inherit;"></i></a>
+                        <ul class="right hide-on-med-and-down navHover">
+                            <li><a href="sass.html">Sass</a></li>
+                            <li><a href="badges.html">Components</a></li>
+                            <li><a href="collapsible.html">Javascript</a></li>
+                            <li><a href="mobile.html">Mobile</a></li>
+                            {% if user.is_superuser %}
+                                <li><a href="/admin/" class="waves-effect waves-purple btn white black-text"><i class="bi bi-bar-chart-fill left" style="line-height: inherit;"></i><b>Admin</b></a><li>
+                            {% endif %}
+                            
+                            {% if user.is_authenticated %}
+                                <!-- Dropdown Trigger -->
+                                <a class="dropdown-trigger waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A" href='#' data-target='dropdown1'><b><i class="bi bi-person-circle left" style="line-height: inherit;"></i>{{user}}</b></a>
+            
+                                <!-- Dropdown Structure -->
+                                <ul id='dropdown1' class='dropdown-content' >
+                                    <li style="min-height:30px;"><a class='center' href="/register/logout" style="padding:0; color:red; height:30px;"><b>Logout</b></a></li>
+                                </ul>
+                            {% else %}
+                                <a type="submit" href="/register" class="waves-effect waves-red btn" style="border-radius: 2rem; background-color: #ff3e5a;">
+                                    <b>Sign In</b>
+                                </a>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
         <!-- for small screen menu -->
         <ul class="sidenav grey lighten-2" id="mobile-menu">
             <li><a href="/blog">Blog</a></li>
@@ -103,7 +130,7 @@
         </ul>
         {% block content %}
             <!-- Header Part & search -->
-            <section class="banner center d-flex flex-column">
+            <section class="banner center d-flex flex-column" style="position: relative;top: -5rem;">
                 <div style="margin-bottom: -7rem;">
                     <div class="boxContainer hoverable">
                         <div class="boxContainer hoverable" style="display:flex;">
@@ -215,7 +242,7 @@
             </div>
 
             <!--pagination-->
-            <div class="pagination">
+            {% comment %} <div class="pagination">
                 <ul class="pagination">
                     {% if products.has_previous %}
                         <li class="page-item">
@@ -247,7 +274,19 @@
                         </li>
                     {% endif %}
                 </ul>
+            </div> {% endcomment %}
+            <div class="pagination">
+                <div class="pagination">
+                  {% if products.has_previous %}
+                    <a class="btn btn-outline-info mr-1" href="?page={{ products.previous_page_number }}" style="background-color:#FF3E5A;width: 7rem;font-size: 10pt;line-height: 29px;height: 2rem;">previous</a>
+                  {% endif %}
+                  <span class="mx-2">Page {{ products.number }} of {{ products.paginator.num_pages }}</span>
+                  {% if products.has_next %}
+                    <a class="btn btn-outline-info ml-1" href="?page={{ products.next_page_number }}" style="background-color:#FF3E5A;width: 7rem;font-size: 10pt;line-height: 29px;height: 2rem;">next</a>
+                  {% endif %}
+                </div>
             </div>
+              
         {% endblock  %}
 
         <!-- Footer -->
@@ -291,7 +330,7 @@
         <!--Stiky when scroll-->
         <script type="text/javascript">
             window.addEventListener("scroll",function(){
-                var header = document.querySelector("header");
+                var header = document.querySelector("nav");
                 header.classList.toggle("sticky",window.scrollY >0);
             })
         </script>

@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Vadagadi</title>
+        <link rel="stylesheet" href={%static "./css/homepage.css"%}>
+        <link rel="shortcut icon" href={% static './images/logo.png'%} type="image/x-icon" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sen">
+
+        <!-- bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!-- icon -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />  
+        <style>
+            article, aside, footer, header, nav, section{
+                display: flex;
+            }
+            .pagination {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #eee;
+                padding-bottom: 1rem;
+            }
+            .page-item.active .page-link {
+                background-color: #FF3E5A;
+                border-color: #FF3E5A;
+            }
+            .page-link:hover {
+                color: #FF3E5A;
+                background-color: #FF3E5A26;
+                border-color: #dee2e6;
+            }
+            .page-link:focus {
+                color: #FF3E5A;
+                background-color: #FF3E5A08;
+                box-shadow: 0 0 0 .25rem #FF3E5A26;
+            }
+            nav{
+                background-color: #C9D4AC;
+                box-shadow:none;
+                transition: 0.2s;
+            }
+            nav.sticky{
+                background-color: grey;
+                box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
+                transition: 1;
+            }
+            @media only screen and (min-width: 992px) {
+                .categoryPadding{
+                    padding: 2.5rem 0;
+                }
+            } 
+            @media only screen and (max-width: 768px) {
+                .categoryPadding{
+                    padding-top: 2rem 0;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        {% block content %}
+        <!--Nav bar-->
+        <div class="navbar-fixed" style="z-index:2;">
+            <nav>
+                <div class="nav-wrapper container" style="width:90%;">
+                    <a href="/product/" class="brand-logo"><img width="150rem" src={% static "./images/blacklogo.png"%}/></a>
+                    <div>
+                        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bi bi-list" style="font-size:2rem;color:black;line-height: inherit;"></i></a>
+                        <ul class="right hide-on-med-and-down navHover">
+                            <li><a style="color:black" href="sass.html">Sass</a></li>
+                            <li><a style="color:black" href="badges.html">Components</a></li>
+                            <li><a style="color:black" href="collapsible.html">Javascript</a></li>
+                            <li><a style="color:black" href="mobile.html">Mobile</a></li>
+                            {% if user.is_superuser %}
+                                <li><a href="/admin/" class="waves-effect waves-purple btn white black-text"><i class="bi bi-bar-chart-fill left" style="line-height: inherit;"></i><b>Admin</b></a><li>
+                            {% endif %}
+                            
+                            {% if user.is_authenticated %}
+                                <!-- Dropdown Trigger -->
+                                <a class="dropdown-trigger waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A" href='#' data-target='dropdown1'><b><i class="bi bi-person-circle left" style="line-height: inherit;"></i>{{user}}</b></a>
+            
+                                <!-- Dropdown Structure -->
+                                <ul id='dropdown1' class='dropdown-content' >
+                                    <li style="min-height:30px;"><a class='center' href="/register/logout" style="padding:0; color:red; height:30px;"><b>Logout</b></a></li>
+                                </ul>
+                            {% else %}
+                                <a type="submit" href="/register" class="waves-effect waves-red btn" style="border-radius: 2rem;background-color: black">
+                                    <b>Sign In</b>
+                                </a>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!--Mobile Nav bar-->
+        <ul id="slide-out" class="sidenav">
+            <li><div class="user-view">
+              <div class="background">
+                <img src="images/office.jpg">
+              </div>
+              <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
+              <a href="#name"><span class="white-text name">John Doe</span></a>
+              <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+            </div></li>
+            <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+            <li><a href="#!">Second Link</a></li>
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Subheader</a></li>
+            <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+        </ul>    
+        <!-- Header Part & search -->
+        <section style="height: 30rem;">
+            <div class="container row" style="width:90%">
+                <div class="col">
+                    <h2>Book a Car Near You and Drive in Minutes</h2>
+                    <p>just a body iisadiasi asioasjfjkb adsffoihafs </p>
+                </div> 
+                <div class="col">
+                    <img style="width: 48rem;" src="{%static './images/header.png' %}" />
+                </div>      
+            </div>
+        </section>
+        
+        {% endblock %}
+
+        <!--Stiky when scroll-->
+        <script type="text/javascript">
+            window.addEventListener("scroll",function(){
+                var header = document.querySelector("nav");
+                header.classList.toggle("sticky",window.scrollY > 0);
+            })
+        </script>
+
+        <!--MaterialCss-->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".sidenav").sidenav();
+                $('.tooltipped').tooltip();
+                $('.materialboxed').materialbox();
+                $('.dropdown-trigger').dropdown();
+                $('.tooltipped').tooltip();
+                $('#rateMe1').mdbRate();
+            });
+        </script>
+    </body>
+</html>

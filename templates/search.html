@@ -6,7 +6,7 @@
             min-height:auto;
         }
     </style>
-    <section class="banner center d-flex flex-column" style="background-image: url(https://wallpaperaccess.com/full/20695.jpg);height: 45vh;">
+    <section class="banner center d-flex flex-column" style="position: relative;top: -5rem;background-image: url(https://wallpaperaccess.com/full/20695.jpg);height: 45vh;">
         <div style="margin-bottom: -7rem;">
             <div class="boxContainer">
                 {% if search %}
@@ -40,9 +40,9 @@
                         <div class="card-image">
                             <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
                             {% if not product.booked %}
-                                <a href="/productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;"><b>Rs. {{product.price}}</b></a>
+                                <a href="/product/productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;"><b>Rs. {{product.price}}</b></a>
                             {% else %}
-                                <a href="/productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;" disabled><b>Rs. {{product.price}}</b></a>
+                                <a href="/product/productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;" disabled><b>Rs. {{product.price}}</b></a>
                             {% endif %}
                         </div>
                         <div class="card-body" style="display: flex;flex-direction:column;margin-bottom:0px;">
