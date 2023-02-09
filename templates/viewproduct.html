@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Vadagadi</title>
         <link rel="stylesheet" href={% static "./css/viewproduct.css"%}>
-        <link rel="shortcut icon" href={% static './images/logo.png'%} type="image/x-icon" />
+        <link rel="shortcut icon" href={% static './images/new.png'%} type="image/x-icon" />
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sen">
@@ -108,7 +109,7 @@
         <div class="navbar-fixed" style="z-index:2;">
             <nav style="background-color: #D9D9D9;">
                 <div class="nav-wrapper container" style="width:90%;">
-                    <a href="/product/" class="brand-logo"><img width="150rem" src={% static "./images/logo2.png"%}/></a>
+                    <a href="/product/" class="brand-logo"><img width="150rem" src={% static "./images/nepali2.png"%}/></a>
                     <div>
                         <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bi bi-list" style="font-size:2rem;color:black;line-height: inherit;"></i></a>
                         <ul class="right hide-on-med-and-down navHover">
@@ -117,20 +118,20 @@
                             <li><a href="collapsible.html">Javascript</a></li>
                             <li><a href="mobile.html">Mobile</a></li>
                             {% if user.is_superuser %}
-                                <li><a href="/admin/" class="waves-effect waves-purple btn white black-text"><i class="bi bi-bar-chart-fill left" style="line-height: inherit;"></i><b>Admin</b></a><li>
+                                <li><a href="/admin/" class="waves-effect waves-purple btn white black-text"><i class="bi bi-bar-chart-fill left" style="line-height: inherit;"></i>Admin</a><li>
                             {% endif %}
                             
                             {% if user.is_authenticated %}
                                 <!-- Dropdown Trigger -->
-                                <a class="dropdown-trigger waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A" href='#' data-target='dropdown1'><b><i class="bi bi-person-circle left" style="line-height: inherit;"></i>{{user}}</b></a>
+                                <a class="dropdown-trigger waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A" href='#' data-target='dropdown1'><i class="bi bi-person-circle left" style="line-height: inherit;"></i>{{user}}</a>
             
                                 <!-- Dropdown Structure -->
                                 <ul id='dropdown1' class='dropdown-content' >
-                                    <li style="min-height:30px;"><a class='center' href="/register/logout" style="padding:0; color:red; height:30px;"><b>Logout</b></a></li>
+                                    <li style="min-height:30px;"><a class='center' href="/register/logout" style="padding:0; color:red; height:30px;">Logout</a></li>
                                 </ul>
                             {% else %}
-                                <a type="submit" href="/register" class="waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A">
-                                    <b>Sign In</b>
+                                <a type="submit" href="/register/?next=/product/productdetail/{{products.id}}/" class="waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A">
+                                    Sign In
                                 </a>
                             {% endif %}
                         </ul>
@@ -139,35 +140,35 @@
             </nav>
         </div>
         <!--Mobile Nav bar-->
-        <ul id="slide-out" class="sidenav">
-            <li><div class="user-view">
-              <div class="background">
-                <img src="images/office.jpg">
-              </div>
-              <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
-              <a href="#name"><span class="white-text name">John Doe</span></a>
-              <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-            </div></li>
-            <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-            <li><a href="#!">Second Link</a></li>
-            <li><div class="divider"></div></li>
-            <li><a class="subheader">Subheader</a></li>
-            <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+        <ul class="sidenav grey lighten-2" id="slide-out">
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/service">Services</a></li>
+            <li><a href="/contact">Contact</a></li>
+            
+            <li>
+                <div class="container" style="width: 85%;">
+                    <li>
+                        <a type="submit" href="/register" class="waves-effect waves-purple btn white black-text">
+                            <b>Sign In</b>
+                        </a>
+                    </li>
+                </div>
+            </li>
         </ul>
         <!--Breadcrumbs-->
         <div class="container" style="width:90%;height:2rem;padding-top:1rem;">
-            <b><a href="/product/" style="color:black;">Search </a><a style="color:grey;">>&nbsp;</a><a href="" style="color:black;">{{products.vehicleType}}</a><a style="color:grey;">>&nbsp;</a><a href="" style="color:black;">{{products.name}}</a></b>
+            <b><a href="/product/" style="color:black;">Search </a><a style="color:grey;">>&nbsp;</a><a href="/product/category/cars/" style="color:black;">{{products.vehicleType}}</a><a style="color:grey;">>&nbsp;</a><a href="" style="color:black;">{{products.name}}</a></b>
         </div><br>
         <!--Book section-->
         <div class="container">
             <div class="row">
                 <!--Product images-->
                 <div class="col-md center" style="margin:0;padding:1.5rem 0 0 0;">
-                    <div style="box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);border-radius:3px;min-height: 50vh;background-color:black;background-image: url(https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?cs=srgb&dl=pexels-mike-b-170811.jpg&fm=jpg);background-size: cover;background-position: center;">
+                    <div style="box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);border-radius:3px;min-height: 50vh;background-color:black;background-image: url(https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/17q3/685272/2018-bmw-m5-photos-and-information-news-car-and-driver-photo-688789-s-original.jpg?fill=2:1&resize=1200:*);background-size: cover;background-position: center;">
                     </div><br>
-                    <img width="80" src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?cs=srgb&dl=pexels-mike-b-170811.jpg&fm=jpg">
-                    <img width="80" src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?cs=srgb&dl=pexels-mike-b-170811.jpg&fm=jpg">
-                    <img width="80" src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?cs=srgb&dl=pexels-mike-b-170811.jpg&fm=jpg">
+                    <img width="80" src="https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/17q3/685272/2018-bmw-m5-photos-and-information-news-car-and-driver-photo-688789-s-original.jpg?fill=2:1&resize=1200:*">
+                    <img width="80" src="https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/17q3/685272/2018-bmw-m5-photos-and-information-news-car-and-driver-photo-688789-s-original.jpg?fill=2:1&resize=1200:*">
+                    <img width="80" src="https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/17q3/685272/2018-bmw-m5-photos-and-information-news-car-and-driver-photo-688789-s-original.jpg?fill=2:1&resize=1200:*">
                 </div>
                 <!--Product Discription-->
                 <div class="col-md" style="padding:0rem;display: flex;justify-content: center;">
@@ -204,15 +205,33 @@
                                 </label>
                                 <h5 style="font-weight:550;font-size:1.5rem;">Your Total: <a style="font-weight:50;background-color:#ff3e5b3a;padding:0.2rem 1.7rem; border-radius: 20px;border: 1px solid #FF3E5A;">20,000</a></h5>
                                 {% if user.is_authenticated %}
-                                    <button type="submit" class="waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A;margin-top:1rem;width: 100%;">
-                                        <b>Book Now</b>
-                                    </button>
-                                {% else %}
-                                    <!-- Modal Trigger -->
-                                    <div class="center">
-                                        <a style="border-radius: 2rem;background-color:#FF3E5A;margin-top:1rem;width: 100%;" href="#modal1" class="waves-effect waves-red btn modal-trigger">
+                                    {% if not booking %}
+                                        <button type="submit" class="waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A;margin-top:1rem;width: 100%;">
                                             <b>Book Now</b>
-                                        </a>
+                                        </button> 
+                                    {% else %}
+                                        {% if user.username == booking.username %}
+                                            <button type="submit" class="waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A;margin-top:1rem;width: 100%;" disabled>
+                                                <b>Already booked</b>
+                                            </button>
+                                        {% else %}
+                                            <a href="/product/history/" type="submit" class="waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A;margin-top:1rem;width: 100%;">
+                                                <b>History</b>
+                                            </a>
+                                        {% endif %}
+                                    {% endif %}
+                                {% else %}
+                                    <!-- Modal Trigger --> 
+                                    <div class="center">
+                                        {% if not booking %}
+                                            <a style="border-radius: 2rem;background-color:#FF3E5A;margin-top:1rem;width: 100%;" href="#modal1" class="waves-effect waves-red btn modal-trigger">
+                                                <b>Book Now</b>
+                                            </a>
+                                        {% else %}
+                                            <a style="border-radius: 2rem;background-color:#FF3E5A;margin-top:1rem;width: 100%;" href="#modal1" class="waves-effect waves-red btn modal-trigger" disabled>
+                                                <b>Not Available</b>
+                                            </a>
+                                        {% endif %}
                                     </div>
                                     <!-- Modal Structure -->
                                     <div id="modal1" class="modal" style="height:auto;">
@@ -263,91 +282,193 @@
 
         <!--Comments-->
         <div class="container">
-            <div class="row d-flex justify-content-center" >
-                <h1 style="font-size:2.3rem;font-weight:550;margin:0;padding:5rem 0 0 0">Reviews</h1>
+            <h1 style="font-size:2.3rem;font-weight:550;">Comment's</h1>
+            <div class="row d-flex justify-content-center container" style="width:100%">
                 <div class="col-md-8 col-lg-8">
-                <div class="card shadow-0 border" style="background-color: #fff;padding:0;">
-                    <div class="card-body p-4">
-                        <form action="/blog/postComment" method="post" class="col s12">
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension>
-                                    <i class="material-icons prefix"><i class="bi bi-chat-left-dots"></i></i>
-                                    <input id="icon_prefix" type="text" name="comment" spellcheck="true" required>
-                                    <label for="icon_prefix">Comment Here</label>
-                                    <input type="hidden" name="parentSno" value="">
-                                    <input type="hidden" name="postSno" value="{{content.sno}}">
-                                    <button type="submit" class="btn black white-text right" style="margin-top: 2rem;">
-                                        <b>Submit</b>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                            <div class="card" style="background-color:#f0f2f5; padding:0;">
-                                <div class="card-body" style="padding:1rem">
-                                    <div class="d-flex justify-content-between" style="margin-bottom: 1rem;">
-                                        <div class="d-flex flex-row align-items-center">
-                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTHTAJPlLEQwOQG_g-WNP0WayMmnpM-Nq9ZA&usqp=CAU" alt="avatar" width="25" height="25" />
-                                            <p class="medium mb-0 ms-2">Shishir4912</p>
-                                        </div>
-                                        
-                                        <div style="font-size:1rem; color:black">
-                                            <a>20min ago</a>
-                                                <!-- trigger for deleting comment  -->
-                                                &nbsp;&nbsp;<a class="modal-trigger" href="#modal2"><i style="font-size:1.2rem;padding:0px;margin:0px;color:#e61818" class="bi bi-trash-fill right"></i></a>
-                                                <div id="modal2" class="modal" style="height:auto;">
-                                                    <div class="modal-content" style="border-bottom: 0px">
-                                                        <h3>Delete this comment</h3>
-                                                        <p> {{comment.comment}}</p>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                                                        <a href="/blog/deleteComment/{{comment.sno}}" class="modal-close waves-effect waves-red btn-flat">Delete</a>
-                                                    </div>
-                                                </div>
+                    <div class="card shadow-0 border" style="background-color: #fff;padding:0;">
+                        {% if user.is_authenticated %}
+                            <div class="card-body p-4">
+                                <h4>Comment Here</h4>
+                                <form action="/product/postComment" method="post" class="col s12">
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            {% csrf_token %}
+                                            <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension>
+                                            <i class="material-icons prefix"><i class="bi bi-chat-left-dots"></i></i>
+                                            <input id="icon_prefix" type="text" name="comment" spellcheck="true" required>
+                                            <label for="icon_prefix">Comment Here</label>
+                                            <input type="hidden" name="parentSno" value="">
+                                            <input type="hidden" name="postSno" value="{{products.id}}">
+                                            <button type="submit" class="btn black white-text right" style="margin-top: 2rem;">
+                                                <b>Submit</b>
+                                            </button>
                                         </div>
                                     </div>
-                                    <h6>Like this Product</h6>
-                                </div>
+                                </form>
+                                {% for comment in comments %}
+                                    <div class="card" style="background-color:#f0f2f5; padding:0;">
+                                        <div class="card-body" style="padding:1rem">
+                                            <div class="d-flex justify-content-between" style="margin-bottom: 1rem;">
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTHTAJPlLEQwOQG_g-WNP0WayMmnpM-Nq9ZA&usqp=CAU" alt="avatar" width="25" height="25" />
+                                                    <p class="medium mb-0 ms-2">{{comment.user}}</p>
+                                                </div>
+                                                
+                                                <div style="font-size:1rem; color:black">
+                                                    <a>{{comment.timestamp | naturaltime}}</a>
+                                                    {% if comment.user.id is user.id %}
+                                                        <!-- trigger for deleting comment  -->
+                                                        &nbsp;&nbsp;<a class="modal-trigger" href="#modal2"><i style="font-size:1.2rem;padding:0px;margin:0px;color:#e61818" class="bi bi-trash-fill right"></i></a>
+                                                        <div id="modal2" class="modal" style="height:auto;">
+                                                            <div class="modal-content" style="border-bottom: 0px">
+                                                                <h3>Delete this comment</h3>
+                                                                <p> {{comment.comment}}</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                                <a href="/product/deleteComment/{{comment.sno}}" class="modal-close waves-effect waves-red btn-flat">Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    {%endif%}
+                                                </div>
+                                            </div>
+                                            <h6>{{comment.comment}}</h6>
+                                        </div>
+                                    </div>
+                                {% endfor %}
                             </div>
+                        {% else %}
+                        <div class="card-body p-4">
+                            <h4>Comments</h4>
+                            <br><h5><i class="bi bi-exclamation-circle-fill left"></i> Login To Comment </h5><br>
+                            {% for comment in comments %}
+                                <div class="card" style="background-color:#f0f2f5; padding:0;">
+                                    <div class="card-body" style="padding:1rem">
+                                        <div class="d-flex justify-content-between" style="margin-bottom: 1rem;">
+                                            <div class="d-flex flex-row align-items-center">
+                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTHTAJPlLEQwOQG_g-WNP0WayMmnpM-Nq9ZA&usqp=CAU" alt="avatar" width="25" height="25" />
+                                                <p class="medium mb-0 ms-2">{{comment.user}}</p>
+                                            </div>
+                                            <a style="font-size:1rem; color:black">{{comment.timestamp | naturaltime}}</a>
+                                        </div>
+                                        <h6>{{comment.comment}}</h6>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
-                </div>
+            </div>
             </div>
         </div>
 
         <!--Recomendation Card-->
-        <div class="container RecomendationCard">
-            <h1 style="font-size:2.3rem;font-weight:550;margin:0;padding:3rem 0 1rem 0">Vehicle You May like</h1>
-            <div class="row row-cols-4" style="width: 80%; margin: auto;">
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card hoverable" style="border-radius:5px;">
-                        <div class="card-image">
-                            <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
-                            <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
-                        </div>
-                        <div class="card-body row" style="display: flex;justify-content:space-between;margin-bottom:0px;align-items: center; ">
-                            <div class="col" style="box-sizing:content-box">
-                                <h5 class="card-title truncate" id="cardTitle">Aduidfgdfgdfg</h5>
-                                <p class="card-text truncate2">Model: 250225 </p>
+        <div class="container">
+            <div class="container-fluid" style="width: 100%;">
+                <h1 style="font-size:2.3rem;font-weight:550;margin:0;padding:3rem 0 1rem 0">Vehicle You May like</h1>
+            </div>
+            <div class="wrapper" style="overflow-x: scroll;overflow-y: hidden;">
+                <div class="item" style="height: auto; background-color: transparent; margin:5px; display:flex;">
+                    <div class="item" style="height: auto; width:20rem; background-color: transparent; margin:5px;">
+                        <div class="card hoverable" style="border-radius:5px;">
+                            <div class="card-image">
+                                <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
+                                <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
                             </div>
-                            <div class="col">
-                                <div class="row row-cols-2 center" style="margin-top:1rem;margin-bottom:0rem">
-                                    <div class="col">
-                                        <img width="20px" src={% static "./icons/car-seat.png"%}>
-                                        <figcaption>sndnkjsdfkjsd</figcaption>
+                            <div class="card-body" style="display: flex;flex-direction:column;margin-bottom:0px;">
+                                <div class="col" style="box-sizing:content-box">
+                                    <h5 class="card-title truncate" id="cardTitle" style="font-size:16pt">Hyundai</h5>
+                                    <p class="card-text truncate" style="font-size:12pt">Model: Hyundai </p>
+                                </div>
+                                <hr>
+                                <div class="col center" style="padding: 0;">
+                                    <div class="center" style="display: flex;margin-top:1rem;margin-bottom:0rem;justify-content:space-evenly;">
+                                        <div class="col" style="padding:0rem;">
+                                            <img width="20px" src={% static "./icons/car-seat.png"%}>
+                                            <figcaption style="font-size:10pt;">4</figcaption>
+                                        </div>
+                                        <div class="col" style="padding:0rem;">
+                                            <img width="20px" src={% static "./icons/car-engine.png"%}>
+                                            <figcaption style="font-size:10pt;width: 4rem;">1000</figcaption>
+                                        </div>
+                                        <div class="col" style="padding:0rem;">
+                                            <img width="20px" src={% static "./icons/download-speed.png"%}>
+                                            <figcaption style="font-size:10pt; width: 4rem;" class="truncate">150km/hrs</figcaption>
+                                        </div>
+                                        <div class="col" style="padding:0rem;">
+                                            <img width="20px" src={% static "./icons/gas-station.png"%}>
+                                            <figcaption style="font-size:10pt;">petrol</figcaption>
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <img width="20px" src={% static "./icons/car-engine.png"%}>
-                                        <figcaption>sdfsdfsdf</figcaption>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item" style="height: auto; width:20rem; background-color: transparent; margin:5px;">
+                        <div class="card hoverable" style="border-radius:5px;">
+                            <div class="card-image">
+                                <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
+                                <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
+                            </div>
+                            <div class="card-body" style="display: flex;flex-direction:column;margin-bottom:0px;">
+                                <div class="col" style="box-sizing:content-box">
+                                    <h5 class="card-title truncate" id="cardTitle" style="font-size:16pt">Hyundai</h5>
+                                    <p class="card-text truncate" style="font-size:12pt">Model: Hyundai </p>
+                                </div>
+                                <hr>
+                                <div class="col center" style="padding: 0;">
+                                    <div class="center" style="display: flex;margin-top:1rem;margin-bottom:0rem;justify-content:space-evenly;">
+                                        <div class="col" style="padding:0rem;">
+                                            <img width="20px" src={% static "./icons/car-seat.png"%}>
+                                            <figcaption style="font-size:10pt;">4</figcaption>
+                                        </div>
+                                        <div class="col" style="padding:0rem;">
+                                            <img width="20px" src={% static "./icons/car-engine.png"%}>
+                                            <figcaption style="font-size:10pt;width: 4rem;">1000</figcaption>
+                                        </div>
+                                        <div class="col" style="padding:0rem;">
+                                            <img width="20px" src={% static "./icons/download-speed.png"%}>
+                                            <figcaption style="font-size:10pt; width: 4rem;" class="truncate">150km/hrs</figcaption>
+                                        </div>
+                                        <div class="col" style="padding:0rem;">
+                                            <img width="20px" src={% static "./icons/gas-station.png"%}>
+                                            <figcaption style="font-size:10pt;">petrol</figcaption>
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <img width="20px" src={% static "./icons/download-speed.png"%}>
-                                        <figcaption>asdasda</figcaption>
-                                    </div>
-                                    <div class="col">
-                                        <img width="20px" src={% static "./icons/gas-station.png"%}>
-                                        <figcaption>asds</figcaption>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item" style="height: auto; width:20rem; background-color: transparent; margin:5px;">
+                        <div class="card hoverable" style="border-radius:5px;">
+                            <div class="card-image">
+                                <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
+                                <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
+                            </div>
+                            <div class="card-body" style="display: flex;flex-direction:column;margin-bottom:0px;">
+                                <div class="col" style="box-sizing:content-box">
+                                    <h5 class="card-title truncate" id="cardTitle" style="font-size:16pt">Hyundai</h5>
+                                    <p class="card-text truncate" style="font-size:12pt">Model: Hyundai </p>
+                                </div>
+                                <hr>
+                                <div class="col center" style="padding: 0;">
+                                    <div class="center" style="display: flex;margin-top:1rem;margin-bottom:0rem;justify-content:space-evenly;">
+                                        <div class="col" style="padding:0rem;">
+                                            <img width="20px" src={% static "./icons/car-seat.png"%}>
+                                            <figcaption style="font-size:10pt;">4</figcaption>
+                                        </div>
+                                        <div class="col" style="padding:0rem;">
+                                            <img width="20px" src={% static "./icons/car-engine.png"%}>
+                                            <figcaption style="font-size:10pt;width: 4rem;">1000</figcaption>
+                                        </div>
+                                        <div class="col" style="padding:0rem;">
+                                            <img width="20px" src={% static "./icons/download-speed.png"%}>
+                                            <figcaption style="font-size:10pt; width: 4rem;" class="truncate">150km/hrs</figcaption>
+                                        </div>
+                                        <div class="col" style="padding:0rem;">
+                                            <img width="20px" src={% static "./icons/gas-station.png"%}>
+                                            <figcaption style="font-size:10pt;">petrol</figcaption>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -434,10 +555,7 @@
                 });
             });
             });
-
             averageRating.textContent = `Average rating: ${avgRating}`;
-
-
         </script>
     </body>
 </html>

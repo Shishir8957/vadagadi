@@ -59,6 +59,7 @@ class ProductAdmin(admin.ModelAdmin):
                     seatingCapacity = fields[18],
                     fuleTankSize = fields[19],
                     vehicleType = fields[20],
+                    ratings = fields[21],
                 )
             url = reverse('admin:index')
             return HttpResponseRedirect(url)
@@ -71,3 +72,12 @@ class ProductAdmin(admin.ModelAdmin):
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
     list_display = ('name','product','driverStatus','starting','ending','total_days','cost_per_day','verified','delivery_status')
+
+@admin.register(PaymentComplete)
+class PaymentCompleteAdmin(admin.ModelAdmin):
+    list_display = ('user','product','amount','payment','payment_type')
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('comment','user','product')
+    search_fields = ('comment','product__name',)
+admin.site.register(Comment,CommentAdmin)

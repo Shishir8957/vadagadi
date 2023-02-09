@@ -53,9 +53,9 @@ def register(request):
                 return redirect('register')     
             else:    
                 token = ''.join(secrets.choice(string.ascii_uppercase + string.ascii_lowercase) for i in range(7))
-                send_mail('Register your email', f"Register your email http://20.40.54.252/register/activateUser/{token}/ ", 'royell4912@gmail.com', [email],fail_silently=False)
+                # send_mail('Register your email', f"Register your email http://20.40.54.252/register/activateUser/{token}/ ", 'royell4912@gmail.com', [email],fail_silently=False)
                 user = User.objects.create_user(username=username,first_name=first_name,email=email,password=password1)
-                user.is_active=False
+                # user.is_active=False
                 user.save(); 
                 randomString.objects.create(random=token,user=user).save
                 messages.info(request,'Please Check Your Email for verification')

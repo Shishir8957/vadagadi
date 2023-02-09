@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'register',
     'homepage',
     'history',
+    'privacy_policy',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

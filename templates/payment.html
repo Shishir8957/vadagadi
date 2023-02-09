@@ -107,9 +107,9 @@
 </ul>
 
 <div class="container-fluid" style="padding: 0;">
-    <div class="row flex-nowrap" style="margin-bottom: 0;">
+    <div class="row flex-nowrap" style="margin-bottom: 0;height:100%">
         <div class="col-auto col-md-3 col-xl-2 px-0 bg-dark sidenavHidden">
-            <div class="d-flex flex-column align-items-center align-items-sm-start pt-2 text-white" style="height:100vh;padding:2rem;">
+            <div class="d-flex flex-column align-items-center align-items-sm-start pt-2 text-white" style="height:100vh;padding:1rem;">
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu" style="width: 100%; font-size: 14pt;">
                     <li class="nav-item">
                         <a href="/" class="nav-link align-middle px-0" style="color:#fff;">
@@ -159,43 +159,82 @@
                 <hr>
             </div>
         </div>
-        <div class="col py-3 pt-sm-5">
-            <div class="container mt-3" style="width:100%;overflow-x: auto;">
-                <h2 class="pt-sm-2">History</h2>        
-                <table class="table">
-                <thead>
-                    <tr>
-                    <th>Username</th>
-                    <th>Vehicle Name</th>
-                    <th>Vehicle Model No.</th>
-                    <th>Price</th>
-                    <th>Delivery Status</th>
-                    <th>Starting</th>
-                    <th>Ending</th>
-                    <th>Cancel Order</th>
-                    </tr>
-                </thead>
-                {% for history in history %}
-                    <tbody>
-                        <tr>
-                            <td>{{history.name}}</td>
-                            <td><a href="/product/productdetail/{{history.product.id}}/">{{history.product.name}}</a></td>
-                            <td>{{history.product.model}}</td>
-                            <td>{{history.cost_per_day}}</td>
-                            <td>{{history.delivery_status}}</td>
-                            <td>{{history.starting}}</td>
-                            <td>{{history.ending}}</td>
-                            <td><a href="/history/delete/{{history.product.id}}/">Delete</a></td>
-                        </tr>
-                    </tbody>
-                {% endfor %}
-                </table>
-            </div>
-            <div class="container" style="width:100%; display:flex; justify-content:right;">
-                <a type="submit" href="/product/payment/" class="waves-effect waves-red btn" style="background-color: #ff3e5a;">
-                    <b>Payment</b>
-                </a>
-            </div>
+        <div class="col" style="padding:0;">
+            <section style="background-image: url(https://mdbcdn.b-cdn.net/img/Photos/Others/background3.webp); height:100%">
+                <div class="row d-flex justify-content-center m-0">
+                    <div class="col-md-10 col-lg-8 col-xl-5">
+                    <div class="card rounded-3">
+                        <div class="card-body p-4">
+                        <div class="text-center mb-4">
+                            <h3>Settings</h3>
+                            <h6>Payment</h6>
+                        </div>
+                        <form action="">
+                            <p class="fw-bold mb-4 pb-2">Saved cards:</p>
+
+                            <div class="d-flex flex-row align-items-center mb-4 pb-1">
+                            <img class="img-fluid" src="https://img.icons8.com/color/48/000000/mastercard-logo.png" />
+                            <div class="flex-fill mx-3">
+                                <div class="form-outline">
+                                <input type="text" id="formControlLgXc" class="form-control form-control-lg"
+                                    value="**** **** **** 3193" />
+                                <label class="form-label" for="formControlLgXc">Card Number</label>
+                                </div>
+                            </div>
+                            <a href="#!">Remove card</a>
+                            </div>
+
+                            <div class="d-flex flex-row align-items-center mb-4 pb-1">
+                            <img class="img-fluid" src="https://img.icons8.com/color/48/000000/visa.png" />
+                            <div class="flex-fill mx-3">
+                                <div class="form-outline">
+                                <input type="text" id="formControlLgXs" class="form-control form-control-lg"
+                                    value="**** **** **** 4296" />
+                                <label class="form-label" for="formControlLgXs">Card Number</label>
+                                </div>
+                            </div>
+                            <a href="#!">Remove card</a>
+                            </div>
+
+                            <p class="fw-bold mb-4">Add new card:</p>
+
+                            <div class="form-outline mb-4">
+                            <input type="text" id="formControlLgXsd" class="form-control form-control-lg"
+                                value="Anna Doe" />
+                            <label class="form-label" for="formControlLgXsd">Cardholder's Name</label>
+                            </div>
+
+                            <div class="row mb-4">
+                            <div class="col-7">
+                                <div class="form-outline">
+                                <input type="text" id="formControlLgXM" class="form-control form-control-lg"
+                                    value="1234 5678 1234 5678" />
+                                <label class="form-label" for="formControlLgXM">Card Number</label>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-outline">
+                                <input type="password" id="formControlLgExpk" class="form-control form-control-lg"
+                                    placeholder="MM/YYYY" />
+                                <label class="form-label" for="formControlLgExpk">Expire</label>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-outline">
+                                <input type="password" id="formControlLgcvv" class="form-control form-control-lg"
+                                    placeholder="Cvv" />
+                                <label class="form-label" for="formControlLgcvv">Cvv</label>
+                                </div>
+                            </div>
+                            </div>
+
+                            <button class="btn btn-success btn-lg btn-block">Add card</button>
+                        </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </section>
         </div>
     </div>
 </div>

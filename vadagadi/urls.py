@@ -25,6 +25,7 @@ urlpatterns = [
     path('product/',include('products.urls')),
     path('history/',include('history.urls')),
     path('register/',include('register.urls')),
+    path('privacy_policy/',include('privacy_policy.urls')),
 ]
 
 if settings.DEBUG:

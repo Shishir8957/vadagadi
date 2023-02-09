@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Vadagadi</title>
         <link rel="stylesheet" href={%static "./css/productpage.css"%}>
-        <link rel="shortcut icon" href={% static './images/logo.png'%} type="image/x-icon" />
+        <link rel="shortcut icon" href={% static './images/new.png'%} type="image/x-icon" />
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sen">
@@ -52,17 +52,37 @@
                 box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
                 transition: 1;
             }
+            .hoverBtn:hover{
+                background-color: white;
+            }
+            .filter > li{
+                margin-top:1rem;
+            }
+            .availableVehicle{
+                font-size: 2.5rem;
+            }
             @media only screen and (min-width: 992px) {
                 .categoryPadding{
                     padding: 2.5rem 0;
                 }
-                
-            } 
+                .availableVehicle{
+                    font-size: 2rem;
+                }                
+            }
             @media only screen and (max-width: 992px) {
                 nav{
                     background-color: black;
                     box-shadow:none;
                     transition: 0.2s;
+                }
+                .filterDiv{
+                    width:100%;
+                }
+                .bodyProduct{
+                    flex-direction:column;
+                }
+                .availableVehicle{
+                    font-size: 2rem;
                 }
             } 
             @media only screen and (max-width: 768px) {
@@ -74,6 +94,9 @@
                     box-shadow:none;
                     transition: 0.2s;
                 }
+                .availableVehicle{
+                    font-size: 1.7rem;
+                }
             }
         </style>
     </head>
@@ -82,7 +105,7 @@
         <div class="navbar-fixed" style="z-index:2;">
             <nav>
                 <div class="nav-wrapper container" style="width:90%;">
-                    <a href="/product/" class="brand-logo"><img width="150rem" src={% static "./images/logo3.png"%}/></a>
+                    <a href="/product/" class="brand-logo"><img width="150rem" src={% static "./images/nepali4.png"%}/></a>
                     <div>
                         <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bi bi-list" style="font-size:2rem;color:white;line-height: inherit;"></i></a>
                         <ul class="right hide-on-med-and-down navHover">
@@ -100,6 +123,7 @@
             
                                 <!-- Dropdown Structure -->
                                 <ul id='dropdown1' class='dropdown-content' >
+                                    <li style="min-height:30px;"><a class='center' href="/product/history/"><b>History</b></a></li>
                                     <li style="min-height:30px;"><a class='center' href="/register/logout" style="padding:0; color:red; height:30px;"><b>Logout</b></a></li>
                                 </ul>
                             {% else %}
@@ -113,7 +137,7 @@
             </nav>
         </div>
         <!-- for small screen menu -->
-        <ul class="sidenav grey lighten-2" id="mobile-menu">
+        <ul class="sidenav grey lighten-2" id="slide-out">
             <li><a href="/blog">Blog</a></li>
             <li><a href="/service">Services</a></li>
             <li><a href="/contact">Contact</a></li>
@@ -130,13 +154,13 @@
         </ul>
         {% block content %}
             <!-- Header Part & search -->
-            <section class="banner center d-flex flex-column" style="position: relative;top: -5rem;">
+            <section class="banner center d-flex flex-column" style="position: relative;top: -5rem;background: url('{% static "./images/pexels-mike-b-100654.jpg"%}');background-position: center; background-size: cover;">
                 <div style="margin-bottom: -7rem;">
                     <div class="boxContainer hoverable">
                         <div class="boxContainer hoverable" style="display:flex;">
                             <form action="/product/search/" class="search">
                                 <input type="text" name="search" class="searchbox browser-default" placeholder="Seach the vehicle you want" style=" border-radius: 5px 0 0 5px;font-size: 15px; padding-left: 30px; font-family: Roboto 2"/>
-                                <button style="border-radius: 0 5px 5px 0;border: transparent; padding: 1.05rem;" ><i class="bi bi-search" type="button" style="font-size: 1rem;"></i></button>
+                                <button style="border-radius: 0 5px 5px 0;border: transparent; padding: 0.957rem;" ><i class="bi bi-search" type="button" style="font-size: 1rem;"></i></button>
                             </form>
                         </div>
                     </div>
@@ -149,9 +173,9 @@
                 </div> 
             </section>
 
-            <!-- By category -->
+            {% comment %} <!-- By category -->
             <div class="container center byCategory">
-                <h1>By category</h1>
+                <h1 style="margin-top:0;">By category</h1>
                 <div class="container center" style="width:15%;">
                     <hr class="center" style="height: 2px;color: #FF3E5A; opacity: 100%;"/>
                 </div>
@@ -187,25 +211,53 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> {% endcomment %}
             <!--Available Vehicles-->
-            <div style="width:100%; padding:1rem 0; background-color:#eee;">
-                <div class="container center byCategory">
-                    <h1>Available Vehicles</h1>
-                    <div class="container center" style="width:15%;">
-                        <hr class="center" style="height: 2px;color: #FF3E5A; opacity: 100%; margin:0rem 0 2rem 0;"/>
+            <div class="container" style="width:90%; display:flex; justify-content:space-between;align-items: center;margin-top: -5rem;margin-bottom: -1rem;">
+                <div>
+                    <h2 class="availableVehicle">Available Vehicles</h2>
+                    <div class="container left" style="width:50%;">
+                        <hr style="height: 2px;color: #FF3E5A; opacity: 100%; margin:0rem 0 2rem 0;"/>
                     </div>
-                </div> 
-                <div class="row row-cols-4" style="width: 80%; margin: auto;">
+                </div>
+                  <!-- Dropdown Trigger -->
+                <a class='hoverBtn dropdown-trigger btn' href='#' data-target='dropdown2' style="background-color:#383838;"><i class="bi bi-caret-down-fill right" style="line-height: inherit;"></i>Sort</a>
+
+                <!-- Dropdown Structure -->
+                <ul id='dropdown2' class='dropdown-content'>
+                    <li><a href="/product/category/price/" style="color:black;">price</a></li>
+                    <li><a href="/product/category/name/" style="color:black;">name</a></li>
+                </ul>
+            </div>
+            <div class="bodyProduct" style="width:100%;margin-top:1rem; padding:1rem 0; background-color:#eee;display:flex;">
+                <div class="filterDiv">
+                    <div style="background-color: white; padding: 2rem;;margin:1rem;box-sizing: border-box; overflow: hidden;border-radius: 3px;-webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);">
+                        <h4><i class="bi bi-funnel right"></i>Filter</h4>
+                        <hr>
+                        <ul class="filter">
+                            <li><a href="/product/category/cars/" style="color:black;"><h6><i class="bi bi-car-front left"></i>cars</h6></a></li>
+                            <li><a href="/product/category/bikes/" style="color:black;"><h6><i class="bi bi-funnel left"></i>bikes</h6></a></li>
+                            <li><a href="#" style="color:black;"><h6><i class="bi bi-currency-rupee left"></i>Price</h6></a></li>
+                            <li>
+                                <div >
+                                    <input type="number" class="form-control browser-default" placeholder="min-price" aria-label="First name"><br>
+                                    <input type="number" class="form-control browser-default" placeholder="max-price" aria-label="Last name">
+                                </div>
+                            </li>
+                            <li><a href="#" type="submit" class="waves-effect waves-purple btn white black-text"><b>Submit</b></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row row-cols-4" style="width: 90%; margin: auto;">
                     {% for product in products %}
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="card hoverable" style="border-radius:5px;">
                                 <div class="card-image">
-                                    <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
+                                    <img style="border-radius:5px;" src="https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/17q3/685272/2018-bmw-m5-photos-and-information-news-car-and-driver-photo-688789-s-original.jpg?fill=2:1&resize=1200:*">
                                     {% if not product.booked %}
-                                        <a href="productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;"><b>Rs. {{product.price}}</b></a>
+                                        <a href="productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;">Rs. {{product.price}}</a>
                                     {% else %}
-                                        <a href="productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;" disabled><b>Rs. {{product.price}}</b></a>
+                                        <a href="productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;" disabled>Rs. {{product.price}}</a>
                                     {% endif %}
                                 </div>
                                 <div class="card-body" style="display: flex;flex-direction:column;margin-bottom:0px;">
@@ -340,12 +392,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
         <script>
             $(document).ready(function () {
-                $(".sidenav").sidenav();
+                $('.dropdown-trigger').dropdown();
+                $('.sidenav').sidenav();
                 $('.tooltipped').tooltip();
                 $('.materialboxed').materialbox();
-                $('.dropdown-trigger').dropdown();
-                $('.tooltipped').tooltip();
-                $('#rateMe1').mdbRate();
             });
         </script>
     </body>
