@@ -20,7 +20,10 @@ def payment(request):
 @login_required(login_url='/register/')
 def history(request):
     user = request.user
-    booking = Booking.objects.filter(name=user)
+    if user.is_superuser:
+      booking = Booking.objects.all()
+    else:
+      booking = Booking.objects.filter(name=user)
     return render(request,'history.html',{'history':booking})
 
 def viewProduct(request,id):
@@ -98,7 +101,7 @@ def bookdate(request,pk):
 def CancelOrder(request,pk):
     user = request.user
     if user.username == Booking.objects.get(product_id=pk).name:
-        return redirect('register')
+      return redirect('register')
     return redirect('/')
     
 def search(request):

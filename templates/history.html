@@ -161,47 +161,85 @@
         </div>
         <div class="col py-3 pt-sm-5">
             <div class="container mt-3" style="width:100%;overflow-x: auto;">
-                <h2 class="pt-sm-2">History</h2>        
-                <table class="table">
-                <thead>
-                    <tr>
-                    <th>Username</th>
-                    <th>Vehicle Name</th>
-                    <th>Vehicle Model No.</th>
-                    <th>Price</th>
-                    <th>Delivery Status</th>
-                    <th>Starting</th>
-                    <th>Ending</th>
-                    <th>Cancel Order</th>
-                    </tr>
-                </thead>
-                {% for history in history %}
-                    <tbody>
-                        <tr>
-                            <td>{{history.name}}</td>
-                            <td><a href="/product/productdetail/{{history.product.id}}/">{{history.product.name}}</a></td>
-                            <td>{{history.product.model}}</td>
-                            <td>{{history.cost_per_day}}</td>
-                            <td>{{history.delivery_status}}</td>
-                            <td>{{history.starting}}</td>
-                            <td>{{history.ending}}</td>
-                            <td><a href="/history/delete/{{history.product.id}}/">Delete</a></td>
-                        </tr>
-                    </tbody>
-                {% endfor %}
-                </table>
+                {% if user.is_superuser %}
+                    <h2 class="pt-sm-2">Reserved Vehicle</h2>  
+                {% else %}
+                    <h2 class="pt-sm-2">History</h2>  
+                {% endif %}  
+                {% if history %}
+                    <table class="table">
+                        <thead>
+                            <tr>
+                            <th>Username</th>
+                            <th>Vehicle Name</th>
+                            <th>Vehicle Model No.</th>
+                            <th>Price</th>
+                            <th>Delivery Status</th>
+                            <th>Delivery Type</th>
+                            <th>Starting</th>
+                            <th>Ending</th>
+                            <th>Cancel Order</th>
+                            {% if user.is_superuser %}
+                                <th>Order Complete</th>
+                            {% endif %}
+                            </tr>
+                        </thead>
+                        {% for history in history %}
+                            <tbody>
+                                <tr>
+                                    <td>{{history.name}}</td>
+                                    <td><a href="/product/productdetail/{{history.product.id}}/">{{history.product.name}}</a></td>
+                                    <td>{{history.product.model}}</td>
+                                    <td>{{history.cost_per_day}}</td>
+                                    <td>{{history.delivery_status}}</td>
+                                    <td>COD</td>
+                                    <td>{{history.starting}}</td>
+                                    <td>{{history.ending}}</td>
+                                    <td><a class="waves-effect waves-light modal-trigger" href="#modal1">Delete</a></td>
+                                    {% if user.is_superuser %}
+                                        <td><a class="waves-effect waves-light modal-trigger" href="/history/complete_order/{{history.product.id}}/">Order Complete</a></td>
+                                    {% endif %}
+
+                                    <!-- Modal Structure -->
+                                    <div id="modal1" class="modal" style="height:auto;">
+                                        <div class="modal-content">
+                                        <h4>Delete This order</h4>
+                                        <p>{{history.name}} : {{history.product.name}}</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">cancel</a>
+                                            <a href="/history/delete/{{history.product.id}}/" class="modal-close waves-effect waves-red btn-flat">Confirm</a>
+                                        </div>
+                                    </div>
+                                            
+                                </tr>
+                            </tbody>
+                        {% endfor %}
+                    </table>
+                {% else %}
+                    <hr>
+                    <h5 class="pt-sm-2">Empty Find Something <a class="waves-effect waves-red btn" href="/product/">Home</a></h5> 
+                {% endif %}
             </div>
             <div class="container" style="width:100%; display:flex; justify-content:right;">
-                <a type="submit" href="/product/payment/" class="waves-effect waves-red btn" style="background-color: #ff3e5a;">
-                    <b>Payment</b>
-                </a>
+                {% if not user.is_superuser %}
+                    {% if history %}
+                        <a type="submit" href="/product/payment/" class="waves-effect waves-red btn" style="background-color: #ff3e5a;">
+                            <b>Checkout</b>
+                        </a>
+                    {% endif %}
+                {% endif %}
             </div>
         </div>
     </div>
 </div>
+<!--MaterialCss-->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 <script>
     $(document).ready(function () {
         $('.sidenav').sidenav();
+        $('.modal').modal();
     });
 </script>
 
