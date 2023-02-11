@@ -1,0 +1,324 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>homepage</title>
+    <link rel="shortcut icon" href={% static './image/icon.png'%} type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'css/style_all_blog.css' %}">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+
+        nav {
+            box-shadow: none;
+            position: sticky;
+            top: 0;
+            transition: 1s ease;
+            min-width: 100%;
+        }
+
+        .nav-wrapper {
+            background-color: rgb(0, 0, 0);
+        }
+
+        nav ul a:hover {
+            background-color: transparent;
+            color: #c700ff;
+            font-size: bold;
+        }
+
+        .bi{
+            font-size: 2rem;
+        }
+
+        header {
+            background: url("https://images.pexels.com/photos/572487/pexels-photo-572487.jpeg");
+            background-size: cover;
+            background-position: center;
+            min-height: 200px;
+            -webkit-box-shadow:0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+        }
+        .truncate2{
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 4;
+        } 
+        .card{
+            background-color: #eaeaea;
+            position: unset;
+            max-width: 100%;
+        }
+        .elementsContainer{
+            width: 100%;
+            height: 100%;
+            vertical-align: middle;
+        }
+        .boxContainer{
+            margin: auto;
+            margin-top: 3rem;
+            position: unset;
+            max-width: 50%;
+            height: 42px;
+            border: 4px solid #495862;
+            padding: 0px 10px;
+            border-radius: 50px;
+
+        }
+        .search{
+            border: none;
+            width: 100%;
+            height: 100%;
+            padding: 0px 5px;
+            font-size: 18px;
+            color: #424242;
+            font-weight: 500;
+            border-radius: 1rem
+        }
+        .search:focus{
+            outline: none;
+        }
+        td,th{
+            padding: 0;
+        }
+        .section{
+            height: auto;
+            width: 100%;
+            display: flex;
+        }
+        #dropdown1 {
+            height: auto;
+            overflow: hidden;
+            padding: 0.4rem;
+            border-radius: 2px;
+        }
+
+        @media screen and (max-width: 700px) {
+            nav .brand-logo {
+                font-size: 1.5rem;
+            }
+            .contactleftcard{
+                margin: 3rem 0 0 0;
+            }
+        }
+        @media screen and (max-width: 500px){
+            .card{
+                max-width: 100%;
+            }
+            .contactleftcard{
+                margin: 3rem 0 0 0;
+            }
+            header{
+                min-height: 11rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- nav  --> 
+    <nav class="nav-wrapper" style="width:100%;">
+        <div class="container" style="width:100%;">
+            <a href="/product/" class="brand-logo"><img width="150rem" src={% static "./images/nepali4.png"%}/></a>
+            <a href="#" class="sidenav-trigger" data-target="mobile-menu">
+                <i class="bi bi-list"></i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/service">Services</a></li>
+                <li><a href="/contact">Contact</a></li>
+                {% if user.is_superuser %}
+                    <a href="/republic_ktm_4912/" class="waves-effect waves-purple btn white black-text"><i class="bi bi-bar-chart-fill left"></i><b>Admin</b></a>
+                {% endif %}
+                
+                {% if user.is_authenticated %}
+                    <!--
+                    <a type="submit" href="/register/logout" class="waves-effect waves-dark btn white black-text">
+                        <b>Logout</b>
+                    </a>-->
+                    <!-- Dropdown Trigger -->
+                    <a style="border-radius: 2rem; background-color: #ff3e5a;" class='dropdown-trigger btn waves-effect waves-purple btn white black-text' href='#' data-target='dropdown1'><b><i class="bi bi-person-circle left"></i>{{user}}</b></a>
+ 
+                    <!-- Dropdown Structure -->
+                    <ul id='dropdown1' class='dropdown-content' >
+                        <li style="min-height:30px;"><a class='center' href="/history/" style="padding:0; color:black; height:30px;"><b>History</b></a></li>
+                        <li style="min-height:30px;"><a class='center' href="/register/logout" style="padding:0; color:red; height:30px;"><b>Logout</b></a></li>
+                    </ul>
+                {% else %}
+                    <a type="submit" href="/register" class="waves-effect waves-purple btn white black-text" style="border-radius: 2rem; background-color: #ff3e5a;">
+                        <b>Sign In</b>
+                    </a>
+                {% endif %}
+            </ul>
+            
+        </div>
+    </nav>
+    <!-- for small screen menu -->
+    <ul class="sidenav grey lighten-2" id="mobile-menu">
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/service">Services</a></li>
+        <li><a href="/contact">Contact</a></li>
+        
+        <li>
+            <div class="container" style="width: 85%;">
+                {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
+                        <li><a href="/republic_ktm_4912">Admin</a></li>
+                    {% endif%}
+                    <li>
+                        <a href="/history/" style="">History</a>
+                    </li>
+                    <div>
+                        <li><a>Hello,{{user}}</a></li><br/>
+                        <li>
+                            <a type="submit" href="/register/logout" class="waves-effect waves-purple btn white black-text"> <b>Logout</b></a>
+                        </li>
+                    </div>
+                    {% else %}
+                    <li>
+                        <a type="submit" href="/register" class="waves-effect waves-purple btn white black-text">
+                            <b>Sign In</b>
+                        </a>
+                    </li>
+                {% endif %}
+            </div>
+        </li>
+    </ul>
+    <!-- header -->
+    <header>
+        <div class="container center" style="padding: 4rem 0vh;">
+            <div><h1 class="text-white" style="margin:0px; text-shadow: 1px 1px black;">How Can I help You</h1></div>
+        </div>
+    </header>
+
+    <section class="row" style="margin:0;">
+        <div class="col-12 col-lg-4 contactleftcard" style="height: auto; margin: 3rem 0; padding: 0 2rem; ">
+            <div class="center" style="height: 100%; background-color: #2d2727; padding: 1rem; border-radius: 0.2rem;">
+                <i class="bi bi-building" style="font-size: 6rem;color: white;"></i>
+                <div style="color: white; margin-top: 2rem;">
+                    <h5>Kathmandu,Nepal </h5><br>
+                    <h6>contact@vadagadi.com</h6> <br>
+                    <h6>+977 987654321</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4" style="height: auto; padding: 2rem;">
+            <form method="post" action="form" style="background-color: #444047; height: 100%; width: 100%; border-radius: 0.2rem;" class="card hoverable">
+                {% csrf_token %}
+                <div style="padding:2rem;">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label"><i class="bi bi-person-fill" style="color: white;"></i></label>
+                        <div class="col-sm-10">
+                            <input style="color: white;" type="text" class="form-control" id="inputname" placeholder="Name" name="name" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label"><i class="bi bi-envelope-fill" style="color: white;"></i></label>
+                      <div class="col-sm-10">
+                        <input style="color: white;" type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" required>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label"><i class="bi bi-person-lines-fill" style="color: white;"></i></label>
+                      <div class="col-sm-10">
+                        <input style="color: white;" type="text" class="form-control" id="inputtext" placeholder="Contact Number" name="contact_number" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Your Message:</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" maxlength="500" name="message" style="max-height: 6rem;" required></textarea>
+                    </div>
+                    <div class="center"> 
+                        <button type="submit" onclick="M.toast({text: 'Summited successfully , classes: 'rounded'})" class="waves-effect waves-dark btn white black-text" style="width:10rem;position: unset;margin-top: 2rem;">
+                            <b>Submit</b>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-12 col-lg-4" style="height: auto;">
+            <div style="padding: 3rem 0px;  width: 100%; color:grey; ">
+                <iframe class="hoverable" style="width: 100%; border-radius: 0.2rem;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28261.5669569963!2d85.28258723701491!3d27.69579324897223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb190664b68bdf%3A0xf8c85ecf1d9b75e5!2sF1Soft%20International%20Pvt.%20Ltd.!5e0!3m2!1sen!2snp!4v1665121537282!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="page-footer black darken-3">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5>vadagadi</h5>
+                    <p>The things we do is not normal here</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Usefull Links</h5>
+                    <a href="/contact" style="color:white;">Contact</a><br>
+                    <a href="/service" style="color:white;">Services</a><br>  
+                    <a href="" style="color:white;">hot news</a><br>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Contact Us</h5>
+                    <a>Kathmandu, Nepal</a><br>
+                    <a>contact@vadagadi.com</a><br>
+                    <a>+977 987654321</a>
+                </div>
+            </div>
+            <hr class="center" style="position: unset; width: 80%; height: 0.3vh; margin: 1rem auto;">
+            <div class="d-flex justify-content-evenly" >
+                <a href="https://instagram.com/" style="color:white;"><i class="bi bi-instagram"></i></a>
+                <a href="https://facebook.com/" style="color:white;"><i class="bi bi-facebook"></i></a>
+                <a href="https://github.com/" style="color:white;"><i class="bi bi-github"></i></a>
+                <a href="https://youtube.com/" style="color:white;"><i class="bi bi-youtube"></i></a>
+            </div>
+            <div class="container">
+                <div style="height: 1rem;"></div>
+            </div>
+        </div>
+
+        <div class="footer-copyright black darken-4">
+            <div class="container center-align">&copy; 2023 Vadagadi</div>
+        </div>
+    </footer>
+     
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".sidenav").sidenav();
+            $('.tooltipped').tooltip();
+            $('.dropdown-trigger').dropdown();
+        });
+      //$(window).on('scroll',function () {
+      //    if ($(window).scrollTop()) {
+      //        $('nav').removeClass('transparent');
+      //    } else{
+      //        $('nav').addClass('transparent');
+      //    }
+      //});
+    </script>
+</body>
+
+</html>

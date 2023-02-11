@@ -1,0 +1,371 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>homepage</title>
+    <link rel="shortcut icon" href={% static './image/icon.png'%} type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'css/style_all_blog.css' %}">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+
+        nav {
+            box-shadow: none;
+            position: sticky;
+            top: 0;
+            transition: 1s ease;
+            min-width: 100%;
+        }
+
+        .nav-wrapper {
+            background-color: rgb(0, 0, 0);
+        }
+
+        nav ul a:hover {
+            background-color: transparent;
+            color: #c700ff;
+            font-size: bold;
+        }
+
+        .bi{
+            font-size: 2rem;
+        }
+
+        header {
+            background: url("https://focusustech.com/static/img/about.jpg");
+            background-size: cover;
+            background-position: center;
+            min-height: 200px;
+            -webkit-box-shadow:0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+        }
+        .truncate2{
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 4;
+        } 
+        .card{
+            background-color: #eaeaea;
+            position: unset;
+            max-width: 100%;
+        }
+        .elementsContainer{
+            width: 100%;
+            height: 100%;
+            vertical-align: middle;
+        }
+        .boxContainer{
+            margin: auto;
+            margin-top: 3rem;
+            position: unset;
+            max-width: 50%;
+            height: 42px;
+            border: 4px solid #495862;
+            padding: 0px 10px;
+            border-radius: 50px;
+
+        }
+        .search{
+            border: none;
+            width: 100%;
+            height: 100%;
+            padding: 0px 5px;
+            font-size: 18px;
+            color: #424242;
+            font-weight: 500;
+            border-radius: 1rem
+        }
+        .search:focus{
+            outline: none;
+        }
+        td,th{
+            padding: 0;
+        }
+        .section{
+            height: auto;
+            width: 100%;
+            display: flex;
+        }
+        #dropdown1 {
+            height: auto;
+            overflow: hidden;
+            padding: 0.4rem;
+            border-radius: 2px;
+        }
+        .imageAchivement{
+            background: url("https://focusustech.com/static/img/about.jpg");
+            background-size: cover;
+            background-position: center;
+            -webkit-box-shadow:0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+        }
+
+        @media screen and (max-width: 700px) {
+            nav .brand-logo {
+                font-size: 1.5rem;
+            }
+            .contactleftcard{
+                margin: 3rem 0 0 0;
+            }
+        }
+        @media screen and (max-width: 500px){
+            .card{
+                max-width: 100%;
+            }
+            .contactleftcard{
+                margin: 3rem 0 0 0;
+            }
+            header{
+                min-height: 11rem;
+            }
+        }
+        .testimonial-card .card-up {
+          height: 120px;
+          overflow: hidden;
+          border-top-left-radius: .25rem;
+          border-top-right-radius: .25rem;
+        }
+        
+        .aqua-gradient {
+          background: linear-gradient(40deg, #2096ff, #05ffa3) !important;
+        }
+        
+        .testimonial-card .avatar {
+          width: 120px;
+          margin-top: -60px;
+          overflow: hidden;
+          border: 5px solid #fff;
+          border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- nav  --> 
+    <nav class="nav-wrapper" style="width:100%;">
+        <div class="container" style="width:100%;">
+            <a href="/product/" class="brand-logo"><img width="150rem" src={% static "./images/nepali4.png"%}/></a>
+            <a href="#" class="sidenav-trigger" data-target="mobile-menu">
+                <i class="bi bi-list"></i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/service">Services</a></li>
+                <li><a href="/contact">Contact</a></li>
+                {% if user.is_superuser %}
+                    <a href="/admin/" class="waves-effect waves-purple btn white black-text"><i class="bi bi-bar-chart-fill left"></i><b>Admin</b></a>
+                {% endif %}
+                
+                {% if user.is_authenticated %}
+                    <!--
+                    <a type="submit" href="/register/logout" class="waves-effect waves-dark btn white black-text">
+                        <b>Logout</b>
+                    </a>-->
+                    <!-- Dropdown Trigger -->
+                    <a style="border-radius: 2rem; background-color: #ff3e5a;" class='dropdown-trigger btn waves-effect waves-purple btn black-text' href='#' data-target='dropdown1'><b><i class="bi bi-person-circle left"></i>{{user}}</b></a>
+ 
+                    <!-- Dropdown Structure -->
+                    <ul id='dropdown1' class='dropdown-content' >
+                        <li style="min-height:30px;"><a class='center' href="/history/" style="padding:0; color:black; height:30px;"><b>History</b></a></li>
+                        <li style="min-height:30px;"><a class='center' href="/register/logout" style="padding:0; color:red; height:30px;"><b>Logout</b></a></li>
+                    </ul>
+                {% else %}
+                    <a type="submit" href="/register" class="waves-effect waves-purple btn black-text" style="border-radius: 2rem; background-color: #ff3e5a;">
+                        <b>Sign In</b>
+                    </a>
+                {% endif %}
+            </ul>
+            
+        </div>
+    </nav>
+    <!-- for small screen menu -->
+    <ul class="sidenav grey lighten-2" id="mobile-menu">
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/service">Services</a></li>
+        <li><a href="/contact">Contact</a></li>
+        
+        <li>
+            <div class="container" style="width: 85%;">
+                {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
+                        <li><a href="/republic_ktm_4912">Admin</a></li>
+                    {% endif%}
+                    <li>
+                        <a href="/history/" style="">History</a>
+                    </li>
+                    <div>
+                        <li><a>Hello,{{user}}</a></li><br/>
+                        <li>
+                            <a type="submit" href="/register/logout" class="waves-effect waves-purple btn white black-text"> <b>Logout</b></a>
+                        </li>
+                    </div>
+                    {% else %}
+                    <li>
+                        <a type="submit" href="/register" class="waves-effect waves-purple btn white black-text">
+                            <b>Sign In</b>
+                        </a>
+                    </li>
+                {% endif %}
+            </div>
+        </li>
+    </ul>
+    <!-- header -->
+    <header>
+        <div class="container center" style="padding: 4rem 0vh;">
+            <div><h1 class="text-white" style="margin:0px; text-shadow: 1px 1px black;">About Us</h1></div>
+        </div>
+    </header>
+    
+
+    <section class="container">
+        <h3 style="margin:1rem 0 0.5rem 0 "><br>Our Achivements</h3>
+        <hr style="width:25%;height: 2px;color: #FF3E5A; opacity: 100%; margin:0rem 0 2rem 0;"/>
+        <div class="row">
+            <div class="col-12 "> 
+                <p style="font-size:15pt;">We are a leading provider of vehicle rental services, offering a wide range of vehicles to meet all your transportation needs. Our mission is to provide our customers with the most reliable and affordable rental experience possible.
+                Our fleet of vehicles includes a variety of makes and models, from compact cars to luxury vehicles and everything in between.Thank you for choosing us as your rental provider.</p>
+            </div>
+        </div>
+    </section>
+    
+    <div class="container outTeam;">
+        <h3 style="margin:1rem 0 0.5rem 0 ">Our Team</h3>
+        <hr style="width:25%;height: 2px;color: #FF3E5A; opacity: 100%; margin:0rem 0 2rem 0;"/>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                <section class="mx-auto" style="max-width: auto;">     
+                <div class="card testimonial-card mt-2 mb-3">
+                    <div class="card-up blue"></div>
+                    <div class="avatar mx-auto white">
+                    <img src="https://scontent.fbhr1-1.fna.fbcdn.net/v/t39.30808-1/322007248_1877529565930127_1354983043814456662_n.jpg?stp=dst-jpg_p320x320&_nc_cat=100&ccb=1-7&_nc_sid=7206a8&_nc_ohc=Q7el2yGfj1AAX_G0isn&tn=uHbECXDlenbQBgaz&_nc_ht=scontent.fbhr1-1.fna&oh=00_AfCikHJAxHo0aZh9C3wbUcr_fRYGxJm9QhQ2jJllVJsI7g&oe=63EC55AA" class="rounded-circle img-fluid"
+                        alt="woman avatar">
+                    </div>
+                    <div class="card-body text-center">
+                    <h4 class="card-title font-weight-bold">Shishir Bastola</h4>
+                    <a>ACE076BCT080</a>
+                    <hr>
+                    <p><i class="fas fa-quote-left"></i> Backend Developer </p>
+                    </div>
+                </div>
+                
+                </section>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                <section class="mx-auto" style="max-width: auto;">
+                    
+                <div class="card testimonial-card mt-2 mb-3">
+                    <div class="card-up red" ></div>
+                    <div class="avatar mx-auto white">
+                    <img style="height:7rem;" src="{%static './images/krish.png'%}" class="rounded-circle img-fluid"
+                        alt="woman avatar">
+                    </div>
+                    <div class="card-body text-center">
+                    <h4 class="card-title font-weight-bold">Shree Krishna Shrestha</h4>
+                    <a>ACE076BCT081</a>
+                    <hr>
+                    <p><i class="fas fa-quote-left"></i>AI Model Developer</p>
+                    </div>
+                </div>
+                
+                </section>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                <section class="mx-auto" style="max-width: auto;">
+                    
+                <div class="card testimonial-card mt-2 mb-3">
+                    <div class="card-up green"></div>
+                    <div class="avatar mx-auto white">
+                    <img src="https://scontent.fbhr1-1.fna.fbcdn.net/v/t39.30808-1/277780235_417061183558868_1752715196875068873_n.jpg?stp=dst-jpg_p320x320&_nc_cat=109&ccb=1-7&_nc_sid=7206a8&_nc_ohc=6XRqZxk49BgAX9nZtnc&tn=uHbECXDlenbQBgaz&_nc_ht=scontent.fbhr1-1.fna&oh=00_AfD6b33iYxRsLmDvztbBxNhiLaJH9-KIxbCN2LFjZvnwUQ&oe=63EC517A" class="rounded-circle img-fluid"
+                        alt="woman avatar">
+                    </div>
+                    <div class="card-body text-center">
+                    <h4 class="card-title font-weight-bold">Santosh Gaire</h4>
+                    <a>ACE076BCT077</a>
+                    <hr>
+                    <p><i class="fas fa-quote-left"></i>Front End Developer</p>
+                    </div>
+                </div>
+                
+                </section>
+            </div>
+        </div>
+      </div>
+
+    <!-- footer -->
+    <footer class="page-footer black darken-3">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5>vadagadi</h5>
+                    <p>The things we do is not normal here</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Usefull Links</h5>
+                    <a href="/contact" style="color:white;">Contact</a><br>
+                    <a href="/service" style="color:white;">Services</a><br>  
+                    <a href="" style="color:white;">hot news</a><br>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Contact Us</h5>
+                    <a>Kathmandu, Nepal</a><br>
+                    <a>contact@vadagadi.com</a><br>
+                    <a>+977 987654321</a>
+                </div>
+            </div>
+            <hr class="center" style="position: unset; width: 80%; height: 0.3vh; margin: 1rem auto;">
+            <div class="d-flex justify-content-evenly" >
+                <a href="https://instagram.com/" style="color:white;"><i class="bi bi-instagram"></i></a>
+                <a href="https://facebook.com/" style="color:white;"><i class="bi bi-facebook"></i></a>
+                <a href="https://github.com/" style="color:white;"><i class="bi bi-github"></i></a>
+                <a href="https://youtube.com/" style="color:white;"><i class="bi bi-youtube"></i></a>
+            </div>
+            <div class="container">
+                <div style="height: 1rem;"></div>
+            </div>
+        </div>
+
+        <div class="footer-copyright black darken-4">
+            <div class="container center-align">&copy; 2023 Vadagadi</div>
+        </div>
+    </footer>
+     
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".sidenav").sidenav();
+            $('.tooltipped').tooltip();
+            $('.dropdown-trigger').dropdown();
+        });
+      //$(window).on('scroll',function () {
+      //    if ($(window).scrollTop()) {
+      //        $('nav').removeClass('transparent');
+      //    } else{
+      //        $('nav').addClass('transparent');
+      //    }
+      //});
+    </script>
+</body>
+
+</html>

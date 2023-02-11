@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'history',
     'privacy_policy',
     'django.contrib.humanize',
+    'contactus',
 ]
 
 MIDDLEWARE = [
