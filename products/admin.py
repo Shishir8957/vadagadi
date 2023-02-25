@@ -35,11 +35,17 @@ class ProductAdmin(admin.ModelAdmin):
                 return HttpResponseRedirect(request.path_info)
 
             file_data = csv_file.read().decode('utf-8')
+            print(file_data)
             csv_data = file_data.split("\n")
 
             for x in csv_data:
                 fields = x.split(",")
-                # print(fields[0])
+                # print(fields[13])
+                # print(fields)
+                # print(type(fields[13].replace('\r','')))
+                # print(str(fields[13]) == f'cars')
+                # print(str(fields[13]) == f'bikes')
+                # if fields[13] == 'car':
                 created = Product.objects.update_or_create(
                     name = fields[0],
                     model = fields[1],
@@ -61,6 +67,29 @@ class ProductAdmin(admin.ModelAdmin):
                     ratings = fields[12],
                     vehicleType = fields[13],
                 )
+                # else:
+                #     created = Product.objects.update_or_create(
+                #         name = fields[0],
+                #         model = fields[1],
+                #         price = fields[2],
+                #         year = fields[3],
+                #         kilometer = fields[4],
+                #         fuletype = fields[5],
+                #         Transmission = fields[6],
+                #         # color = fields[8],
+                #         engine = fields[7],
+                #         maxPower = fields[8],
+                #         maxTorque = fields[9],
+                #         # Drivetrain = fields[14],
+                #         # length = fields[15],
+                #         # width = fields[16],
+                #         # height = fields[17],
+                #         seatingCapacity = fields[10],
+                #         fuleTankSize = fields[11],
+                #         ratings = fields[12],
+                #         vehicleType = 'bikes',
+                #     )
+
             url = reverse('admin:index')
             return HttpResponseRedirect(url)
 
@@ -75,7 +104,7 @@ class BookingAdmin(admin.ModelAdmin):
 
 @admin.register(PaymentComplete)
 class PaymentCompleteAdmin(admin.ModelAdmin):
-    list_display = ('user','product','amount','payment','payment_type')
+    list_display = ('user','product','total_days','amount','payment','payment_type')
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('comment','user','product')

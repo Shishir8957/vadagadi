@@ -168,9 +168,10 @@
                 <i class="bi bi-list"></i>
             </a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/service">Services</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/product/">Products</a></li>
+                <li><a href="/contactus/">Contact Us</a></li>
+                <li><a href="/aboutus/">About Us</a></li>
                 {% if user.is_superuser %}
                     <a href="/admin/" class="waves-effect waves-purple btn white black-text"><i class="bi bi-bar-chart-fill left"></i><b>Admin</b></a>
                 {% endif %}
@@ -198,16 +199,17 @@
         </div>
     </nav>
     <!-- for small screen menu -->
-    <ul class="sidenav grey lighten-2" id="mobile-menu">
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/service">Services</a></li>
-        <li><a href="/contact">Contact</a></li>
+    <ul class="sidenav grey lighten-2" id="slide-out">
+        <li><a href="/">Home</a></li>
+        <li><a href="/product/">Products</a></li>
+        <li><a href="/contactus/">Contact Us</a></li>
+        <li><a href="/aboutus/">About Us</a></li>
         
         <li>
             <div class="container" style="width: 85%;">
                 {% if user.is_authenticated %}
                     {% if user.is_superuser %}
-                        <li><a href="/republic_ktm_4912">Admin</a></li>
+                        <li><a href="/admin/">Admin</a></li>
                     {% endif%}
                     <li>
                         <a href="/history/" style="">History</a>
@@ -220,7 +222,7 @@
                     </div>
                     {% else %}
                     <li>
-                        <a type="submit" href="/register" class="waves-effect waves-purple btn white black-text">
+                        <a type="submit" href="/register/" class="waves-effect waves-purple btn white black-text">
                             <b>Sign In</b>
                         </a>
                     </li>

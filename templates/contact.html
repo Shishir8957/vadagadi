@@ -52,7 +52,7 @@
         }
 
         header {
-            background: url("https://images.pexels.com/photos/572487/pexels-photo-572487.jpeg");
+            background: url("https://focusustech.com/static/img/contact.jpg");
             background-size: cover;
             background-position: center;
             min-height: 200px;
@@ -144,11 +144,12 @@
                 <i class="bi bi-list"></i>
             </a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/service">Services</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/product/">Products</a></li>
+                <li><a href="/contactus/">Contact Us</a></li>
+                <li><a href="/aboutus/">About Us</a></li>
                 {% if user.is_superuser %}
-                    <a href="/republic_ktm_4912/" class="waves-effect waves-purple btn white black-text"><i class="bi bi-bar-chart-fill left"></i><b>Admin</b></a>
+                    <a href="/admin/" class="waves-effect waves-purple btn white black-text"><i class="bi bi-bar-chart-fill left"></i><b>Admin</b></a>
                 {% endif %}
                 
                 {% if user.is_authenticated %}
@@ -157,7 +158,7 @@
                         <b>Logout</b>
                     </a>-->
                     <!-- Dropdown Trigger -->
-                    <a style="border-radius: 2rem; background-color: #ff3e5a;" class='dropdown-trigger btn waves-effect waves-purple btn white black-text' href='#' data-target='dropdown1'><b><i class="bi bi-person-circle left"></i>{{user}}</b></a>
+                    <a style="border-radius: 2rem; background-color: #ff3e5a;" class='dropdown-trigger btn waves-effect waves-purple btn black-text' href='#' data-target='dropdown1'><b><i class="bi bi-person-circle left"></i>{{user}}</b></a>
  
                     <!-- Dropdown Structure -->
                     <ul id='dropdown1' class='dropdown-content' >
@@ -165,7 +166,7 @@
                         <li style="min-height:30px;"><a class='center' href="/register/logout" style="padding:0; color:red; height:30px;"><b>Logout</b></a></li>
                     </ul>
                 {% else %}
-                    <a type="submit" href="/register" class="waves-effect waves-purple btn white black-text" style="border-radius: 2rem; background-color: #ff3e5a;">
+                    <a type="submit" href="/register" class="waves-effect waves-purple btn black-text" style="border-radius: 2rem; background-color: #ff3e5a;">
                         <b>Sign In</b>
                     </a>
                 {% endif %}
@@ -175,9 +176,10 @@
     </nav>
     <!-- for small screen menu -->
     <ul class="sidenav grey lighten-2" id="mobile-menu">
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/service">Services</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/product/">Products</a></li>
+        <li><a href="/contactus/">Contact Us</a></li>
+        <li><a href="/aboutus/">About Us</a></li>
         
         <li>
             <div class="container" style="width: 85%;">
@@ -223,7 +225,7 @@
             </div>
         </div>
         <div class="col-12 col-lg-4" style="height: auto; padding: 2rem;">
-            <form method="post" action="form" style="background-color: #444047; height: 100%; width: 100%; border-radius: 0.2rem;" class="card hoverable">
+            <form method="post" action="form/" style="background-color: #444047; height: 100%; width: 100%; border-radius: 0.2rem;" class="card hoverable">
                 {% csrf_token %}
                 <div style="padding:2rem;">
                     <div class="form-group row">

@@ -28,6 +28,9 @@
             .modal{
                 height: auto;
             }
+            nav a:hover{
+                color: #FF3E5A;
+            }
             .timepicker-digital-display{
                 background-color: #eee;
             }
@@ -113,10 +116,10 @@
                     <div>
                         <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bi bi-list" style="font-size:2rem;color:black;line-height: inherit;"></i></a>
                         <ul class="right hide-on-med-and-down navHover">
-                            <li><a href="sass.html">Sass</a></li>
-                            <li><a href="badges.html">Components</a></li>
-                            <li><a href="collapsible.html">Javascript</a></li>
-                            <li><a href="mobile.html">Mobile</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/product/">Products</a></li>
+                            <li><a href="/contactus/">Contact Us</a></li>
+                            <li><a href="/aboutus/">About Us</a></li>
                             {% if user.is_superuser %}
                                 <li><a href="/admin/" class="waves-effect waves-purple btn white black-text"><i class="bi bi-bar-chart-fill left" style="line-height: inherit;"></i>Admin</a><li>
                             {% endif %}
@@ -141,17 +144,33 @@
         </div>
         <!--Mobile Nav bar-->
         <ul class="sidenav grey lighten-2" id="slide-out">
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/service">Services</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/product/">Products</a></li>
+            <li><a href="/contactus/">Contact Us</a></li>
+            <li><a href="/aboutus/">About Us</a></li>
             
             <li>
                 <div class="container" style="width: 85%;">
-                    <li>
-                        <a type="submit" href="/register" class="waves-effect waves-purple btn white black-text">
-                            <b>Sign In</b>
-                        </a>
-                    </li>
+                    {% if user.is_authenticated %}
+                        {% if user.is_superuser %}
+                            <li><a href="/admin/">Admin</a></li>
+                        {% endif%}
+                        <li>
+                            <a href="/history/" style="">History</a>
+                        </li>
+                        <div>
+                            <li><a>Hello,{{user}}</a></li><br/>
+                            <li>
+                                <a type="submit" href="/register/logout" class="waves-effect waves-purple btn white black-text"> <b>Logout</b></a>
+                            </li>
+                        </div>
+                        {% else %}
+                        <li>
+                            <a type="submit" href="/register/" class="waves-effect waves-purple btn white black-text">
+                                <b>Sign In</b>
+                            </a>
+                        </li>
+                    {% endif %}
                 </div>
             </li>
         </ul>
@@ -186,8 +205,6 @@
                             </div>
                             <input type="hidden" id="rating-value" value="0">
                             <p id="average-rating"></p>
-                              
-                              
                             <p>Km run: {{products.kilometer}}</p>
                             <h5 style="font-weight:550;">price: <a style="color:#FF3E5A">{{products.price}}</a>/day</h5>
                         </div>

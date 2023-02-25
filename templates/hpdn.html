@@ -1,0 +1,325 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Vadagadi</title>
+        <link rel="shortcut icon" href={% static './images/new.png'%} type="image/x-icon" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+        <!-- bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!-- icon -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />  
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Roboto',sans-serif;
+            }
+            
+            body{
+                background: rgb(255, 255, 255);
+            }
+            article, aside, footer, header, nav, section{
+                display: flex;
+            }
+            .pagination {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #eee;
+                padding-bottom: 1rem;
+            }
+            .page-item.active .page-link {
+                background-color: #880808;
+                border-color: #880808;
+            }
+            .page-link:hover {
+                color: #880808;
+                background-color: #88080826;
+                border-color: #dee2e6;
+            }
+            .page-link:focus {
+                color: #880808;
+                background-color: #88080808;
+                box-shadow: 0 0 0 .25rem #88080826;
+            }
+            nav{
+                background-color:transparent;
+                color: black;
+                box-shadow:none;
+                transition: 0.2s;
+                overflow: hidden;
+            }
+            nav li a{
+                color: black;
+            }
+            nav ul a:hover{
+                background-color: transparent;
+                color: #880808;
+            }
+            nav.sticky{
+                background-color: #F1C7C9;
+                box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
+                transition: 1;
+            }
+            .headerPart{
+                margin-top: -5rem;
+            }
+            .btn:hover{
+                color:white;
+            }
+            .header-title{
+                font-size:26pt;
+            }
+            form input{
+                background-color: #b8b8b8;
+                padding: 0.8rem;
+                border-radius: 5px;
+                border: none;
+                margin-bottom: 1rem;
+            }
+            form input::placeholder{
+                color: #1a1a1a;
+            }
+            @media only screen and (min-width: 992px) {
+                .categoryPadding{
+                    padding: 2.5rem 0;
+                }
+            } 
+            @media only screen and (max-width: 992px) {
+                .categoryPadding{
+                    padding: 2.5rem 0;
+                }
+                nav{
+                    background-color: #F1C7C9;
+                    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
+                }
+            } 
+            @media only screen and (max-width: 768px) {
+                .categoryPadding{
+                    padding-top: 2rem 0;
+                }
+                nav{
+                    background-color: #F1C7C9;
+                    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
+                }
+                .header-title{
+                    font-size: 17pt;
+                }
+                .header-title-1{
+                    font-size: 28pt;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!--Nav bar-->
+        <div class="navbar-fixed" style="z-index:2;">
+            <nav class="nav-wrapper" style="width:100%;">
+                <div class="nav-wrapper container" style="width:90%;">
+                    <a href="/product/" class="brand-logo"><img width="150rem" src={% static "./images/hdpnLogo.png"%}/></a>
+                    <div>
+                        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bi bi-list" style="font-size:2rem;color:black;line-height: inherit;"></i></a>
+                        <ul class="right hide-on-med-and-down navHover">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#form">Form</a></li>
+                            <li><a href="#contactus">Contact Us</a></li>
+                            <li><a href="/aboutus/">About Us</a></li>
+                            
+                            {% if user.is_authenticated %}
+                                <!-- Dropdown Trigger -->
+                                <a class="dropdown-trigger waves-effect waves-grey btn" style="border-radius: 2rem;background-color:#880808;" href='#' data-target='dropdown1'><b><i class="bi bi-person-circle left" style="line-height: inherit;"></i>{{user}}</b></a>
+            
+                                <!-- Dropdown Structure -->
+                                <ul id='dropdown1' class='dropdown-content' >
+                                    <li style="min-height:30px;"><a class='center' href="/register/logout" style="padding:0; color:red; height:30px;"><b>Logout</b></a></li>
+                                </ul>
+                            {% else %}
+                                <a type="submit" href="/register/" class="waves-effect waves-grey btn" style="border-radius: 2rem; background-color: #880808;">
+                                    Sign In
+                                </a>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- for small screen menu -->
+        <ul class="sidenav grey lighten-2" id="slide-out">
+            <li><a href="/">Home</a></li>
+            <li><a href="/product/">Products</a></li>
+            <li><a href="/contactus/">Contact Us</a></li>
+            <li><a href="/aboutus/">About Us</a></li>
+            
+            <li>
+                <div class="container" style="width: 85%;">
+                    {% if user.is_authenticated %}
+                        {% if user.is_superuser %}
+                            <li><a href="/admin/">Admin</a></li>
+                        {% endif%}
+                        <li>
+                            <a href="/history/" style="">History</a>
+                        </li>
+                        <div>
+                            <li><a>Hello,{{user}}</a></li><br/>
+                            <li>
+                                <a type="submit" href="/register/logout" class="waves-effect waves-purple btn white black-text"> <b>Logout</b></a>
+                            </li>
+                        </div>
+                        {% else %}
+                        <li>
+                            <a type="submit" href="/register/" class="waves-effect waves-purple btn white black-text">
+                                <b>Sign In</b>
+                            </a>
+                        </li>
+                    {% endif %}
+                </div>
+            </li>
+        </ul>
+
+        <!-- Header Part -->
+        <section class="headerPart" style="height: 40rem; background-image: url('{% static './images/hdpnbg.png'%}');background-size:cover;background-position:center;">
+            <div class="container" style="width:90%;display:flex;justify-content: left;align-items:center;">
+                <div style="line-height:3;">
+                    <h2 class="header-title-1" style="padding-top:1rem;">Examine Your <a style="color:#880808">Heart</a> !</h2>
+                    <p style="font-size:1.5rem;line-height:1.5;">No beauty shines brighter than<br> that of a good heart.</p>
+                    <a type="submit" href="/register/" class="waves-effect waves-grey btn" style="background-color: #880808;">Learn More</a>
+                </div>    
+            </div>
+        </section>
+        <section class="container" style="height:2rem;display:flex;justify-content:center;align-items:center;">
+            <div class="center" style="margin-top:-3rem;background-color: #FFFFFF;padding: 0 1rem 0.5rem 1rem; border-radius: 1rem;box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);">
+                <h3 class="header-title"><b>10 sec Can Save Your <a style="color:#880808">Life</a> !</b></h3>
+            </div>
+        </section>
+
+        <!-- Form -->
+        <section id="form" style="padding-top: 2.1rem;">
+            <div class="container" style="width:90%;">
+                <h4 class="header-title-1" style="padding-top:1rem; margin-bottom:0.5rem;"><b>Enter Your <a style="color:#880808">Data</a></b></h4>
+                <hr style="color:#880808;height:2px;opacity:1;border-radius: 2rem;width:6rem;margin-top:0.5rem;">
+                <form class="center" style="margin-top:2rem;">
+                    <div class="row center">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <input type="text" placeholder="Enter" class="browser-default">
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <input type="text" placeholder="Enter" class="browser-default">
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <input type="text" placeholder="Enter" class="browser-default">
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <input type="text" placeholder="Enter" class="browser-default">
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <input type="text" placeholder="Enter" class="browser-default">
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <input type="text" placeholder="Enter" class="browser-default">
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <input type="text" placeholder="Enter" class="browser-default">
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <input type="text" placeholder="Enter" class="browser-default">
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <input type="text" placeholder="Enter" class="browser-default">
+                        </div>
+                    </div>
+                    <a type="submit" href="/register/" class="waves-effect waves-grey btn center" style="background-color: #880808; border-radius: 3px;">Submit</a>
+                </form>
+            </div>
+        </section>
+
+        <!-- Form -->
+        <section id="contactus" style="padding-top: 2.1rem;">
+            <div class="container" style="width:90%;">
+                <h4 class="header-title-1" style="padding-top:1rem; margin-bottom:0.5rem;"><b>Contact <a style="color:#880808">Us</a></b></h4>
+                <hr style="color:#880808;height:2px;opacity:1;border-radius: 2rem;width:6rem;margin-top:0.5rem;">
+            </div>
+            
+        </section>
+
+        <!-- Footer -->
+        <footer class="page-footer black darken-3" style="flex-direction: column;">
+            <div class="container" style="width:90%;">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5>HDPn</h5>
+                        <p>10 sec Can Save Your life!</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Usefull Links</h5>
+                        <a href="#" style="color:white;">Home</a><br>  
+                        <a href="#form" style="color:white;">Form</a><br>  
+                        <a href="#contactus" style="color:white;">Contact</a><br>                        
+                        <a href="" style="color:white;">hot news</a><br>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Contact Us</h5>
+                        <a>Kathmandu, Nepal</a><br>
+                        <a>contact@hdpn.com</a><br>
+                        <a>+977 987654321</a>
+                    </div>
+                </div>
+                <hr class="center" style="position: unset; width: 80%; height: 0.3vh; margin: 1rem auto;">
+                <div class="d-flex justify-content-evenly" >
+                    <a href="https://instagram.com/" style="color:white; font-size:2rem;"><i class="bi bi-instagram"></i></a>
+                    <a href="https://facebook.com/" style="color:white; font-size:2rem;"><i class="bi bi-facebook"></i></a>
+                    <a href="https://github.com/" style="color:white; font-size:2rem;"><i class="bi bi-github"></i></a>
+                    <a href="https://youtube.com/" style="color:white; font-size:2rem;"><i class="bi bi-youtube"></i></a>
+                </div>
+                <div class="container">
+                    <div style="height: 1rem;"></div>
+                </div>
+            </div>
+            <div class="footer-copyright black darken-4">
+                <div class="container center-align">&copy; 2023 HDPn</div>
+            </div>
+        </footer>  
+
+
+        <script>
+            // Active Link Highlighting
+            const links = document.querySelectorAll("a");
+            const currentPage = window.location.pathname;
+            
+            links.forEach(link => {
+              if (currentPage.includes(link.getAttribute("href"))) {
+                link.classList.add("active");
+              }
+            });
+        </script>
+        <!--Stiky when scroll-->
+        <script type="text/javascript">
+            window.addEventListener("scroll",function(){
+                var header = document.querySelector("nav");
+                header.classList.toggle("sticky",window.scrollY > 0);
+            })
+        </script>
+
+        <!--MaterialCss-->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".sidenav").sidenav();
+                $('.tooltipped').tooltip();
+                $('.materialboxed').materialbox();
+                $('.dropdown-trigger').dropdown();
+                $('.tooltipped').tooltip();
+                $('#rateMe1').mdbRate();
+            });
+        </script>
+    </body>
+</html>

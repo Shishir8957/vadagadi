@@ -5,6 +5,8 @@ from django import forms
 from django.contrib.admin.widgets import AdminDateWidget
 from datetime import datetime
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import user_passes_test
+from django.db.models import Q
 
 # Create your views here.
 def home(request):
@@ -20,11 +22,13 @@ def payment(request):
 @login_required(login_url='/register/')
 def history(request):
     user = request.user
+    payment_complete = PaymentComplete.objects.filter(user=request.user)
     if user.is_superuser:
       booking = Booking.objects.all()
+      payment_complete = PaymentComplete.objects.all()
     else:
       booking = Booking.objects.filter(name=user)
-    return render(request,'history.html',{'history':booking})
+    return render(request,'history.html',{'history':booking,'payment_complete':payment_complete})
 
 def viewProduct(request,id):
   product = Product.objects.get(id=id)
@@ -40,8 +44,8 @@ def viewProduct(request,id):
   return render(request, 'viewproduct.html',{'products':product,'comments':comments})
 
 def car(request):
-  data = Product.objects.filter(vehicleType='car')
-  search = "Car's"
+  data = Product.objects.filter(Q(vehicleType='cars\r')|Q(booked=False))
+  search = "Cars"
   return render(request, 'search.html',{'products':data,'search':search})
 
 def price(request):
@@ -59,7 +63,7 @@ def name(request):
   return render(request, 'productpage.html',{'products':page_obj})
 
 def bike(request):
-  data = Product.objects.filter(vehicleType='bike')
+  data = Product.objects.filter(Q(vehicleType='bikes\r')|Q(booked=False))
   search = "Bike's"
   return render(request, 'search.html',{'products':data,'search':search})
 
@@ -76,7 +80,7 @@ def bookdate(request,pk):
         if str(starting-ending) == '0:00:00':
             a = 0
         else:
-            a= (str(starting-ending).split(" "))[0]
+            a= str(ending-starting).split(" ")[0]
         time = datetime.strptime(pickuptime,'%I:%M %p').time()
 
         product = Product.objects.get(id=pk)
@@ -98,6 +102,7 @@ def bookdate(request,pk):
         
     return redirect(history)
 
+@login_required(login_url='/register/')
 def CancelOrder(request,pk):
     user = request.user
     if user.username == Booking.objects.get(product_id=pk).name:
@@ -115,6 +120,13 @@ def search(request):
   else:
     data = Product.objects.all()
   return render(request, 'search.html',{'products':data, 'search':search,'table':num})
+
+@user_passes_test(lambda u: u.is_superuser)
+def CompleteOrder(request,pk):
+  Product=Booking.objects.get(product_id=pk)
+  Product.delete()
+  PaymentComplete.objects.create(user=Product.name,product=Product.product,total_days=Product.total_days,amount=Product.cost_per_day,payment_type="COD",payment=True)
+  return redirect('/product/history/')
 
 @login_required(login_url='/register')
 def postComment(request):

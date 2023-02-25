@@ -10,6 +10,7 @@ urlpatterns = [
     path('productdetail/<str:id>/',views.viewProduct,name="viewProduct"),
     path('bookdate/<str:pk>/',views.bookdate,name="bookdate"),
     path('cancel-order/<str:pk>/',views.CancelOrder,name="CancelOrder"),
+    path('complete-order/<str:pk>/',views.CompleteOrder,name="CompleteOrder"),
     path('search/',views.search,name='search'),
     path('history/',views.history,name='history'),
     path('payment/',views.payment,name="payment"),

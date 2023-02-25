@@ -91,17 +91,33 @@
     </nav>
 </div>
 <ul class="sidenav grey lighten-2" id="slide-out">
-    <li><a href="/blog">Blog</a></li>
-    <li><a href="/service">Services</a></li>
-    <li><a href="/contact">Contact</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/product/">Products</a></li>
+    <li><a href="/contactus/">Contact Us</a></li>
+    <li><a href="/aboutus/">About Us</a></li>
     
     <li>
         <div class="container" style="width: 85%;">
-            <li>
-                <a type="submit" href="/register" class="waves-effect waves-purple btn white black-text">
-                    <b>Sign In</b>
-                </a>
-            </li>
+            {% if user.is_authenticated %}
+                {% if user.is_superuser %}
+                    <li><a href="/admin/">Admin</a></li>
+                {% endif%}
+                <li>
+                    <a href="/history/" style="">History</a>
+                </li>
+                <div>
+                    <li><a>Hello,{{user}}</a></li><br/>
+                    <li>
+                        <a type="submit" href="/register/logout" class="waves-effect waves-purple btn white black-text"> <b>Logout</b></a>
+                    </li>
+                </div>
+                {% else %}
+                <li>
+                    <a type="submit" href="/register/" class="waves-effect waves-purple btn white black-text">
+                        <b>Sign In</b>
+                    </a>
+                </li>
+            {% endif %}
         </div>
     </li>
 </ul>
@@ -128,12 +144,12 @@
                         </a>
                     </li>
                     <li class="nav-item" style="background-color: #363b3f;border-radius: 3px;margin-top:5px;">
-                        <a href="#" class="nav-link align-middle px-0" style="color:#fff;">
+                        <a href="/aboutus/" class="nav-link align-middle px-0" style="color:#fff;">
                             <span class="ms-1 d-none d-sm-inline" style="padding-left: 1rem;">About Us</span>
                         </a>
                     </li>
                     <li class="nav-item" style="background-color: #363b3f;border-radius: 3px;margin-top:5px;">
-                        <a href="#" class="nav-link align-middle px-0" style="color:#fff;">
+                        <a href="/contactus/" class="nav-link align-middle px-0" style="color:#fff;">
                             <span class="ms-1 d-none d-sm-inline" style="padding-left: 1rem;">Contact Us</span>
                         </a>
                     </li>
@@ -160,13 +176,13 @@
             </div>
         </div>
         <div class="col py-3 pt-sm-5">
-            <div class="container mt-3" style="width:100%;overflow-x: auto;">
-                {% if user.is_superuser %}
-                    <h2 class="pt-sm-2">Reserved Vehicle</h2>  
-                {% else %}
-                    <h2 class="pt-sm-2">History</h2>  
-                {% endif %}  
+            <div class="container mt-3" style="width:100%;overflow-x: auto;"> 
                 {% if history %}
+                    {% if user.is_superuser %}
+                        <h2 class="pt-sm-2">Reserved Vehicle</h2>  
+                    {% else %}
+                        <h2 class="pt-sm-2">History</h2>  
+                    {% endif %} 
                     <table class="table">
                         <thead>
                             <tr>
@@ -195,13 +211,13 @@
                                     <td>COD</td>
                                     <td>{{history.starting}}</td>
                                     <td>{{history.ending}}</td>
-                                    <td><a class="waves-effect waves-light modal-trigger" href="#modal1">Delete</a></td>
+                                    <td><a class="waves-effect waves-light modal-trigger" href="#modal{{history.product.id}}">Delete</a></td>
                                     {% if user.is_superuser %}
-                                        <td><a class="waves-effect waves-light modal-trigger" href="/history/complete_order/{{history.product.id}}/">Order Complete</a></td>
+                                        <td><a class="waves-effect waves-light modal-trigger" href="/product/complete-order/{{history.product.id}}/">Order Complete</a></td>
                                     {% endif %}
 
                                     <!-- Modal Structure -->
-                                    <div id="modal1" class="modal" style="height:auto;">
+                                    <div id="modal{{history.product.id}}" class="modal" style="height:auto;">
                                         <div class="modal-content">
                                         <h4>Delete This order</h4>
                                         <p>{{history.name}} : {{history.product.name}}</p>
@@ -217,8 +233,35 @@
                         {% endfor %}
                     </table>
                 {% else %}
+                    <h2 class="pt-sm-2">History</h2>  
                     <hr>
                     <h5 class="pt-sm-2">Empty Find Something <a class="waves-effect waves-red btn" href="/product/">Home</a></h5> 
+                {% endif %}
+                {% if payment_complete%}
+                    <h2 class="pt-sm-2">Order Completed</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                            <th>user</th>
+                            <th>product</th>
+                            <th>total_days</th>
+                            <th>amount</th>
+                            <th>payment_type</th>
+                            <th>payment</th>
+                        </thead>
+                        {% for payment_complete in payment_complete %}
+                            <tbody>
+                                <tr>
+                                    <td>{{payment_complete.user}}</td>
+                                    <td>{{payment_complete.product}}</td>
+                                    <td>{{payment_complete.total_days}}</td> 
+                                    <td>{{payment_complete.amount}}</td>
+                                    <td>{{payment_complete.amount}}</td>
+                                    <td>{{payment_complete.payment}}</td> 
+                                </tr>
+                            </tbody>
+                        {% endfor %}
+                    </table>
                 {% endif %}
             </div>
             <div class="container" style="width:100%; display:flex; justify-content:right;">

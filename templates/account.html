@@ -27,7 +27,7 @@
             font-family: sans-serif;
         }
         body{
-            background: url("https://images.pexels.com/photos/3785932/pexels-photo-3785932.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+            background: url("{%static './images/login_background.jpg'%}");
             background-size: cover;
             background-position: center;
             height: auto;
@@ -98,7 +98,7 @@
     <!-- nav  --> 
     <nav class="nav-wrapper" style="z-index:1;position: unset;">
         <div class="container center">
-            <a href="/" class="brand-logo" style="z-index:1;">VADAGADI</a>
+            <a href="/" class="brand-logo" style="z-index:1;"><img width="150rem" src={% static "./images/nepali4.png"%}/></a>
             <a href="#" class="sidenav-trigger" data-target="mobile-menu">
                 <i class="bi bi-list"></i>
             </a>            
