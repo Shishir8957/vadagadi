@@ -1,0 +1,199 @@
+index,name,Model,Price,Year,Kilometer,Fuel Type,Transmission,Engine,Max Power,Max Torque,Seating Capacity,Fuel Tank Capacity,rating,vehicle_type
+0,Honda,Amaze 1.2 VX i-VTEC,505000,2017,87150,Petrol,Manual,1198 cc,87 bhp @ 6000 rpm,109 Nm @ 4500 rpm,5,35,4,car
+1,Maruti Suzuki,Swift DZire VDI,450000,2014,75000,Diesel,Manual,1248 cc,74 bhp @ 4000 rpm,190 Nm @ 2000 rpm,5,42,4,car
+2,Hyundai,i10 Magna 1.2 Kappa2,220000,2011,67000,Petrol,Manual,1197 cc,79 bhp @ 6000 rpm,112.7619 Nm @ 4000 rpm,5,35,5,car
+3,Toyota,Glanza G,799000,2019,37500,Petrol,Manual,1197 cc,82 bhp @ 6000 rpm,113 Nm @ 4200 rpm,5,37,3,car
+4,Toyota,Innova 2.4 VX 7 STR [2016-2020],1950000,2018,69000,Diesel,Manual,2393 cc,148 bhp @ 3400 rpm,343 Nm @ 1400 rpm,7,55,3,car
+5,Maruti Suzuki,Ciaz ZXi,675000,2017,73315,Petrol,Manual,1373 cc,91 bhp @ 6000 rpm,130 Nm @ 4000 rpm,5,43,5,car
+6,Mercedes-Benz,CLA 200 Petrol Sport,1898999,2015,47000,Petrol,Automatic,1991 cc,181 bhp @ 5500 rpm,300 Nm @ 1200 rpm,5,45,5,car
+7,BMW,X1 xDrive20d M Sport,2650000,2017,75000,Diesel,Automatic,1995 cc,188 bhp @ 4000 rpm,400 Nm @ 1750 rpm,5,51,4,car
+8,Skoda,Octavia 1.8 TSI Style Plus AT [2017],1390000,2017,56000,Petrol,Automatic,1798 cc,177 bhp @ 5100 rpm,250 Nm @ 1250 rpm,5,50,3,car
+9,Nissan,Terrano XL (D),575000,2015,85000,Diesel,Manual,1461 cc,84 bhp @ 3750 rpm,200 Nm @ 1900 rpm,5,50,3,car
+10,Hyundai,Elite i20 Sportz 1.2,591000,2017,20281,Petrol,Manual,1197 cc,82 bhp @ 6000 rpm,115 Nm @ 4000 rpm,5,45,4,car
+11,Renault,Kwid 1.0 RXT [2016-2019],459999,2018,22541,Petrol,Manual,999 cc,67 bhp @ 5500 rpm,91 Nm @ 4250 rpm,5,28,4,car
+12,Maruti Suzuki,Ciaz Alpha Hybrid 1.5 AT [2018-2020],1075000,2019,30672,Petrol,Automatic,1462 cc,103 bhp @ 6000 rpm,138 Nm @ 4400 rpm,5,43,3,car
+13,Tata,Harrier XZ [2019-2020],1695000,2019,20856,Diesel,Manual,1956 cc,138 bhp @ 3750 rpm,350 Nm @ 1750 rpm,5,50,4,car
+14,Volkswagen,Polo GT TSI,944999,2017,41417,Petrol,Automatic,1197 cc,103 bhp @ 5000 rpm,175 Nm @ 1500 rpm,5,45,3,car
+15,Maruti Suzuki,Celerio ZXi AMT [2019-2020],569000,2016,11471,Petrol,Automatic,998 cc,67 bhp @ 6000 rpm,90 Nm @ 3500 rpm,5,35,5,car
+16,Maruti Suzuki,Alto 800 LXi (O),449000,2019,3583,Petrol,Manual,796 cc,47 bhp @ 6000 rpm,69 Nm @ 3500 rpm,5,35,5,car
+17,Maruti Suzuki,Baleno Alpha Automatic,894999,2018,21365,Petrol,Automatic,1197 cc,82 bhp @ 6000 rpm,113 Nm @ 4200 rpm,5,37,3,car
+18,Maruti Suzuki,Wagon R ZXi 1.2 AMT,699000,2020,30777,Petrol,Automatic,1197 cc,82 bhp @ 6000 rpm,113 Nm @ 4200 rpm,5,32,5,car
+19,Hyundai,Creta 1.6 E Petrol,740000,2016,60125,Petrol,Manual,1591 cc,122 bhp @ 6400 rpm,154 Nm @ 4850 rpm,5,60,4,car
+20,Maruti Suzuki,S-Presso VXi AMT,470000,2020,2169,Petrol,Automatic,998 cc,67 bhp @ 5500 rpm,90 Nm @ 3500 rpm,5,27,3,car
+21,Volkswagen,Vento Comfortline Petrol AT,765000,2015,60240,Petrol,Automatic,1197 cc,103 bhp @ 5000 rpm,153 Nm @ 3800 rpm,5,55,3,car
+22,Hyundai,Santro Sportz AMT [2018-2020],589000,2018,13772,Petrol,Automatic,1086 cc,68 bhp @ 5500 rpm,99 Nm @ 4500 rpm,5,35,5,car
+23,Hyundai,Venue SX 1.0 (O) Petrol [2019-2020],999000,2019,27464,Petrol,Manual,998 cc,118 bhp @ 6000 rpm,172 Nm @ 1500 rpm,5,45,4,car
+24,Maruti Suzuki,Alto LXi CNG,370000,2019,47377,CNG,Manual,998 cc,58 bhp @ 6000 rpm,78 Nm @ 3500 rpm,4,60,4,car
+25,Maruti Suzuki,Ritz Zxi BS-IV,325000,2013,23086,Petrol,Manual,1197 cc,85 bhp @ 6000 rpm,113 Nm @ 4500 rpm,5,43,4,car
+26,Hyundai,Creta 1.6 SX Plus Petrol,1175000,2019,36313,Petrol,Manual,1591 cc,122 bhp @ 6400 rpm,154 Nm @ 4850 rpm,5,60,4,car
+27,Honda,Brio V MT,351000,2014,39276,Petrol,Manual,1198 cc,87 bhp @ 6000 rpm,109 Nm @ 4500 rpm,5,35,5,car
+28,Hyundai,Elite i20 Asta 1.2,551000,2015,47752,Petrol,Manual,1197 cc,82 bhp @ 6000 rpm,115 Nm @ 4000 rpm,5,45,4,car
+29,Honda,WR-V VX MT Petrol,819999,2018,27963,Petrol,Manual,1199 cc,89 bhp @ 6000 rpm,110 Nm @ 4800 rpm,5,40,3,car
+30,Hyundai,Venue SX 1.0 Turbo iMT,990000,2020,24013,Petrol,Manual,998 cc,118 bhp @ 6000 rpm,172 Nm @ 1500 rpm,5,45,4,car
+31,Hyundai,Creta 1.6 SX Plus AT,925000,2016,66000,Diesel,Automatic,1582 cc,126 bhp @ 4000 rpm,265 Nm @ 1900 rpm,5,60,3,car
+32,Ford,Ecosport Titanium+ 1.0L EcoBoost,535000,2015,28000,Petrol,Manual,999 cc,124 bhp @ 6000 rpm,170 Nm @ 1400 rpm,5,52,4,car
+33,Honda,CR-V 2.4 AT,860000,2013,67000,Petrol,Automatic,1000 cc,124 bhp @ 6001 rpm,170 Nm @ 1401 rpm,5,51,4,car
+34,Hyundai,Santro GL (CNG),145000,2009,72000,CNG,Manual,1086 cc,62 bhp @ 5500 rpm,96 Nm @ 3000 rpm,5,35,5,car
+35,Tata,Tiago Revotron XE [2016-2019],409000,2018,27069,Petrol,Manual,1199 cc,84 bhp @ 6000 rpm,114 Nm @ 3500 rpm,5,35,5,car
+36,Tata,Tigor Revotorq XT,490000,2018,43000,Diesel,Manual,1047 cc,69 bhp @ 4000 rpm,140 Nm @ 1800 rpm,5,35,4,car
+37,Toyota,Innova 2.4 G 8 STR [2016-2017],1900000,2019,71000,Diesel,Manual,2393 cc,148 bhp @ 3400 rpm,343 Nm @ 1400 rpm,8,55,3,car
+38,Mercedes-Benz,GLC 220 d Progressive,3850000,2017,45600,Diesel,Automatic,2143 cc,168 bhp @ 3000 rpm,400 Nm @ 1400 rpm,5,66,3,car
+39,Hyundai,Creta SX 1.6 CRDi (O),1125000,2018,60000,Diesel,Manual,1582 cc,126 bhp @ 4000 rpm,260 Nm @ 1500 rpm,5,55,4,car
+40,Mercedes-Benz,M-Class ML 250 CDI,2300000,2014,105101,Diesel,Automatic,2143 cc,203 bhp @ 4200 rpm,500 Nm @ 1600 rpm,5,70,5,car
+41,Toyota,Corolla Altis VL AT Petrol,1095000,2016,45000,Petrol,Automatic,1798 cc,138 bhp @ 6400 rpm,173 Nm @ 4000 rpm,5,55,4,car
+42,Audi,A4 2.0 TDI (177bhp) Premium Plus,1575000,2013,66000,Diesel,Automatic,1968 cc,177 bhp @ 4200 rpm,380 Nm @ 1750 rpm,5,63,3,car
+43,Mercedes-Benz,SLK-Class SLK 200 K,2400000,2010,34105,Petrol,Automatic,1796 cc,165@5500,240@3000,2,70,5,car
+44,Hyundai,Elite i20 Asta 1.2,525000,2015,68397,Petrol,Manual,1197 cc,82 bhp @ 6000 rpm,115 Nm @ 4000 rpm,5,45,5,car
+45,Mahindra,Thar CRDe 4x4 AC,625000,2015,65000,Diesel,Manual,2498 cc,105 bhp @ 3800 rpm,247 Nm @ 1800 rpm,6,60,3,car
+46,Maruti Suzuki,Baleno Delta 1.2,605000,2019,27469,Petrol,Manual,1197 cc,83 bhp @ 6000 rpm,115 Nm @ 4000 rpm,5,37,4,car
+47,Maruti Suzuki,Celerio VXi AMT,412000,2016,41058,Petrol,Automatic,998 cc,67 bhp @ 6000 rpm,90 Nm @ 3500 rpm,5,35,5,car
+48,Maruti Suzuki,Ciaz VDi SHVS,625000,2016,51330,Diesel,Manual,1248 cc,89 bhp @ 4000 rpm,200 Nm @ 1750 rpm,5,43,3,car
+49,Maruti Suzuki,Ciaz VXi,511000,2015,45969,Petrol,Manual,1373 cc,91 bhp @ 6000 rpm,130 Nm @ 4000 rpm,5,43,4,car
+50,Hyundai,Creta SX Plus 1.6 AT CRDI,1150000,2017,66602,Diesel,Automatic,1582 cc,126 bhp @ 4000 rpm,265 Nm @ 1900 rpm,5,60,5,car
+51,Hyundai,Creta SX Plus 1.6  Petrol,885000,2016,57983,Petrol,Manual,1591 cc,122 bhp @ 6400 rpm,154 Nm @ 4850 rpm,5,60,5,car
+52,Renault,Kwid 1.0 RXT AMT Opt,470000,2019,11183,Petrol,Automatic,999 cc,67 bhp @ 5500 rpm,91 Nm @ 4250 rpm,5,28,3,car
+53,MG,Hector Sharp 2.0 Diesel [2019-2020],1611000,2019,46301,Diesel,Manual,1956 cc,169 bhp @ 3750 rpm,350 Nm @ 1750 rpm,5,60,5,car
+54,Tata,Tiago Revotron XZA [2017-2019],475000,2017,34867,Petrol,Automatic,1199 cc,84 bhp @ 6000 rpm,114 Nm @ 3500 rpm,5,35,3,car
+55,Toyota,Innova 2.5 GX BS IV 7 STR,865000,2015,43634,Diesel,Manual,2494 cc,101 bhp @ 3600 rpm,200 Nm @ 1200 rpm,7,55,5,car
+56,BMW,X3 xDrive 20d Luxury Line [2018-2020],3800000,2018,9512,Diesel,Automatic,1995 cc,190 bhp @ 4000 rpm,400 Nm @ 1750 rpm,5,67,3,car
+57,Jeep,Compass Limited Plus 2.0 Diesel 4x4 AT,2475000,2020,11293,Diesel,Automatic,1956 cc,171 bhp @ 3750 rpm,350 Nm @ 1750 rpm,5,60,4,car
+58,Mahindra,Scorpio SLE BS-IV,400000,2014,78000,Diesel,Manual,2179 cc,120 bhp @ 4000 rpm,290 Nm @ 1800 rpm,8,60,5,car
+59,Honda,Brio S MT,440000,2016,50374,Petrol,Manual,1198 cc,87 bhp @ 6000 rpm,109 Nm @ 4500 rpm,5,35,4,car
+60,BMW,3-Series 320i Luxury Line,2800000,2017,15900,Petrol,Automatic,1998 cc,181 bhp @ 5000 rpm,270 Nm @ 1350 rpm,5,57,4,car
+61,Honda,City V Petrol [2017-2019],645000,2017,64000,Petrol,Manual,1497 cc,117 bhp @ 6600 rpm,145 Nm @ 4600 rpm,5,40,3,car
+62,Volkswagen,Polo Highline1.2L (D),365000,2013,78000,Diesel,Manual,1199 cc,74 bhp @ 4200 rpm,180 Nm @ 2000 rpm,5,45,3,car
+63,Maruti Suzuki,Vitara Brezza ZXi Plus,1044999,2021,24000,Petrol,Manual,1462 cc,103 bhp @ 6000 rpm,138 Nm @ 4400 rpm,5,48,3,car
+64,Maruti Suzuki,Eeco 7 STR [2019-2020],515000,2019,40310,Petrol,Manual,1196 cc,73 bhp @ 6000 rpm,101 Nm @ 3000 rpm,7,40,5,car
+65,Hyundai,Grand i10 Asta AT 1.2 Kappa VTVT [2013-2016],455000,2015,69700,Petrol,Automatic,1197 cc,79 bhp @ 6000 rpm,112 Nm @ 4000 rpm,5,43,4,car
+66,BMW,X3 xDrive20d,1800000,2012,74073,Diesel,Automatic,1995 cc,184 bhp @ 4000 rpm,380 Nm @ 1750 rpm,5,67,4,car
+67,Toyota,Fortuner 2.8 4x2 AT [2016-2020],3499000,2019,73000,Diesel,Automatic,2755 cc,174 bhp @ 3400 rpm,450 Nm @ 1600 rpm,7,80,3,car
+68,Honda,Civic 1.8S MT,190000,2006,130000,Petrol,Manual,1799 cc,130 bhp @ 6300 rpm,171.62 Nm @ 4300 rpm,5,50,3,car
+69,Audi,A4 2.0 TDI (143 bhp),1250000,2012,50000,Diesel,Automatic,1800 cc,130 bhp @ 6301 rpm,171.62 Nm @ 4301 rpm,5,45,5,car
+70,Maruti Suzuki,Swift ZXi Plus AMT,775000,2021,24000,Petrol,Automatic,1197 cc,89 bhp @ 6000 rpm,113 Nm @ 4400 rpm,5,37,5,car
+71,Hyundai,Elite i20 Sportz 1.5 MT Diesel,825000,2021,43000,Diesel,Manual,1493 cc,99 bhp @ 4000 rpm,240 Nm @ 1500 rpm,5,37,5,car
+72,Audi,A3 35 TDI Technology + Sunroof,2250000,2016,40500,Diesel,Automatic,1968 cc,141 bhp @ 3500 rpm,320 Nm @ 1750 rpm,5,50,3,car
+73,Honda,City V CVT Petrol [2017-2019],865000,2017,49013,Petrol,Automatic,1497 cc,117 bhp @ 6600 rpm,145 Nm @ 4600 rpm,5,40,4,car
+74,Ford,Figo Duratorq Diesel Titanium 1.4,299000,2013,64983,Diesel,Manual,1399 cc,68 bhp @ 4000 rpm,160 Nm @ 2000 rpm,5,45,5,car
+75,Honda,Jazz VX Petrol,570000,2017,92270,Petrol,Manual,1199 cc,89 bhp @ 6000 rpm,110 Nm @ 4800 rpm,5,40,4,car
+76,Volkswagen,Polo Highline1.2L (P),385000,2013,65000,Petrol,Manual,1198 cc,74 bhp @ 5400 rpm,110 Nm @ 3750 rpm,5,45,4,car
+77,Honda,Amaze 1.5 SX i-DTEC,350000,2014,110000,Diesel,Manual,1498 cc,99 bhp @ 3600 rpm,200 Nm @ 1750 rpm,5,35,4,car
+78,Toyota,Camry 2.5L AT,2345000,2017,47000,Petrol,Automatic,2494 cc,179 bhp @ 6000 rpm,233 Nm @ 4100 rpm,5,70,5,car
+79,Mahindra,Thar LX 4-STR Hard Top Petrol AT,1650000,2022,10000,Petrol,Automatic,1997 cc,150 bhp @ 5000 rpm,320 Nm @ 1500 rpm,4,57,3,car
+80,Mercedes-Benz,C-Class 250 CDI Elegance,1100000,2011,51500,Diesel,Automatic,2143 cc,207@4200,500@1600,5,66,4,car
+81,Audi,Q3 35 TDI quattro Premium Plus,2900000,2018,35000,Diesel,Automatic,1968 cc,184 bhp @ 3500 rpm,380 Nm @ 1750 rpm,5,64,5,car
+82,Maruti Suzuki,Baleno Sigma 1.2,545000,2017,61518,Petrol,Manual,1197 cc,83 bhp @ 6000 rpm,115 Nm @ 4000 rpm,5,37,4,car
+83,BMW,X1 sDrive20d xLine,2990000,2018,34000,Diesel,Automatic,1995 cc,184 bhp @ 4000 rpm,350 Nm @ 1750 rpm,5,63,5,car
+84,Maruti Suzuki,Baleno Zeta 1.2,615000,2017,36058,Petrol,Manual,1197 cc,83 bhp @ 6000 rpm,115 Nm @ 4000 rpm,5,37,5,car
+85,Hyundai,Creta 1.6 SX Plus AT,890000,2016,88000,Diesel,Automatic,1582 cc,126 bhp @ 4000 rpm,265 Nm @ 1900 rpm,5,60,3,car
+86,Volkswagen,Vento Comfortline Petrol,430000,2015,98112,Petrol,Manual,1598 cc,103 bhp @ 5250 rpm,153 Nm @ 3800 rpm,5,55,3,car
+87,Mercedes-Benz,C-Class 220 BlueEfficiency,1650000,2013,58000,Diesel,Automatic,2143 cc,170 bhp @ 4200 rpm,400 Nm @ 2800 rpm,5,66,5,car
+88,Toyota,Camry Hybrid,1599000,2015,92355,Petrol,Automatic,2494 cc,202 bhp @ 5700 rpm,270 Nm @ 4500 rpm,5,65,5,car
+89,Maruti Suzuki,DZire VXi,691000,2019,16652,Petrol,Manual,1197 cc,89 bhp @ 6000 rpm,113 Nm @ 4400 rpm,5,37,5,car
+90,Nissan,Terrano XV D THP 110 PS,650000,2016,76584,Diesel,Manual,1461 cc,108 bhp @ 3900 rpm,248 Nm @ 2250 rpm,5,50,4,car
+91,Maruti Suzuki,Wagon R LXI CNG,415000,2015,42500,CNG,Manual,998 cc,58 bhp @ 6200 rpm,77 Nm @ 3500 rpm,5,35,5,car
+92,Maruti Suzuki,Vitara Brezza LDi (O) [2016-2018],669000,2016,70000,Diesel,Manual,1248 cc,89 bhp @ 4000 rpm,200 Nm @ 1750 rpm,5,48,4,car
+93,BMW,X5 xDrive30d Pure Experience (5 Seater),2950000,2015,84700,Diesel,Automatic,2993 cc,258 bhp @ 4000 rpm,560 Nm @ 1500 rpm,5,52,3,car
+94,Mercedes-Benz,GLC 220 d Sport,3900000,2018,83400,Diesel,Automatic,2993 cc,258 bhp @ 4001 rpm,560 Nm @ 1501 rpm,4,50,3,car
+95,Porsche,Cayenne Coupe Platinum Edition,16200000,2022,2766,Petrol,Automatic,2995 cc,335 bhp @ 5300 rpm,450 Nm @ 1340 rpm,4,75,3,car
+96,Mercedes-Benz,C-Class Cabriolet C 300,5100000,2017,56000,Petrol,Automatic,1991 cc,241 bhp @ 5500 rpm,370 Nm @ 1300 rpm,4,59,4,car
+97,Hyundai,Elite i20 Magna 1.2,525000,2015,68766,Petrol,Manual,1197 cc,82 bhp @ 6000 rpm,115 Nm @ 4000 rpm,5,45,5,car
+98,Hyundai,Verna 1.6 VTVT SX,750000,2018,16339,Petrol,Manual,1591 cc,121 bhp @ 6300 rpm,158 Nm @ 4200 rpm,5,43,3,car
+99,Royal Enfield Classic 350,,4000,2019,350,Petrol,Manual,300,,,2,12,3,bike
+100,Honda Dio,,2600,2017,5650,Petrol,Manual,140,,,2,11,3,bike
+101,Royal Enfield Classic Gunmetal Grey,,3100,2018,12000,Petrol,Manual,150,,,2,13,5,bike
+102,Yamaha Fazer FI V 2.0 [2016-2018],,1000,2015,23000,Petrol,Manual,300,,,2,11,4,bike
+103,Yamaha SZ [2013-2014],,3500,2011,21000,Petrol,Manual,350,,,2,11,5,bike
+104,Honda CB Twister,,1800,2010,60000,Petrol,Manual,250,,,2,12,4,bike
+105,Honda CB Hornet 160R,,3800,2018,17000,Petrol,Manual,250,,,2,12,5,bike
+106,Royal Enfield Bullet 350 [2007-2011],,1700,2008,39000,Petrol,Manual,200,,,2,13,3,bike
+107,Hero Honda CBZ extreme,,2400,2010,32000,Petrol,Manual,150,,,2,11,3,bike
+108,Bajaj Discover 125,,2800,2016,42000,Petrol,Manual,350,,,2,12,3,bike
+109,Yamaha FZ16,,2400,2015,32000,Petrol,Manual,250,,,2,10,4,bike
+110,Honda Navi,,3200,2016,10000,Petrol,Manual,350,,,2,12,3,bike
+111,Bajaj Avenger Street 220,,1900,2018,21178,Petrol,Manual,200,,,2,11,3,bike
+112,Yamaha YZF R3,,3500,2019,1127,Petrol,Manual,150,,,2,12,4,bike
+113,Jawa 42,,2700,2020,1700,Petrol,Manual,300,,,2,13,4,bike
+114,Suzuki Access 125 [2007-2016],,2600,2012,55000,Petrol,Manual,300,,,2,11,3,bike
+115,Hero Honda Glamour,,3400,2006,27000,Petrol,Manual,350,,,2,10,3,bike
+116,Yamaha YZF R15 S,,1300,2010,45000,Petrol,Manual,250,,,2,11,5,bike
+117,Royal Enfield Classic Gunmetal Grey,,2800,2018,23000,Petrol,Manual,300,,,2,13,5,bike
+118,Yamaha FZ25,,1100,2018,39000,Petrol,Manual,150,,,2,10,4,bike
+119,Hero Passion Pro 110,,2500,2008,60000,Petrol,Manual,250,,,2,12,5,bike
+120,Honda Navi [2016-2017],,1100,2016,17450,Petrol,Manual,200,,,2,12,4,bike
+121,Honda Activa i,,3600,2013,20696,Petrol,Manual,300,,,2,13,5,bike
+122,Jawa Standard,,3700,2019,2000,Petrol,Manual,250,,,2,10,3,bike
+123,Royal Enfield Thunderbird 350,,1700,2016,20000,Petrol,Manual,250,,,2,10,3,bike
+124,Honda Dream Yuga,,3400,2012,35000,Petrol,Manual,300,,,2,13,5,bike
+125,TVS Apache RTR 160 4V,,3000,2018,15210,Petrol,Manual,300,,,2,12,3,bike
+126,Honda Navi [2016-2017],,2800,2017,24000,Petrol,Manual,150,,,2,11,4,bike
+127,Yamaha Fazer [2009-2016],,1700,2013,35000,Petrol,Manual,350,,,2,13,3,bike
+128,Hero Honda Splendor NXG,,3000,2009,10000,Petrol,Manual,200,,,2,13,3,bike
+129,Hero Glamour 125,,1900,2017,2500,Petrol,Manual,300,,,2,13,4,bike
+130,Yamaha FZ S [2012-2016],,3300,2013,75000,Petrol,Manual,350,,,2,12,4,bike
+131,Hero Xtreme Sports,,2200,2016,50000,Petrol,Manual,350,,,2,10,4,bike
+132,Honda X-Blade,,3500,2018,27000,Petrol,Manual,300,,,2,10,4,bike
+133,Honda CB Shine SP,,1000,2019,10000,Petrol,Manual,350,,,2,13,3,bike
+134,Honda Activa 5G,,2600,2018,6502,Petrol,Manual,200,,,2,12,3,bike
+135,Hero Glamour 125,,1200,2018,21000,Petrol,Manual,200,,,2,11,5,bike
+136,Honda CBR-250R,,1900,2016,16000,Petrol,Manual,350,,,2,11,3,bike
+137,Hero Honda Passion PRO [2012],,2900,2011,42000,Petrol,Manual,150,,,2,12,4,bike
+138,Royal Enfield Thunderbird 350,,1400,2015,13000,Petrol,Manual,300,,,2,13,3,bike
+139,Bajaj Dominar 400,,1400,2017,12800,Petrol,Manual,200,,,2,13,4,bike
+140,Hero Glamour FI,,3300,2018,20000,Petrol,Manual,350,,,2,12,3,bike
+141,KTM 390 Duke,,3900,2017,4600,Petrol,Manual,200,,,2,12,5,bike
+142,Hero Passion XPro,,3900,2012,81000,Petrol,Manual,200,,,2,13,5,bike
+143,Yamaha FZ S V 2.0,,3500,2018,8000,Petrol,Manual,150,,,2,11,5,bike
+144,Hero Achiever 150,,3700,2016,55000,Petrol,Manual,200,,,2,11,3,bike
+145,Bajaj Discover 125,,1000,2011,57000,Petrol,Manual,250,,,2,11,5,bike
+146,Yamaha FZ16,,3500,2009,26000,Petrol,Manual,250,,,2,13,3,bike
+147,Yamaha Saluto,,2500,2018,13000,Petrol,Manual,150,,,2,11,3,bike
+148,Yamaha FZ16,,3600,2012,29000,Petrol,Manual,250,,,2,10,4,bike
+149,Bajaj Discover 100,,1500,2010,43000,Petrol,Manual,300,,,2,13,3,bike
+150,Honda CB Trigger,,1300,2015,40000,Petrol,Manual,350,,,2,13,3,bike
+151,Royal Enfield Electra 5 S,,2700,2010,40000,Petrol,Manual,250,,,2,10,5,bike
+152,Hero Splendor PRO,,2500,2015,24000,Petrol,Manual,200,,,2,12,3,bike
+153,Honda Activa 5G,,1300,2019,3000,Petrol,Manual,350,,,2,11,3,bike
+154,Hero Honda Passion Plus,,1000,2006,75000,Petrol,Manual,150,,,2,13,3,bike
+155,Bajaj Pulsar 150,,1900,2010,42000,Petrol,Manual,350,,,2,10,4,bike
+156,Royal Enfield Bullet 350,,3100,2014,13000,Petrol,Manual,150,,,2,12,4,bike
+157,Bajaj Discover 125,,3500,2013,55000,Petrol,Manual,150,,,2,12,5,bike
+158,Bajaj Pulsar 150 [2001-2011],,3500,2011,23000,Petrol,Manual,150,,,2,10,4,bike
+159,Hero Splendor PRO,,2300,2015,24000,Petrol,Manual,250,,,2,11,3,bike
+160,Hero Xtreme Sports,,1100,2014,80000,Petrol,Manual,350,,,2,13,5,bike
+161,Honda Activa 3G,,2700,2015,39000,Petrol,Manual,150,,,2,10,3,bike
+162,Yamaha FZ16,,1300,2016,20000,Petrol,Manual,300,,,2,11,4,bike
+163,Honda CB Hornet 160R,,2700,2016,30000,Petrol,Manual,150,,,2,12,5,bike
+164,Royal Enfield Thunderbird 350,,2000,2013,21000,Petrol,Manual,200,,,2,10,3,bike
+165,Hero Hunk,,1500,2014,41000,Petrol,Manual,250,,,2,10,5,bike
+166,Suzuki Let''s,,3800,2014,8000,Petrol,Manual,350,,,2,10,4,bike
+167,Royal Enfield Electra 4 S,,2100,2008,50000,Petrol,Manual,350,,,2,12,4,bike
+168,TVS Scooty Pep Plus,,1900,2012,8150,Petrol,Manual,350,,,2,11,5,bike
+169,Mahindra Mojo XT300,,3500,2017,1933,Petrol,Manual,350,,,2,11,3,bike
+170,TVS Apache RTR 160,,3300,2013,55750,Petrol,Manual,200,,,2,10,3,bike
+171,Bajaj Pulsar AS200,,1200,2015,15856,Petrol,Manual,250,,,2,13,5,bike
+172,Bajaj Pulsar 150,,1600,2013,27000,Petrol,Manual,250,,,2,10,3,bike
+173,Royal Enfield Thunderbird 350X,,1600,2019,3700,Petrol,Manual,350,,,2,12,3,bike
+174,Suzuki Intruder 150,,3000,2018,21938,Petrol,Manual,150,,,2,11,3,bike
+175,Hero Honda Karizma ZMR [2010],,1800,2010,48000,Petrol,Manual,200,,,2,11,3,bike
+176,Honda Dio,,2400,2009,16000,Petrol,Manual,200,,,2,11,3,bike
+177,Bajaj Xcd,,2900,2008,54000,Petrol,Manual,250,,,2,11,4,bike
+178,Hero Splendor Plus,,1300,2014,35000,Petrol,Manual,350,,,2,12,4,bike
+179,Royal Enfield Thunderbird 350X,,3000,2018,15000,Petrol,Manual,350,,,2,12,4,bike
+180,Honda CB Unicorn 150,,2200,2014,32000,Petrol,Manual,300,,,2,11,4,bike
+181,Honda Activa 5G,,2900,2019,3500,Petrol,Manual,250,,,2,11,4,bike
+182,Honda CB Twister,,3600,2013,9000,Petrol,Manual,350,,,2,12,4,bike
+183,Hero Splendor PRO,,3100,2015,38000,Petrol,Manual,350,,,2,11,4,bike
+184,Hero Honda CD Deluxe,,2900,2009,50000,Petrol,Manual,350,,,2,10,4,bike
+185,Honda Activa i [2016-2017],,2800,2015,20000,Petrol,Manual,150,,,2,12,5,bike
+186,Royal Enfield Classic Gunmetal Grey,,3600,2018,22000,Petrol,Manual,250,,,2,10,5,bike
+187,TVS Scooty Zest 110,,3200,2017,9432,Petrol,Manual,350,,,2,11,3,bike
+188,Hero CD Deluxe,,1300,2014,70000,Petrol,Manual,350,,,2,12,3,bike
+189,Suzuki Access 125 [2007-2016],,1600,2010,43000,Petrol,Manual,200,,,2,10,4,bike
+190,Honda Activa [2000-2015],,3200,2012,500000,Petrol,Manual,250,,,2,12,5,bike
+191,Honda Activa 125 [2016-2017],,2500,2016,30514,Petrol,Manual,300,,,2,10,4,bike
+192,Suzuki GS150R,,1400,2010,130000,Petrol,Manual,250,,,2,10,5,bike
+193,Bajaj Pulsar 220S,,2900,2015,45000,Petrol,Manual,250,,,2,13,3,bike
+194,Honda Activa 4G,,1800,2018,25000,Petrol,Manual,350,,,2,13,5,bike
+195,Yamaha FZ25,,1800,2019,2500,Petrol,Manual,350,,,2,12,4,bike
+196,Bajaj Pulsar 150,,1400,2015,22770,Petrol,Manual,250,,,2,12,5,bike
+197,Hero Splendor Plus,,2200,2015,30000,Petrol,Manual,250,,,2,13,4,bike

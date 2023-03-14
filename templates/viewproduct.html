@@ -176,18 +176,18 @@
         </ul>
         <!--Breadcrumbs-->
         <div class="container" style="width:90%;height:2rem;padding-top:1rem;">
-            <b><a href="/product/" style="color:black;">Search </a><a style="color:grey;">>&nbsp;</a><a href="/product/category/cars/" style="color:black;">{{products.vehicleType}}</a><a style="color:grey;">>&nbsp;</a><a href="" style="color:black;">{{products.name}}</a></b>
+            <b><a href="/product/" style="color:black;">Search </a><a style="color:grey;">&nbsp;</a><a href="/product/category/cars/" style="color:black;">{{products.vehicleType}}</a><a style="color:grey;">>&nbsp;</a><a href="" style="color:black;">{{products.name}}</a></b>
         </div><br>
         <!--Book section-->
         <div class="container">
             <div class="row">
                 <!--Product images-->
                 <div class="col-md center" style="margin:0;padding:1.5rem 0 0 0;">
-                    <div style="box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);border-radius:3px;min-height: 50vh;background-color:black;background-image: url(https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/17q3/685272/2018-bmw-m5-photos-and-information-news-car-and-driver-photo-688789-s-original.jpg?fill=2:1&resize=1200:*);background-size: cover;background-position: center;">
+                    <div style="box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);border-radius:3px;min-height: 50vh;background-color:black;background-image: url({{products.image_url}});background-size: cover;background-position: center;">
                     </div><br>
-                    <img width="80" src="https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/17q3/685272/2018-bmw-m5-photos-and-information-news-car-and-driver-photo-688789-s-original.jpg?fill=2:1&resize=1200:*">
-                    <img width="80" src="https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/17q3/685272/2018-bmw-m5-photos-and-information-news-car-and-driver-photo-688789-s-original.jpg?fill=2:1&resize=1200:*">
-                    <img width="80" src="https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/17q3/685272/2018-bmw-m5-photos-and-information-news-car-and-driver-photo-688789-s-original.jpg?fill=2:1&resize=1200:*">
+                    <img width="80" src="{{products.image_url}}">
+                    <img width="80" src="{{products.image_url}}">
+                    <img width="80" src="{{products.image_url}}">
                 </div>
                 <!--Product Discription-->
                 <div class="col-md" style="padding:0rem;display: flex;justify-content: center;">
@@ -386,16 +386,17 @@
             </div>
             <div class="wrapper" style="overflow-x: scroll;overflow-y: hidden;">
                 <div class="item" style="height: auto; background-color: transparent; margin:5px; display:flex;">
+                    {% for suggestion in suggestions %}
                     <div class="item" style="height: auto; width:20rem; background-color: transparent; margin:5px;">
                         <div class="card hoverable" style="border-radius:5px;">
                             <div class="card-image">
-                                <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
-                                <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
+                                <img style="border-radius: 3px;background-image: url({{ suggestion.image_url }});background-size: cover;background-position: center;aspect-ratio: 16/9;">
+                                <a href="/product/productdetail/{{suggestion.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. {{suggestion.price}}</b></a>
                             </div>
                             <div class="card-body" style="display: flex;flex-direction:column;margin-bottom:0px;">
                                 <div class="col" style="box-sizing:content-box">
-                                    <h5 class="card-title truncate" id="cardTitle" style="font-size:16pt">Hyundai</h5>
-                                    <p class="card-text truncate" style="font-size:12pt">Model: Hyundai </p>
+                                    <h5 class="card-title truncate" id="cardTitle" style="font-size:16pt">{{ suggestion.name }}</h5>
+                                    <p class="card-text truncate" style="font-size:12pt">Model: {{ suggestion.model }} </p>
                                 </div>
                                 <hr>
                                 <div class="col center" style="padding: 0;">
@@ -421,76 +422,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="item" style="height: auto; width:20rem; background-color: transparent; margin:5px;">
-                        <div class="card hoverable" style="border-radius:5px;">
-                            <div class="card-image">
-                                <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
-                                <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
-                            </div>
-                            <div class="card-body" style="display: flex;flex-direction:column;margin-bottom:0px;">
-                                <div class="col" style="box-sizing:content-box">
-                                    <h5 class="card-title truncate" id="cardTitle" style="font-size:16pt">Hyundai</h5>
-                                    <p class="card-text truncate" style="font-size:12pt">Model: Hyundai </p>
-                                </div>
-                                <hr>
-                                <div class="col center" style="padding: 0;">
-                                    <div class="center" style="display: flex;margin-top:1rem;margin-bottom:0rem;justify-content:space-evenly;">
-                                        <div class="col" style="padding:0rem;">
-                                            <img width="20px" src={% static "./icons/car-seat.png"%}>
-                                            <figcaption style="font-size:10pt;">4</figcaption>
-                                        </div>
-                                        <div class="col" style="padding:0rem;">
-                                            <img width="20px" src={% static "./icons/car-engine.png"%}>
-                                            <figcaption style="font-size:10pt;width: 4rem;">1000</figcaption>
-                                        </div>
-                                        <div class="col" style="padding:0rem;">
-                                            <img width="20px" src={% static "./icons/download-speed.png"%}>
-                                            <figcaption style="font-size:10pt; width: 4rem;" class="truncate">150km/hrs</figcaption>
-                                        </div>
-                                        <div class="col" style="padding:0rem;">
-                                            <img width="20px" src={% static "./icons/gas-station.png"%}>
-                                            <figcaption style="font-size:10pt;">petrol</figcaption>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item" style="height: auto; width:20rem; background-color: transparent; margin:5px;">
-                        <div class="card hoverable" style="border-radius:5px;">
-                            <div class="card-image">
-                                <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
-                                <a class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. 20000</b></a>
-                            </div>
-                            <div class="card-body" style="display: flex;flex-direction:column;margin-bottom:0px;">
-                                <div class="col" style="box-sizing:content-box">
-                                    <h5 class="card-title truncate" id="cardTitle" style="font-size:16pt">Hyundai</h5>
-                                    <p class="card-text truncate" style="font-size:12pt">Model: Hyundai </p>
-                                </div>
-                                <hr>
-                                <div class="col center" style="padding: 0;">
-                                    <div class="center" style="display: flex;margin-top:1rem;margin-bottom:0rem;justify-content:space-evenly;">
-                                        <div class="col" style="padding:0rem;">
-                                            <img width="20px" src={% static "./icons/car-seat.png"%}>
-                                            <figcaption style="font-size:10pt;">4</figcaption>
-                                        </div>
-                                        <div class="col" style="padding:0rem;">
-                                            <img width="20px" src={% static "./icons/car-engine.png"%}>
-                                            <figcaption style="font-size:10pt;width: 4rem;">1000</figcaption>
-                                        </div>
-                                        <div class="col" style="padding:0rem;">
-                                            <img width="20px" src={% static "./icons/download-speed.png"%}>
-                                            <figcaption style="font-size:10pt; width: 4rem;" class="truncate">150km/hrs</figcaption>
-                                        </div>
-                                        <div class="col" style="padding:0rem;">
-                                            <img width="20px" src={% static "./icons/gas-station.png"%}>
-                                            <figcaption style="font-size:10pt;">petrol</figcaption>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
+                   
                 </div>
             </div>
         </div>

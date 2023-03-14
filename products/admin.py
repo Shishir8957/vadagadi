@@ -66,6 +66,7 @@ class ProductAdmin(admin.ModelAdmin):
                     fuleTankSize = fields[11],
                     ratings = fields[12],
                     vehicleType = fields[13],
+                    image_url = fields[14],
                 )
                 # else:
                 #     created = Product.objects.update_or_create(
@@ -110,3 +111,4 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('comment','user','product')
     search_fields = ('comment','product__name',)
 admin.site.register(Comment,CommentAdmin)
+admin.site.register(Ratings)

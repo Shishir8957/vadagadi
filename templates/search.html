@@ -38,11 +38,13 @@
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="card hoverable" style="border-radius:5px;">
                         <div class="card-image">
-                            <img style="border-radius:5px;" src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200">
+                            <div class="card-image" style="border-radius: 3px;background-image: url({{product.image_url}});background-size: cover;background-position: center;aspect-ratio: 16/9;"></div>
+                            {% comment %} <img style="border-radius:5px;aspect-ratio: 16 / 9;
+                            " src="https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/17q3/685272/2018-bmw-m5-photos-and-information-news-car-and-driver-photo-688789-s-original.jpg?fill=2:1&resize=1200:*"> {% endcomment %}
                             {% if not product.booked %}
-                                <a href="/product/productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;"><b>Rs. {{product.price}}</b></a>
+                                <a href="/product/productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;">Rs. {{product.price}}</a>
                             {% else %}
-                                <a href="/product/productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;" disabled><b>Reserved</b></a>
+                                <a href="/product/productdetail/{{product.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;" disabled>Rs. {{product.price}}</a>
                             {% endif %}
                         </div>
                         <div class="card-body" style="display: flex;flex-direction:column;margin-bottom:0px;">

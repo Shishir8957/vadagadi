@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('',views.home,name="home"),
+    path('rating/<str:id>/',views.rating,name="rating"),
     path('category/cars/',views.car,name="car"),
     path('category/price/',views.price,name="price"),
     path('category/name/',views.name,name="name"),
@@ -17,3 +18,4 @@ urlpatterns = [
     path('postComment',views.postComment,name="postComment"),
     path('deleteComment/<str:slug>',views.deleteComment,name="deleteComment"),
 ]
+ 

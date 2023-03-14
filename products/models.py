@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import gettext as _
 from django.contrib.auth.models import User
 from django.utils.timezone import now
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class FuleType(models.Model):
     title = models.CharField(max_length=200)
@@ -56,6 +57,7 @@ class Product(models.Model):
     fuleTankSize = models.CharField(max_length=200,null=True)
     vehicleType = models.CharField(max_length=200,null=True)
     ratings = models.CharField(max_length=200,null=True)
+    image_url = models.CharField(max_length=500,null=True)
     booked = models.BooleanField(default=False,null=True)
     def __str__(self):
         return self.name+' '+'Model: '+ self.model
@@ -72,6 +74,11 @@ class Booking(models.Model):
     driverStatus = models.BooleanField(default=False)
     product = models.ForeignKey(Product,on_delete=models.CASCADE,null=True)
 
+class Ratings(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    product = models.ForeignKey(Product,on_delete=models.CASCADE,null=True,related_name='rating')
+    rating = models.IntegerField(default=0,null=True,validators=[MaxValueValidator(5),MinValueValidator(1)])
+
 class PaymentComplete(models.Model):
    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
    product = models.ForeignKey(Product,on_delete=models.CASCADE,null=True)
@@ -79,6 +86,7 @@ class PaymentComplete(models.Model):
    amount = models.IntegerField(default=0,null=True)
    payment_type = models.CharField(max_length=200,null=True)
    payment = models.BooleanField(default=False)
+   rating =models.ForeignKey(Ratings,on_delete=models.CASCADE,null=True)
 
 class Comment(models.Model):
     sno = models.AutoField(primary_key= True)
@@ -88,8 +96,3 @@ class Comment(models.Model):
     timestamp = models.DateTimeField(default=now)
     def __str__(self):
         return self.comment[0:15]+"... "+ "by " + self.user.username
-    
-# class Promise(models):
-#     title = models.CharField(max_length=300)
-#     description = models.TextField(blank=True)
-#     made_on = models.DateField()

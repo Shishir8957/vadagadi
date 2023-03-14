@@ -7,6 +7,8 @@ from datetime import datetime
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Q
+from django.db.models import Max
+from .recommendation import get_recommendation
 
 # Create your views here.
 def home(request):
@@ -22,7 +24,7 @@ def payment(request):
 @login_required(login_url='/register/')
 def history(request):
     user = request.user
-    payment_complete = PaymentComplete.objects.filter(user=request.user)
+    payment_complete = PaymentComplete.objects.filter(user=request.user) 
     if user.is_superuser:
       booking = Booking.objects.all()
       payment_complete = PaymentComplete.objects.all()
@@ -33,27 +35,40 @@ def history(request):
 def viewProduct(request,id):
   product = Product.objects.get(id=id)
   booking = Booking.objects.all()
+  values= get_recommendation(product.name)
+  suggestions=[]
+  for i in range(3):
+    suggestions.append(Product.objects.get(id=values[i+1][1]))
+  print(suggestions)
   for i in booking :
     if product.id == i.product.id :
       booking = Booking.objects.get(id=i.id)
-      print(booking)
-      print(i.product.id)
       comments = Comment.objects.filter(product=product).order_by('-timestamp')
-      return render(request, 'viewproduct.html',{'products':product,'comments':comments,'booking':booking})
+      return render(request, 'viewproduct.html',{'products':product,'comments':comments,'booking':booking,'suggestions':suggestions})
   comments = Comment.objects.filter(product=product).order_by('-timestamp')
-  return render(request, 'viewproduct.html',{'products':product,'comments':comments})
+  return render(request, 'viewproduct.html',{'products':product,'comments':comments,'suggestions':suggestions})
+
+@login_required(login_url='/register/')
+def rating(request,id):
+  if request.method == 'POST':
+    product = PaymentComplete.objects.get(id=id)
+    rating = request.POST[f"product-{id}-rating"]
+    Ratings.objects.create(user=request.user,product=product.product,rating=rating)
+  return redirect('/product/history/')
 
 def car(request):
-  data = Product.objects.filter(Q(vehicleType='cars\r')|Q(booked=False))
+  data = Product.objects.filter(vehicleType='car')
   search = "Cars"
   return render(request, 'search.html',{'products':data,'search':search})
 
-def price(request):
-  product = Product.objects.all().filter(booked=False).order_by('-price').values()
-  paginator = Paginator(product, 12)
-  page_number = request.GET.get('page')
-  page_obj = paginator.get_page(page_number)
-  return render(request, 'productpage.html',{'products':page_obj})
+def price(request):    
+  filter_price1 = request.GET['min_price']
+  filter_price2 = request.GET['max_price']
+  if filter_price1=='' and filter_price2=='':
+    products = Product.objects.filter(booked=False).order_by('price').values()
+    return render(request, 'productpage.html',{'products':products})
+  products = Product.objects.filter(price__range=(int(filter_price1),int(filter_price2)))
+  return render(request, 'productpage.html',{'products':products,'display':True})
 
 def name(request):
   product = Product.objects.all().filter(booked=False).order_by('name').values()
@@ -63,8 +78,8 @@ def name(request):
   return render(request, 'productpage.html',{'products':page_obj})
 
 def bike(request):
-  data = Product.objects.filter(Q(vehicleType='bikes\r')|Q(booked=False))
-  search = "Bike's"
+  data = Product.objects.filter(vehicleType='bike')
+  search = "Bikes"
   return render(request, 'search.html',{'products':data,'search':search})
 
 @login_required(login_url='/register/')
