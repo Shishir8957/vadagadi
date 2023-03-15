@@ -43,7 +43,7 @@ def register(request):
         password1 = request.POST['password1']
         password2 = request.POST['password2']
         username = request.POST['username']
-        
+         
         if password1==password2:
             if User.objects.filter(email=email).exists():
                 messages.info(request,'email taken')
@@ -53,7 +53,7 @@ def register(request):
                 return redirect('register')     
             else:    
                 token = ''.join(secrets.choice(string.ascii_uppercase + string.ascii_lowercase) for i in range(7))
-                send_mail('Register your email', f"Register your email http://20.40.54.252/register/activateUser/{token}/ ", 'royell4912@gmail.com', [email],fail_silently=False)
+                send_mail('Register your email', f"Register your email http://127.0.0.1:8000/register/activateUser/{token}/ ", 'royell4912@gmail.com', [email],fail_silently=False)
                 user = User.objects.create_user(username=username,first_name=first_name,email=email,password=password1)
                 user.is_active=False
                 user.save(); 
@@ -74,10 +74,10 @@ def activateUser(request,slug):
             user.save();
             randomString.objects.filter(random=slug).delete()
             messages.info(request,'Enter your credientials')
-            return redirect('register')
+            return render(request,'account.html',{'color':True})
     else:
         messages.info(request,'link no longer valid')
-    return redirect('register')
+    return render(request,'account.html',{'color':True})
 
 def login(request):        
     if request.method == 'POST':
@@ -113,14 +113,14 @@ def email_submited(request):
         token = ''.join(secrets.choice(string.ascii_uppercase + string.ascii_lowercase) for i in range(7))
         u=User.objects.filter(email=email)
         if not u:
-            send_mail('Register your email', f"Register your email http://20.40.54.252/register/ ", 'royell4912@gmail.com', [email],fail_silently=False)
+            send_mail('Register your email', f"Register your email http://http://127.0.0.1:8000/register/ ", 'royell4912@gmail.com', [email],fail_silently=False)
         else:
             for user in u:
                 token = ''.join(secrets.choice(string.ascii_uppercase + string.ascii_lowercase) for i in range(7))
-                send_mail('Reset password', f"Reset password http://20.40.54.252/register/password_reset/{token}/ ", 'royell4912@gmail.com', [email],fail_silently=False)
+                send_mail('Reset password', f"Reset password http://http://127.0.0.1:8000/register/password_reset/{token}/ ", 'royell4912@gmail.com', [email],fail_silently=False)
                 print(user)
                 randomString.objects.create(random=token,user=user).save
-    return HttpResponse('<div style="text-align: center; margin: 17rem;">Please check your email<br> <a href="/blog" style="margin:1rem;" type="submit"> Return to home </a></div>')
+    return HttpResponse('<div style="text-align: center; margin: 17rem;">Please check your email<br> <a href="/" style="margin:1rem;" type="submit"> Return to home </a></div>')
 
 def userValid(request,slug):
     for token in randomString.objects.filter(random=slug):

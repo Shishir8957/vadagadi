@@ -175,8 +175,8 @@
             </li>
         </ul>
         <!--Breadcrumbs-->
-        <div class="container" style="width:90%;height:2rem;padding-top:1rem;">
-            <b><a href="/product/" style="color:black;">Search </a><a style="color:grey;">&nbsp;</a><a href="/product/category/cars/" style="color:black;">{{products.vehicleType}}</a><a style="color:grey;">>&nbsp;</a><a href="" style="color:black;">{{products.name}}</a></b>
+        <div class="container" style="width:90%;height:2rem;padding-top:1rem;display:flex;align-items:center;">
+            <b><a href="/product/" style="color:black;">Search</a><a style="color:grey;">>&nbsp;</a><a href="/product/category/cars/" style="color:black;">{{products.vehicleType}}</a><a style="color:grey;">>&nbsp;</a><a href="" style="color:black;">{{products.name}}</a></b>
         </div><br>
         <!--Book section-->
         <div class="container">
@@ -220,7 +220,7 @@
                                     <input type='checkbox' name='needDriver'></input>
                                     <span>Need a driver<a href="/privacy_policy/"> Privacy Policy</a></span>
                                 </label>
-                                <h5 style="font-weight:550;font-size:1.5rem;">Your Total: <a style="font-weight:50;background-color:#ff3e5b3a;padding:0.2rem 1.7rem; border-radius: 20px;border: 1px solid #FF3E5A;">20,000</a></h5>
+                                {% comment %} <h5 style="font-weight:550;font-size:1.5rem;">Your Total: <a style="font-weight:50;background-color:#ff3e5b3a;padding:0.2rem 1.7rem; border-radius: 20px;border: 1px solid #FF3E5A;">20,000</a></h5> {% endcomment %}
                                 {% if user.is_authenticated %}
                                     {% if not booking %}
                                         <button type="submit" class="waves-effect waves-red btn" style="border-radius: 2rem;background-color:#FF3E5A;margin-top:1rem;width: 100%;">
@@ -382,48 +382,53 @@
         <!--Recomendation Card-->
         <div class="container">
             <div class="container-fluid" style="width: 100%;">
-                <h1 style="font-size:2.3rem;font-weight:550;margin:0;padding:3rem 0 1rem 0">Vehicle You May like</h1>
+                <h1 style="font-size:2.3rem;font-weight:550;margin:0;padding:3rem 0 1rem 0">Vehicles You May like</h1>
             </div>
             <div class="wrapper" style="overflow-x: scroll;overflow-y: hidden;">
-                <div class="item" style="height: auto; background-color: transparent; margin:5px; display:flex;">
+                <div class="row row-cols-4" style="width: 100%; margin: auto;">
                     {% for suggestion in suggestions %}
-                    <div class="item" style="height: auto; width:20rem; background-color: transparent; margin:5px;">
-                        <div class="card hoverable" style="border-radius:5px;">
-                            <div class="card-image">
-                                <img style="border-radius: 3px;background-image: url({{ suggestion.image_url }});background-size: cover;background-position: center;aspect-ratio: 16/9;">
-                                <a href="/product/productdetail/{{suggestion.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;"><b>Rs. {{suggestion.price}}</b></a>
-                            </div>
-                            <div class="card-body" style="display: flex;flex-direction:column;margin-bottom:0px;">
-                                <div class="col" style="box-sizing:content-box">
-                                    <h5 class="card-title truncate" id="cardTitle" style="font-size:16pt">{{ suggestion.name }}</h5>
-                                    <p class="card-text truncate" style="font-size:12pt">Model: {{ suggestion.model }} </p>
+                        <div class="col col-sm-12 col-md-4 col-lg-3">
+                            <div class="card hoverable" style="border-radius:5px;">
+                                <div class="card-image">
+                                    <div class="card-image" style="border-radius: 3px;background-image: url({{suggestion.image_url}});background-size: cover;background-position: center;aspect-ratio: 16/9;"></div>
+                                    {% comment %} <img style="border-radius:5px;aspect-ratio: 16 / 9;
+                                    " src="https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/17q3/685272/2018-bmw-m5-photos-and-information-news-car-and-driver-photo-688789-s-original.jpg?fill=2:1&resize=1200:*"> {% endcomment %}
+                                    {% if not suggestion.booked %}
+                                        <a href="/product/productdetail/{{suggestion.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;">Rs. {{suggestion.price}}</a>
+                                    {% else %}
+                                        <a href="/product/productdetail/{{suggestion.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;" disabled>Rs. {{suggestion.price}}</a>
+                                    {% endif %}
                                 </div>
-                                <hr>
-                                <div class="col center" style="padding: 0;">
-                                    <div class="center" style="display: flex;margin-top:1rem;margin-bottom:0rem;justify-content:space-evenly;">
-                                        <div class="col" style="padding:0rem;">
-                                            <img width="20px" src={% static "./icons/car-seat.png"%}>
-                                            <figcaption style="font-size:10pt;">4</figcaption>
-                                        </div>
-                                        <div class="col" style="padding:0rem;">
-                                            <img width="20px" src={% static "./icons/car-engine.png"%}>
-                                            <figcaption style="font-size:10pt;width: 4rem;">1000</figcaption>
-                                        </div>
-                                        <div class="col" style="padding:0rem;">
-                                            <img width="20px" src={% static "./icons/download-speed.png"%}>
-                                            <figcaption style="font-size:10pt; width: 4rem;" class="truncate">150km/hrs</figcaption>
-                                        </div>
-                                        <div class="col" style="padding:0rem;">
-                                            <img width="20px" src={% static "./icons/gas-station.png"%}>
-                                            <figcaption style="font-size:10pt;">petrol</figcaption>
+                                <div class="card-body" style="display: flex;flex-direction:column;margin-bottom:0px;">
+                                    <div class="col" style="box-sizing:content-box">
+                                        <h5 class="card-title truncate" id="cardTitle" style="font-size:16pt">{{suggestion.name}}</h5>
+                                        <p class="card-text truncate" style="font-size:12pt">Model: {{suggestion.model}} </p>
+                                    </div>
+                                    <hr>
+                                    <div class="col center" style="padding: 0;">
+                                        <div class="center" style="display: flex;margin-top:1rem;margin-bottom:0rem;justify-content:space-evenly;">
+                                            <div class="col" style="padding:0rem;">
+                                                <img width="20px" src={% static "./icons/car-seat.png"%}>
+                                                <figcaption style="font-size:10pt;">{{suggestion.seatingCapacity}}</figcaption>
+                                            </div>
+                                            <div class="col" style="padding:0rem;">
+                                                <img width="20px" src={% static "./icons/car-engine.png"%}>
+                                                <figcaption style="font-size:10pt;width: 4rem;">{{suggestion.engine}}</figcaption>
+                                            </div>
+                                            <div class="col" style="padding:0rem;">
+                                                <img width="20px" src={% static "./icons/download-speed.png"%}>
+                                                <figcaption style="font-size:10pt; width: 4rem;" class="truncate">{{suggestion.maxPower}}</figcaption>
+                                            </div>
+                                            <div class="col" style="padding:0rem;">
+                                                <img width="20px" src={% static "./icons/gas-station.png"%}>
+                                                <figcaption style="font-size:10pt;">{{suggestion.fuletype}}</figcaption>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     {% endfor %}
-                   
                 </div>
             </div>
         </div>

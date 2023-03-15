@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django import forms
 from django.contrib import messages
 from  django.http import HttpResponseRedirect
+from django.utils.html import format_html
 # Register your models here.
 
 class CsvImportForm(forms.Form):
@@ -12,8 +13,10 @@ class CsvImportForm(forms.Form):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name','booked','ratings','model','price','year','kilometer','fuletype','Transmission','color','engine','maxPower','maxTorque','Drivetrain','length','width','height','fuleTankSize','vehicleType')
+    list_display = ('name','images','booked','ratings','model','price','year','kilometer','fuletype','Transmission','color','engine','maxPower','maxTorque','Drivetrain','length','width','height','fuleTankSize','vehicleType')
     search_fields = ('name','model')
+    def images(self,obj):
+        return format_html(f'<a href="/product/productdetail/{obj.id}/"><img src="{obj.image_url}" style="height:55px;width:100px;"></a>')
     def get_urls(self):
         urls = super().get_urls()
         new_urls = [

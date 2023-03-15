@@ -17,9 +17,17 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />  
+
+        <!--Google Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
         <style>
             article, aside, footer, header, nav, section{
                 display: flex;
+            }
+            nav a:hover{
+                color: #FF3E5A;
             }
             .pagination {
                 display: flex;
@@ -43,35 +51,85 @@
                 box-shadow: 0 0 0 .25rem #FF3E5A26;
             }
             nav{
-                background-color: #C9D4AC;
+                background-color: transparent;
                 box-shadow:none;
                 transition: 0.2s;
-                overflow: hidden;
             }
             nav.sticky{
-                background-color: grey;
+                background-color: black;
                 box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
                 transition: 1;
+            }
+            .center_image{
+                margin-top:6%;
+            }
+            section{
+                padding:1rem 8rem;
+                margin-top: -5rem;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            }
+            section>div>div>p{
+                font-size:20pt;
+            }
+            .outer_catagory_container{
+                margin-top:-3rem;
+                max-width:25rem;
+            }
+            .catagory_container{
+                height:6rem;
+                background-color:#FBE8E8;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 5px;
+                display:flex;
+                justify-content: space-evenly;
+                align-items: center;
+                padding-right: 1.5rem;
             }
             @media only screen and (min-width: 992px) {
                 .categoryPadding{
                     padding: 2.5rem 0;
-                }
+                }              
+            } 
+            @media only screen and (max-width: 992px) {
+                section{
+                    text-align: center;
+                    padding-top: 7rem;
+                }               
             } 
             @media only screen and (max-width: 768px) {
                 .categoryPadding{
                     padding-top: 2rem 0;
                 }
+                section{
+                    text-align: center;
+                    padding: 2rem 0 0 0;
+                }
+                section>div>div>h1{
+                    font-size:3rem;
+                    padding-top:2rem;
+                }
+                section>div>div>p{
+                    font-size:16pt;
+                }
+                section > div{
+                    margin-top:1rem;
+                }
+                .outer_catagory_container{
+                    margin-top:-2rem;
+                }
+                .catagory_container{
+                    height: 4rem;
+                }
             }
         </style>
     </head>
-    <body>
+    <body style="min-height:auto;">
         {% block content %}
         <!--Nav bar-->
         <div class="navbar-fixed" style="z-index:2;">
             <nav class="nav-wrapper" style="width:100%;">
                 <div class="nav-wrapper container" style="width:90%;">
-                    <a href="/product/" class="brand-logo"><img width="150rem" src={% static "./images/nepali4.png"%}/></a>
+                    <a href="/" class="brand-logo"><img width="150rem" src={% static "./images/nepali4.png"%}/></a>
                     <div>
                         <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bi bi-list" style="font-size:2rem;color:white;line-height: inherit;"></i></a>
                         <ul class="right hide-on-med-and-down navHover">
@@ -89,7 +147,7 @@
             
                                 <!-- Dropdown Structure -->
                                 <ul id='dropdown1' class='dropdown-content' >
-                                    <li style="min-height:30px;"><a class='center' href="/history/" style="padding:0; color:black; height:30px;"><b>History</b></a></li>
+                                    <li style="min-height:30px;"><a class='center' href="/product/history/" style="padding:0; color:black; height:30px;"><b>History</b></a></li>
                                     <li style="min-height:30px;"><a class='center' href="/register/logout" style="padding:0; color:red; height:30px;"><b>Logout</b></a></li>
                                 </ul>
                             {% else %}
@@ -134,21 +192,129 @@
                 </div>
             </li>
         </ul>
-        <!-- Header Part & search -->
-        <section style="height: 30rem;">
-            <div class="container row" style="width:90%">
-                <div class="col">
-                    <h2>Book a Car Near You and Drive in Minutes</h2>
-                    <p>just a body iisadiasi asioasjfjkb adsffoihafs </p>
+        <!--Header Section-->
+        <section style="background-image:url({% static "./images/256650.jpg"%});background-size: cover;background-position: center;min-height:35rem;">
+            <div class="row" style="width:100%;">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6" style="color:white;">
+                    <h1 style="font-family: 'Oswald', sans-serif;">Move The Way You Want.</h1>
+                    <p style="font-family:sans-serif;color:#cbcbcb;">A dream without ambition is<br>like a car without gas</p>
+                    <a href="/aboutus/" class="waves-effect waves-grey btn black-text" style="background-color:#ff3e5a;"><b>Learn More</b></a>
                 </div> 
-                <div class="col">
-                    <img style="width: 48rem;" src="{%static './images/header.png' %}" />
-                </div>      
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6" style="display: flex;justify-content: center;align-items: center;">
+                    <div class="center_image">
+                        <img style="width:100%" src={% static "./images/pngfind 1.png"%}/>
+                    </div>
+                </div>
             </div>
         </section>
+        <div class="container outer_catagory_container">
+            <div class="catagory_container">
+                <a><a href="/product/category/cars/" style="color:black;font-size:16pt;display:flex;align-items:center;justify-content:space-evenly;"><img width="30" height="25" src="{% static "./icons/clipart1255495 1.png"%}"/>&nbsp;&nbsp;Car</a></a>
+                <a><div style="font-size:18pt">|</div></a>
+                <a><a href="/product/category/bikes/" style="color:black;font-size:16pt;display:flex;align-items:center;justify-content:space-evenly;"><img width="35" height="25" src="{% static "./icons/motorcycle-solid.svg"%}"/>&nbsp;&nbsp;Bike</a></a>
+            </div>
+        </div>
+        <!--Available Vehicles-->
         
+        <!--Recomendation Card-->
+        <div class="container" style="width:95%;">
+            <div class="container" style="width:100%; display:flex; justify-content:space-between;align-items: center;margin-top:2rem;margin-bottom: -1rem;">
+                <div>
+                    <h3 class="availableVehicle">Vehicle’s you may like</h3>
+                    <div class="container left" style="width:50%;">
+                        <hr style="height: 2px;color: #FF3E5A; opacity: 100%; margin:0rem 0 2rem 0;"/>
+                    </div>
+                </div>
+                  <!-- Dropdown Trigger -->
+                <a href='/product/' data-target='dropdown2' style="color:#FF3E5A;">see all</a>
+            </div>
+            <div class="wrapper" style="overflow-x: scroll;overflow-y: hidden;">
+                <div class="row row-cols-4" style="width: 100%; margin: auto;">
+                    {% for suggestion in products %}
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="card hoverable" style="border-radius:5px;">
+                                <div class="card-image">
+                                    <div class="card-image" style="border-radius: 3px;background-image: url({{suggestion.image_url}});background-size: cover;background-position: center;aspect-ratio: 16/9;"></div>
+                                    {% comment %} <img style="border-radius:5px;aspect-ratio: 16 / 9;
+                                    " src="https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/17q3/685272/2018-bmw-m5-photos-and-information-news-car-and-driver-photo-688789-s-original.jpg?fill=2:1&resize=1200:*"> {% endcomment %}
+                                    {% if not suggestion.booked %}
+                                        <a href="/product/productdetail/{{suggestion.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;">Rs. {{suggestion.price}}</a>
+                                    {% else %}
+                                        <a href="/product/productdetail/{{suggestion.id}}/" class="btn-floating halfway-fab waves-effect waves-light center" style="width: 8rem; border-radius: 2rem;color: white;background-color:#FF3E5A;box-shadow:none;" disabled>Rs. {{suggestion.price}}</a>
+                                    {% endif %}
+                                </div>
+                                <div class="card-body" style="display: flex;flex-direction:column;margin-bottom:0px;">
+                                    <div class="col" style="box-sizing:content-box">
+                                        <h5 class="card-title truncate" id="cardTitle" style="font-size:16pt">{{suggestion.name}}</h5>
+                                        <p class="card-text truncate" style="font-size:12pt">Model: {{suggestion.model}} </p>
+                                    </div>
+                                    <hr>
+                                    <div class="col center" style="padding: 0;">
+                                        <div class="center" style="display: flex;margin-top:1rem;margin-bottom:0rem;justify-content:space-evenly;">
+                                            <div class="col" style="padding:0rem;">
+                                                <img width="20px" src={% static "./icons/car-seat.png"%}>
+                                                <figcaption style="font-size:10pt;">{{suggestion.seatingCapacity}}</figcaption>
+                                            </div>
+                                            <div class="col" style="padding:0rem;">
+                                                <img width="20px" src={% static "./icons/car-engine.png"%}>
+                                                <figcaption style="font-size:10pt;width: 4rem;">{{suggestion.engine}}</figcaption>
+                                            </div>
+                                            <div class="col" style="padding:0rem;">
+                                                <img width="20px" src={% static "./icons/download-speed.png"%}>
+                                                <figcaption style="font-size:10pt; width: 4rem;" class="truncate">{{suggestion.maxPower}}</figcaption>
+                                            </div>
+                                            <div class="col" style="padding:0rem;">
+                                                <img width="20px" src={% static "./icons/gas-station.png"%}>
+                                                <figcaption style="font-size:10pt;">{{suggestion.fuletype}}</figcaption>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="page-footer black darken-3" style="flex-direction: column;">
+            <div class="container" style="width:90%;">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5>Vadagadi</h5>
+                        <p>The things we do is not normal here</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Usefull Links</h5>
+                        <a href="/blog" style="color:white;">Blog</a><br>
+                        <a href="/contact" style="color:white;">Contact</a><br>
+                        <a href="/service" style="color:white;">Services</a><br>  
+                        <a href="" style="color:white;">hot news</a><br>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Contact Us</h5>
+                        <a>Kathmandu, Nepal</a><br>
+                        <a>contact@Vadagadi.com</a><br>
+                        <a>+977 987654321</a>
+                    </div>
+                </div>
+                <hr class="center" style="position: unset; width: 80%; height: 0.3vh; margin: 1rem auto;">
+                <div class="d-flex justify-content-evenly" >
+                    <a href="https://instagram.com/" style="color:white; font-size:2rem;"><i class="bi bi-instagram"></i></a>
+                    <a href="https://facebook.com/" style="color:white; font-size:2rem;"><i class="bi bi-facebook"></i></a>
+                    <a href="https://github.com/" style="color:white; font-size:2rem;"><i class="bi bi-github"></i></a>
+                    <a href="https://youtube.com/" style="color:white; font-size:2rem;"><i class="bi bi-youtube"></i></a>
+                </div>
+                <div class="container">
+                    <div style="height: 1rem;"></div>
+                </div>
+            </div>
+            <div class="footer-copyright black darken-4">
+                <div class="container center-align">&copy; 2023 Vadagadi</div>
+            </div>
+        </footer>
         {% endblock %}
-
+        
         <!--Stiky when scroll-->
         <script type="text/javascript">
             window.addEventListener("scroll",function(){

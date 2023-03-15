@@ -266,9 +266,8 @@
                         {% endfor %}
                     </table>
                 {% else %}
-                    <h2 class="pt-sm-2">History</h2>  
-                    <hr>
-                    <h5 class="pt-sm-2">Empty Find Something <a class="waves-effect waves-red btn" href="/product/">Home</a></h5> 
+                    <h2 class="pt-sm-2">History</h2>
+                    <h5 class="pt-sm-2">Empty Find Something <a class="waves-effect waves-red btn" href="/product/" style="background-color: black;margin-left:1rem;">Home</a></h5> 
                 {% endif %}
                 {% if payment_complete%}
                     <h2 class="pt-sm-2">Order Completed</h2>
@@ -279,7 +278,7 @@
                             <th>product</th>
                             <th>total_days</th>
                             <th>amount</th>
-                            <th>ratings</th>
+                            <th>Your Rating</th>
                             <th>payment_type</th>
                             <th>payment</th>
                         </thead>
@@ -287,29 +286,38 @@
                             <tbody id="products">
                                 <tr class="product" data-id="123">
                                     <td>{{payment_complete.user}}</td>
-                                    <td>{{payment_complete.product}}</td>
+                                    <td><a href="/product/productdetail/{{payment_complete.product.id}}/">{{payment_complete.product}}</a></td>
                                     <td>{{payment_complete.total_days}}</td> 
                                     <td>{{payment_complete.amount}}</td>
                                     <td>
-                                        {{payment_complete.rating}}
-                                        {% if not payment_complete.rating.rating %}
-                                            <div class="product" style="display:flex;">
-                                                <div class="rating-container" data-product="product-{{payment_complete.id}}">
-                                                    <i class="fas fa-star rating-star"></i>
-                                                    <i class="fas fa-star rating-star"></i>
-                                                    <i class="fas fa-star rating-star"></i>
-                                                    <i class="fas fa-star rating-star"></i>
-                                                    <i class="fas fa-star rating-star"></i>
+                                        {% if not payment_complete.rating %}
+                                            {% if not user.is_superuser %}
+                                                <div class="product" style="display:flex;">
+                                                    <div class="rating-container" data-product="product-{{payment_complete.id}}">
+                                                        <i class="fas fa-star rating-star" style="line-height: 1.5;"></i>
+                                                        <i class="fas fa-star rating-star" style="line-height: 1.5;"></i>
+                                                        <i class="fas fa-star rating-star" style="line-height: 1.5;"></i>
+                                                        <i class="fas fa-star rating-star" style="line-height: 1.5;"></i>
+                                                        <i class="fas fa-star rating-star" style="line-height: 1.5;"></i>
+                                                    </div>
+                                                    <form action="/product/rating/{{payment_complete.id}}/" method="POST">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="product-{{payment_complete.id}}-rating" class="product-rating" required>
+                                                        <button type="submit" style="margin-left: 0.4rem;background: #fd3c58;border: none;padding: 0.3rem 0.2rem;color: white;border-radius: 0.1rem;box-shadow: 1px 1px #8e898978;">Submit</button>
+                                                    </form>
                                                 </div>
-                                                <form action="/product/rating/{{payment_complete.id}}/" method="POST">
-                                                    {% csrf_token %}
-                                                    <input type="hidden" name="product-{{payment_complete.id}}-rating" class="product-rating" required>
-                                                    <button type="submit">Submit</button>
-                                                </form>
+                                            {% endif %}
+                                        {% else %}
+                                            <div class="rating-container1">
+                                                <i class="fas fa-star {%if payment_complete.rating >= 1%} selected {%endif%}" style="line-height: 1.5;"></i>
+                                                <i class="fas fa-star {%if payment_complete.rating >= 2%} selected {%endif%}" style="line-height: 1.5;"></i>
+                                                <i class="fas fa-star {%if payment_complete.rating >= 3%} selected {%endif%}" style="line-height: 1.5;"></i>
+                                                <i class="fas fa-star {%if payment_complete.rating >= 4%} selected {%endif%}" style="line-height: 1.5;"></i>
+                                                <i class="fas fa-star {%if payment_complete.rating >= 5%} selected {%endif%}" style="line-height: 1.5;"></i>
                                             </div>
                                         {% endif %}
                                     </td>
-                                    <td>{{payment_complete.amount}}</td>
+                                    <td>COD</td>
                                     <td>{{payment_complete.payment}}</td> 
                                 </tr>
                             </tbody>
@@ -334,44 +342,43 @@
 <script>
     const ratingContainers = document.querySelectorAll(".rating-container");
 
-// Loop through each rating container and attach event listeners to its stars
-ratingContainers.forEach(container => {
-    const stars = container.querySelectorAll(".rating-star");
-    const ratingInput = container.parentNode.querySelector(".product-rating");
-    let ratingValue = 0;
+    // Loop through each rating container and attach event listeners to its stars
+    ratingContainers.forEach(container => {
+        const stars = container.querySelectorAll(".rating-star");
+        const ratingInput = container.parentNode.querySelector(".product-rating");
+        let ratingValue = 0;
 
-    stars.forEach((star, index) => {
-        star.addEventListener("mouseover", e => {
-            resetStars(stars);
-            addSelectedClass(stars, index);
-        });
+        stars.forEach((star, index) => {
+            star.addEventListener("mouseover", e => {
+                resetStars(stars);
+                addSelectedClass(stars, index);
+            });
 
-        star.addEventListener("click", e => {
-            ratingValue = index + 1;
-            ratingInput.value = ratingValue;
-        });
+            star.addEventListener("click", e => {
+                ratingValue = index + 1;
+                ratingInput.value = ratingValue;
+            });
 
-        star.addEventListener("mouseout", e => {
-            resetStars(stars);
-            if (ratingValue !== 0) {
-                addSelectedClass(stars, ratingValue - 1);
-            }
+            star.addEventListener("mouseout", e => {
+                resetStars(stars);
+                if (ratingValue !== 0) {
+                    addSelectedClass(stars, ratingValue - 1);
+                }
+            });
         });
     });
-});
 
-function resetStars(stars) {
-    stars.forEach(star => {
-        star.classList.remove("selected");
-    });
-}
-
-function addSelectedClass(stars, index) {
-    for (let i = 0; i <= index; i++) {
-        stars[i].classList.add("selected");
+    function resetStars(stars) {
+        stars.forEach(star => {
+            star.classList.remove("selected");
+        });
     }
-}
 
+    function addSelectedClass(stars, index) {
+        for (let i = 0; i <= index; i++) {
+            stars[i].classList.add("selected");
+        }
+    }
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 <script>

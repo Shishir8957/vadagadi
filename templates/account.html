@@ -152,7 +152,7 @@
                         </ul>
                         <!-- login -->
                         <div id="login" class="col s12">
-                            <form style="margin: 1rem 2rem;" action="login" method="post">
+                            <form style="margin: 1rem 2rem;" action="/register/login" method="post">
                                 {% csrf_token %}
                                 {% if request.GET.next %}
                                     <input type="hidden" name="next" value="{{request.GET.next}}">

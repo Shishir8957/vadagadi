@@ -9,10 +9,11 @@ from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Q
 from django.db.models import Max
 from .recommendation import get_recommendation
+from django.core.mail import send_mail
 
 # Create your views here.
 def home(request):
-  product = Product.objects.all().filter(booked=False).order_by('price').values()
+  product = Product.objects.all().filter(booked=False).order_by('name').values()
   paginator = Paginator(product, 12)
   page_number = request.GET.get('page')
   page_obj = paginator.get_page(page_number)
@@ -35,9 +36,9 @@ def history(request):
 def viewProduct(request,id):
   product = Product.objects.get(id=id)
   booking = Booking.objects.all()
-  values= get_recommendation(product.name)
+  values = get_recommendation(product.name)
   suggestions=[]
-  for i in range(3):
+  for i in range(4):
     suggestions.append(Product.objects.get(id=values[i+1][1]))
   print(suggestions)
   for i in booking :
@@ -54,6 +55,8 @@ def rating(request,id):
     product = PaymentComplete.objects.get(id=id)
     rating = request.POST[f"product-{id}-rating"]
     Ratings.objects.create(user=request.user,product=product.product,rating=rating)
+    product.rating=rating
+    product.save()
   return redirect('/product/history/')
 
 def car(request):
@@ -71,7 +74,7 @@ def price(request):
   return render(request, 'productpage.html',{'products':products,'display':True})
 
 def name(request):
-  product = Product.objects.all().filter(booked=False).order_by('name').values()
+  product = Product.objects.all().filter(booked=False).order_by('price').values()
   paginator = Paginator(product, 12)
   page_number = request.GET.get('page')
   page_obj = paginator.get_page(page_number)
@@ -112,6 +115,7 @@ def bookdate(request,pk):
         else:
             product.booked=True
             product.save()
+            send_mail('Order Confirmed', f"Vehicle Booking Complete http://127.0.0.1:8000/product/productdetail/{pk}/ ", 'royell4912@gmail.com', [request.user.email],fail_silently=False)
             event = Booking.objects.create(name=user,starting=starting,ending=ending,pickupTime=time,total_days=a,cost_per_day=product.price,product=product,driverStatus=needDriver)
             event.save()
         
@@ -138,9 +142,14 @@ def search(request):
 
 @user_passes_test(lambda u: u.is_superuser)
 def CompleteOrder(request,pk):
-  Product=Booking.objects.get(product_id=pk)
-  Product.delete()
-  PaymentComplete.objects.create(user=Product.name,product=Product.product,total_days=Product.total_days,amount=Product.cost_per_day,payment_type="COD",payment=True)
+  Booked_Product=Booking.objects.get(product_id=pk)
+  id_product = Booked_Product.product.id
+  vehicle = Product.objects.get(id=id_product)
+  vehicle.booked = False
+  vehicle.save()
+  Booked_Product.delete()
+  send_mail('Order Complete', f"Vehicle Booked order complete http://127.0.0.1:8000/product/productdetail/{id_product}/ ", 'royell4912@gmail.com', [request.user.email],fail_silently=False)
+  PaymentComplete.objects.create(user=Booked_Product.name,product=Booked_Product.product,total_days=Booked_Product.total_days,amount=Booked_Product.cost_per_day,payment_type="COD",payment=True)
   return redirect('/product/history/')
 
 @login_required(login_url='/register')

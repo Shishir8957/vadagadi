@@ -86,7 +86,7 @@ class PaymentComplete(models.Model):
    amount = models.IntegerField(default=0,null=True)
    payment_type = models.CharField(max_length=200,null=True)
    payment = models.BooleanField(default=False)
-   rating =models.ForeignKey(Ratings,on_delete=models.CASCADE,null=True)
+   rating = models.IntegerField(null=True,validators=[MaxValueValidator(5),MinValueValidator(1)])
 
 class Comment(models.Model):
     sno = models.AutoField(primary_key= True)

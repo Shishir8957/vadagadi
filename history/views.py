@@ -16,4 +16,4 @@ def delete(request,id):
     products.save()
     Booking.objects.get(product=products).delete()
     booking = Booking.objects.filter(name=user)
-    return redirect(history)
+    return redirect('/product/history/')
