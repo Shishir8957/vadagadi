@@ -113,12 +113,14 @@ def bookdate(request,pk):
             print("product is already booked")
             return redirect('/')
         else:
+            try:
+              send_mail('Order Confirmed', f"Vehicle Booking Complete http://127.0.0.1:8000/product/productdetail/{pk}/ ", 'royell4912@gmail.com', [request.user.email],fail_silently=False)
+            except:
+              print('Error sending mail')
             product.booked=True
             product.save()
-            send_mail('Order Confirmed', f"Vehicle Booking Complete http://127.0.0.1:8000/product/productdetail/{pk}/ ", 'royell4912@gmail.com', [request.user.email],fail_silently=False)
             event = Booking.objects.create(name=user,starting=starting,ending=ending,pickupTime=time,total_days=a,cost_per_day=product.price,product=product,driverStatus=needDriver)
-            event.save()
-        
+            event.save()    
     return redirect(history)
 
 @login_required(login_url='/register/')
@@ -145,10 +147,13 @@ def CompleteOrder(request,pk):
   Booked_Product=Booking.objects.get(product_id=pk)
   id_product = Booked_Product.product.id
   vehicle = Product.objects.get(id=id_product)
+  try:
+      send_mail('Order Complete', f"Vehicle Booked order complete http://127.0.0.1:8000/product/productdetail/{id_product}/ ", 'royell4912@gmail.com', [request.user.email],fail_silently=False)
+  except:
+    print('Error sending mail')
   vehicle.booked = False
   vehicle.save()
   Booked_Product.delete()
-  send_mail('Order Complete', f"Vehicle Booked order complete http://127.0.0.1:8000/product/productdetail/{id_product}/ ", 'royell4912@gmail.com', [request.user.email],fail_silently=False)
   PaymentComplete.objects.create(user=Booked_Product.name,product=Booked_Product.product,total_days=Booked_Product.total_days,amount=Booked_Product.cost_per_day,payment_type="COD",payment=True)
   return redirect('/product/history/')
 

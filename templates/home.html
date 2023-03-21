@@ -83,7 +83,6 @@
                 display:flex;
                 justify-content: space-evenly;
                 align-items: center;
-                padding-right: 1.5rem;
             }
             @media only screen and (min-width: 992px) {
                 .categoryPadding{
@@ -119,6 +118,9 @@
                 }
                 .catagory_container{
                     height: 4rem;
+                }
+                .availableVehicle{
+                    font-size: 1.4rem;
                 }
             }
         </style>
@@ -211,10 +213,9 @@
             <div class="catagory_container">
                 <a><a href="/product/category/cars/" style="color:black;font-size:16pt;display:flex;align-items:center;justify-content:space-evenly;"><img width="30" height="25" src="{% static "./icons/clipart1255495 1.png"%}"/>&nbsp;&nbsp;Car</a></a>
                 <a><div style="font-size:18pt">|</div></a>
-                <a><a href="/product/category/bikes/" style="color:black;font-size:16pt;display:flex;align-items:center;justify-content:space-evenly;"><img width="35" height="25" src="{% static "./icons/motorcycle-solid.svg"%}"/>&nbsp;&nbsp;Bike</a></a>
+                <a><a href="/product/category/bikes/" style="color:black;font-size:16pt;display:flex;align-items:center;justify-content:space-evenly;padding-right: 1rem;"><img width="35" height="25" src="{% static "./icons/motorcycle-solid.svg"%}"/>&nbsp;&nbsp;Bike</a></a>
             </div>
         </div>
-        <!--Available Vehicles-->
         
         <!--Recomendation Card-->
         <div class="container" style="width:95%;">

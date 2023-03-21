@@ -53,7 +53,10 @@ def register(request):
                 return redirect('register')     
             else:    
                 token = ''.join(secrets.choice(string.ascii_uppercase + string.ascii_lowercase) for i in range(7))
-                send_mail('Register your email', f"Register your email http://127.0.0.1:8000/register/activateUser/{token}/ ", 'royell4912@gmail.com', [email],fail_silently=False)
+                try:
+                    send_mail('Register your email', f"Register your email http://127.0.0.1:8000/register/activateUser/{token}/ ", 'royell4912@gmail.com', [email],fail_silently=False)
+                except:
+                    print('error sending mail')
                 user = User.objects.create_user(username=username,first_name=first_name,email=email,password=password1)
                 user.is_active=False
                 user.save(); 
@@ -113,12 +116,17 @@ def email_submited(request):
         token = ''.join(secrets.choice(string.ascii_uppercase + string.ascii_lowercase) for i in range(7))
         u=User.objects.filter(email=email)
         if not u:
-            send_mail('Register your email', f"Register your email http://http://127.0.0.1:8000/register/ ", 'royell4912@gmail.com', [email],fail_silently=False)
+            try:
+                send_mail('Register your email', f"Register your email http://http://127.0.0.1:8000/register/ ", 'royell4912@gmail.com', [email],fail_silently=False)
+            except:
+                print('Error sending mail')
         else:
             for user in u:
                 token = ''.join(secrets.choice(string.ascii_uppercase + string.ascii_lowercase) for i in range(7))
-                send_mail('Reset password', f"Reset password http://http://127.0.0.1:8000/register/password_reset/{token}/ ", 'royell4912@gmail.com', [email],fail_silently=False)
-                print(user)
+                try:
+                    send_mail('Reset password', f"Reset password http://http://127.0.0.1:8000/register/password_reset/{token}/ ", 'royell4912@gmail.com', [email],fail_silently=False)
+                except:
+                    print('error sending mail')
                 randomString.objects.create(random=token,user=user).save
     return HttpResponse('<div style="text-align: center; margin: 17rem;">Please check your email<br> <a href="/" style="margin:1rem;" type="submit"> Return to home </a></div>')
 
@@ -142,7 +150,10 @@ def update_password(request,slug):
                 user = User.objects.get(username=user.user)
                 user.set_password(password1)
                 user.save(); 
-                send_mail('Your password change successfully', f"Your password change successfully for {username} ", 'royell4912@gmail.com', [email],fail_silently=False)
+                try:
+                    send_mail('Your password change successfully', f"Your password change successfully for {username} ", 'royell4912@gmail.com', [email],fail_silently=False)
+                except:
+                    print('error sending mail')
                 randomString.objects.filter(random=slug).delete()
             messages.info(request,'Password Updated Successfully')
             return redirect('register')
