@@ -6,4 +6,5 @@
 ![image](https://user-images.githubusercontent.com/85719050/226640967-f6fc7d1d-b86d-4327-b749-e7ed945ff44f.png)
 ![image](https://user-images.githubusercontent.com/85719050/226640982-97c2a56f-39f7-46d5-b60a-37cbebbf53ac.png)
 ![image](https://user-images.githubusercontent.com/85719050/226640988-d5f87397-08f4-4b43-b03d-a56e606d9f7e.png)
-![image](https://github.com/Shishir8957/vadagadi/assets/85719050/bed6c5ed-7850-49be-86c4-d46f02a0cbb4)
+![image](https://github.com/Shishir8957/vadagadi/assets/85719050/36a056e7-48ce-4b22-b266-547b456d9f18)
+
